@@ -1,0 +1,976 @@
+---
+title: "results"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Set important paths
+```{r}
+# save.image(file = "initiation_image.RData")
+# load("initiation_image.RData")
+
+# Path of the main folder
+path_main_dir = "/gpfs0/shai/users/barryb/link-predict/" # HPC
+# dir_path = dirname(rstudioapi::callFun("getActiveDocumentContext")$path) # Rstudio
+
+# Paths of data by specific purpose
+path_metadata = paste0(path_main_dir, "data/processed/") # Path of proccessed networks & features data, serving as complementary metadata
+path_raw_results = paste0(path_main_dir, "results/raw/") # Path of raw results
+path_intermediate_results = paste0(path_main_dir, "results/intermediate/") # Path of intermediate results, output of this script
+path_final_results = paste0(path_main_dir, "results/final/") # Path of final results, output of this script
+```
+
+## Import libraries
+```{r libraries}
+library(ggplot2)
+library(tidyverse)
+library(pROC)
+library(PRROC)
+library(caret)
+library(dplyr)
+library(purrr)
+library(tidyr)
+library(reshape2)
+library(ggpubr)
+library(stringr)
+library(RColorBrewer)
+```
+
+## Set important variables
+```{r set_variable}
+# Set a threshold
+threshold <- 0.5 
+
+# Choose whether to export figures and tables
+export = FALSE
+
+# Choose splitting method
+nested_cv = TRUE
+```
+
+## Load data
+```{r load_data}
+
+process_results_dataframe <- function(df) {
+  # add 'subsample_ID' and 'class' to the results dataframe
+  df <- merge(df, subset(subsamples_edge_lists, select = c(link_ID, subsample_ID, class)), by = "link_ID")
+  
+  # add 'subsample_ID' and additional metadata to the results dataframe
+  df <- merge(df, subset(subsamples_metadata, select = c(subsample_ID, name, community)), by = "subsample_ID")
+  
+  # change classes values
+  df$class <- ifelse(df$class %in% c("TP", "FN"), 1, 0)
+  
+  # rename columns
+  names(df)[names(df) == "name"] <- "network"
+  names(df)[names(df) == "class"] <- "y_true"
+  
+  return(df)
+}
+
+# Load subsamples (edgelists) data
+subsamples_edge_lists <- read.csv(paste0(path_metadata, "networks/subsamples_edge_lists.csv"))
+
+# Load subsamples metadata
+subsamples_metadata <- read.csv(paste0(path_metadata, "networks/subsamples_metadata.csv"))
+
+# Load features
+features_py <- read.csv(paste0(path_metadata, "features/features_py.csv"))
+features_R <- read.csv(paste0(path_metadata, "features/features_R.csv"))
+features <- merge(features_py, features_R, by = "link_ID") # Merge features from both languages
+
+# Load results
+results_types <- read.csv(paste0(path_raw_results, "results_domains.csv")) # types comparison
+results_models <- read.csv(paste0(path_raw_results, "results_models.csv")) # models comparison
+# results_subset <- read.csv(paste0(path_raw_results, "results_subset.csv")) # subset comparison
+
+# Process the results dataframes
+results_types <- process_results_dataframe(results_types)
+results_models <- process_results_dataframe(results_models)
+# results_subset <- process_results_dataframe(results_subset)
+
+```
+
+## Model evaluation
+
+### Main functions
+```{r}
+# Function to calculate performance metrics for an edgelist
+calc_metrics <- function(data, metrics=c("roc_auc", "pr_auc", "recall", "precision", "specificity", "f1", "balanced_accuracy", "mcc", "youden_j", "log_loss")) {
+  
+  cm <- confusionMatrix(factor(ifelse(data$y_proba > 0.5, 1, 0), levels = c('1', '0')), factor(data$y_true, levels = c('1', '0')), positive = "1") # calculate confusion matrix
+
+  res_list <- list() # create an empty list to store the results
+  if("roc_auc" %in% metrics) {
+    roc_obj <- roc(data$y_true, data$y_proba, quiet = TRUE) # calculate ROC curve
+    res_list$roc_auc <- roc_obj$auc[1] # store the ROC AUC value
+  }
+  if("pr_auc" %in% metrics) { 
+    pr_obj <- pr.curve(data$y_true, data$y_proba) # calculate PR curve
+    res_list$pr_auc <- pr_obj$auc.integral # store the PR AUC value
+  }
+  if("recall" %in% metrics) res_list$recall <- cm$byClass['Recall'] # store the recall value
+  if("precision" %in% metrics) res_list$precision <- cm$byClass['Precision']
+  if("specificity" %in% metrics) res_list$specificity <- cm$byClass['Specificity'] # store the specificity value
+  if("f1" %in% metrics) { # store the F1 value
+    if (cm$byClass['Precision'] == 0 && cm$byClass['Recall'] == 0) {
+      res_list$f1 <- 0
+    } else {
+      res_list$f1 <- cm$byClass['F1']
+    }
+  }
+  if("accuracy" %in% metrics) res_list$accuracy <- cm$overall['Accuracy'] # store the accuracy value
+  if("balanced_accuracy" %in% metrics) res_list$balanced_accuracy <- cm$byClass['Balanced Accuracy'] # store the balanced accuracy value
+  if("mcc" %in% metrics) { # Calculate MCC
+    TP <- cm$table[2, 2] # Extracting the elements of the confusion matrix
+    TN <- cm$table[1, 1]
+    FP <- cm$table[1, 2]
+    FN <- cm$table[2, 1]
+    denom <- sqrt(as.double((TP+FP))*as.double((TP+FN))*as.double((TN+FP))*as.double((TN+FN)))
+    if (denom == 0) {
+      res_list$mcc <- 0
+    } else {
+      res_list$mcc <- (TP * TN - FP * FN) / denom
+    }
+  }
+  if("youden_j" %in% metrics) { # Calculate Youden's J / Informedness / True Skill Statistic
+    sensitivity <- cm$byClass['Sensitivity']
+    specificity <- cm$byClass['Specificity']
+    res_list$youden_j <- sensitivity + specificity - 1
+  }
+  if("log_loss" %in% metrics) { # Calculate Log Loss
+    epsilon <- 1e-15
+    data$y_proba <- pmin(pmax(data$y_proba, epsilon), 1 - epsilon)
+    res_list$log_loss <- -mean(data$y_true * log(data$y_proba) + (1 - data$y_true) * log(1 - data$y_proba))
+  }
+  
+  res <- as_tibble(res_list) # convert the list to a tibble
+
+  return(res)
+}
+
+
+# Function to format p-values
+format_pvalue <- function(x) { 
+  sapply(x, function(y) {
+    if (is.na(y)) {
+      return(NA)
+    } else if (y < 1e-4) { # Adjust this threshold as needed
+      return(formatC(y, format = "e", digits = 2))
+    } else {
+      return(round(y, 4)) # Adjust the number of decimal places as needed
+    }
+  })
+}
+
+# Rename function
+rename_underscore <- function(old_name) {
+  new_name <- str_replace_all(old_name, "_", " ") # underscore ('_') cause problems in latex
+  new_name <- str_replace_all(new_name, "\\.", " ")
+  return(new_name)
+}
+```
+
+### Data preparation
+```{r prepare_data}
+
+# test_data is the test set of the main model, trained on all communities
+test_data <- results_types %>%
+  filter( # filter the dataframe - choose a single excution of a single model
+    # model == 'RandomForestClassifier', # specific model
+    # frac_train == "[1.0]", # original networks
+    # frac_test == "[0.8]", # 20% removed links
+    type_train == "['Plant-Seed Dispersers', 'Plant-Pollinator', 'Plant-Herbivore', 'Host-Parasite']", # all comunnities
+    type_test == "['Plant-Seed Dispersers', 'Plant-Pollinator', 'Plant-Herbivore', 'Host-Parasite']", # all comunnities
+    ) #%>%
+  # slice_min(run_ID)  # Choose the first run (validate that they all start from the same number)
+
+# Save to file
+if (export){
+  write.csv(test_data, file = paste0(path_intermediate_results, "test_data.csv"), row.names = FALSE)
+}
+```
+
+
+### Plot evaluation metrics distributions
+
+#### All communities
+```{r}
+
+# Define the columns to group by based on the splitting method
+if (nested_cv){ # Nested CV
+  cols_to_group_by <- c("fold", "network", "community")
+} else {
+  cols_to_group_by <- c("network", "community")
+}
+
+# Define the metrics to calculate
+metrices_levels <- c("balanced_accuracy", "roc_auc", "pr_auc", "precision", "recall", "specificity", "f1", "mcc") #, "youden_j", "log_loss"
+
+# Create the metrics dataframe
+metrics_df <- test_data %>%
+  group_by(!!!syms(cols_to_group_by)) %>%
+  nest() %>%
+  mutate(metrics = map(data, ~ calc_metrics(.x, metrics = metrices_levels))) %>%
+  unnest(cols = c(metrics)) %>%
+  select(-data)
+
+# Long format
+metrics_df_long <- metrics_df %>%
+  pivot_longer(names_to = "metric", values_to = "value", -all_of(cols_to_group_by)) %>%
+  mutate(metric = factor(metric, levels = metrices_levels)) # reorder
+
+# Save to file
+if (export){
+  write.csv(metrics_df_long, file = paste0(path_intermediate_results, "metrics_df_long.csv"), row.names = FALSE)
+}
+```
+
+
+#### Calculate summary statistics (for personal use)
+```{r}
+
+# Define the columns to group by based on the splitting method
+if (nested_cv){ # Nested CV
+  cols_to_group_by <- c("fold", "metric")
+} else {
+  cols_to_group_by <- c("metric")
+}
+
+# Calculate the summary statistics	
+summary_stats <- metrics_df_long %>%
+  group_by(!!!syms(cols_to_group_by)) %>%	
+  summarise(
+    Min = min(value, na.rm = TRUE),	
+    Q1 = quantile(value, 0.25, na.rm = TRUE),	
+    Median = median(value, na.rm = TRUE),	
+    Q3 = quantile(value, 0.75, na.rm = TRUE),	
+    Max = max(value, na.rm = TRUE)	
+  )	
+
+# Print the summary table	
+print(summary_stats)
+```
+
+
+### ROC & PR curves (not nCV)
+
+```{r ROC}
+
+# Initialize data frames and lists to store results
+auc_df <- data.frame(community = character(), ROC_auc = numeric(), PR_auc = numeric(), stringsAsFactors = FALSE)
+roc_combined_df <- data.frame(community = character(),
+                              fpr = numeric(), tpr = numeric(), 
+                              threshold = numeric(), stringsAsFactors = FALSE)
+pr_combined_df <- data.frame(community = character(),
+                              recall = numeric(), precision = numeric(), f1 = numeric(),
+                              threshold = numeric(), stringsAsFactors = FALSE)
+
+# Get labels and probabilities
+y_test <- test_data[['y_true']]
+y_proba <- test_data[['y_proba']]
+communities <- test_data[['community']]
+
+# Compute metrics for the overall dataset
+roc_obj <- roc(y_test, y_proba)
+pr_values <- pr.curve(scores.class0 = y_proba, weights.class0 = y_test, curve = TRUE)
+auc_df <- rbind(auc_df, data.frame(community = "All", ROC_auc = auc(roc_obj), PR_auc = pr_values$auc.integral))
+
+# Append overall data for ROC and PR curves
+roc_combined_df <- rbind(roc_combined_df, data.frame(community = "All",
+                                                   fpr = 1-roc_obj$specificities,
+                                                   tpr = roc_obj$sensitivities,
+                                                   threshold = roc_obj$thresholds))
+pr_combined_df <- rbind(pr_combined_df, data.frame(community = "All",
+                                                  recall = pr_values$curve[,1],
+                                                  precision = pr_values$curve[,2],
+                                                  f1 = 2 * (pr_values$curve[,2] * pr_values$curve[,1]) /
+                                                       (pr_values$curve[,2] + pr_values$curve[,1]),
+                                                  threshold = pr_values$curve[,3]))
+
+# Loop through each community
+for (community in unique(communities)) {
+  y_test_group <- y_test[communities == community]
+  y_proba_group <- y_proba[communities == community]
+  
+  # Compute ROC and PR curves for each community
+  roc_obj <- roc(y_test_group, y_proba_group)
+  pr_values <- pr.curve(scores.class0 = y_proba_group, weights.class0 = y_test_group, curve = TRUE)
+  auc_df <- rbind(auc_df, data.frame(community = community, ROC_auc = auc(roc_obj), PR_auc = pr_values$auc.integral))
+  
+  # Append data for each community
+  roc_combined_df <- rbind(roc_combined_df, data.frame(community = community,
+                                                       fpr = 1-roc_obj$specificities,
+                                                       tpr = roc_obj$sensitivities,
+                                                       threshold = roc_obj$thresholds))
+  pr_combined_df <- rbind(pr_combined_df, data.frame(community = community,
+                                                     recall = pr_values$curve[,1],
+                                                     precision = pr_values$curve[,2],
+                                                     f1 = 2 * (pr_values$curve[,2] * pr_values$curve[,1]) /
+                                                          (pr_values$curve[,2] + pr_values$curve[,1]),
+                                                     threshold = pr_values$curve[,3]))
+}
+
+# Save data frames and AUC values if exporting is enabled
+if (export) {
+  write.csv(roc_combined_df, file = paste0(path_intermediate_results, "roc_df.csv"), row.names = FALSE)
+  write.csv(pr_combined_df, file = paste0(path_intermediate_results, "pr_df.csv"), row.names = FALSE)
+  write.csv(auc_df, paste0(path_intermediate_results, "auc_df.csv"), row.names = FALSE)
+}
+
+```
+
+### ROC & PR curves (nCV only)
+```{r ROC}
+
+# Initialize data frames and lists to store results
+auc_df <- data.frame(community = character(), fold = integer(), ROC_auc = numeric(), PR_auc = numeric(), stringsAsFactors = FALSE)
+roc_combined_df <- data.frame(fold = integer(), community = character(),
+                              fpr = numeric(), tpr = numeric(), 
+                              threshold = numeric(), stringsAsFactors = FALSE)
+pr_combined_df <- data.frame(fold = integer(), community = character(),
+                             recall = numeric(), precision = numeric(), f1 = numeric(),
+                             threshold = numeric(), stringsAsFactors = FALSE)
+
+# Loop over each unique fold
+for (fold in unique(test_data$fold)) {
+  # Subset data for the current fold
+  fold_data <- test_data[test_data$fold == fold,]
+  
+  # Get labels and probabilities
+  y_test <- fold_data[['y_true']]
+  y_proba <- fold_data[['y_proba']]
+  communities <- fold_data[['community']]
+  
+  # Compute metrics for the overall dataset within the fold
+  roc_obj <- roc(y_test, y_proba)
+  pr_values <- pr.curve(scores.class0 = y_proba, weights.class0 = y_test, curve = TRUE)
+  auc_df <- rbind(auc_df, data.frame(community = "All", fold = fold, ROC_auc = auc(roc_obj), PR_auc = pr_values$auc.integral))
+
+  # Append overall data for ROC and PR curves
+  roc_combined_df <- rbind(roc_combined_df, data.frame(fold = fold, community = "All",
+                                                       fpr = 1-roc_obj$specificities,
+                                                       tpr = roc_obj$sensitivities,
+                                                       threshold = roc_obj$thresholds))
+  pr_combined_df <- rbind(pr_combined_df, data.frame(fold = fold, community = "All",
+                                                     recall = pr_values$curve[,1],
+                                                     precision = pr_values$curve[,2],
+                                                     f1 = 2 * (pr_values$curve[,2] * pr_values$curve[,1]) /
+                                                          (pr_values$curve[,2] + pr_values$curve[,1]),
+                                                     threshold = pr_values$curve[,3]))
+
+  # Loop through each community within the fold
+  for (community in unique(communities)) {
+    y_test_group <- y_test[communities == community]
+    y_proba_group <- y_proba[communities == community]
+    
+    # Compute ROC and PR curves for each community
+    roc_obj <- roc(y_test_group, y_proba_group)
+    pr_values <- pr.curve(scores.class0 = y_proba_group, weights.class0 = y_test_group, curve = TRUE)
+    auc_df <- rbind(auc_df, data.frame(community = community, fold = fold, ROC_auc = auc(roc_obj), PR_auc = pr_values$auc.integral))
+    
+    # Append data for each community
+    roc_combined_df <- rbind(roc_combined_df, data.frame(fold = fold, community = community,
+                                                         fpr = 1-roc_obj$specificities,
+                                                         tpr = roc_obj$sensitivities,
+                                                         threshold = roc_obj$thresholds))
+    pr_combined_df <- rbind(pr_combined_df, data.frame(fold = fold, community = community,
+                                                       recall = pr_values$curve[,1],
+                                                       precision = pr_values$curve[,2],
+                                                       f1 = 2 * (pr_values$curve[,2] * pr_values$curve[,1]) /
+                                                            (pr_values$curve[,2] + pr_values$curve[,1]),
+                                                       threshold = pr_values$curve[,3]))
+  }
+}
+
+# Save data frames and AUC values if exporting is enabled
+if (export) {
+  write.csv(roc_combined_df, file = paste0(path_intermediate_results, "roc_df_fold.csv"), row.names = FALSE)
+  write.csv(pr_combined_df, file = paste0(path_intermediate_results, "pr_df_fold.csv"), row.names = FALSE)
+  write.csv(auc_df, paste0(path_intermediate_results, "auc_df.csv"), row.names = FALSE)
+}
+```
+
+### Network Predictions Heatmap
+```{r fig.width=12, fig.height=8}
+
+# u = unique(test_data[test_data$community == 'Host-Parasite',]$network) specifty network in test
+
+specific_network = "A_HP_041" # network in paper: "A_HP_032" | also: M_SD_033, 
+
+id = unique(test_data[test_data$network==specific_network, ]['subsample_ID'])[[1]]
+edge_list = subsamples_edge_lists[(subsamples_edge_lists$subsample_ID ==id) ,]
+test_results = test_data[test_data$subsample_ID == id,c('link_ID', 'y_proba', 'y_true')]
+
+# Create a version of colors with transparency
+color_mapping_linktypes <- 
+  c("correct" = "#00BF7D", 
+    "wrong" = "#F8766D"#, 
+    # "neutral" = "black"
+    )
+color_mapping_linktypes_transparent <- alpha(color_mapping_linktypes, alpha = 0.8)
+
+# merge two dataframes
+df_ <- merge(edge_list, test_results, by = "link_ID", all.x = TRUE)
+
+# Create a new column based on the condition
+df_$prediction <- ifelse(df_$y_proba > 0.5, 1, 0)
+df_$correct_prediction <- ifelse(df_$prediction == df_$y_true, "correct", "wrong")
+
+# Handle missing values
+df_$y_proba <- replace_na(df_$y_proba, 1)
+df_$correct_prediction <- replace_na(df_$correct_prediction, "neutral")
+
+# reshape dataframe for plotting
+df_melt <- melt(df_, id.vars = c("lower_level", "higher_level", "correct_prediction", "class"), measure.vars = c("y_proba"))
+
+# Create a new column indicating whether the cell should have a pattern
+df_melt$is_FN <- df_melt$class == "FN"
+
+# Save to file
+if (export){
+  write.csv(df_melt, file = paste0(path_intermediate_results, "df_pred_heatmap.csv"), row.names = FALSE)
+  # ggsave("network_predictions_heatmap.pdf", predictions_heatmap, path = paste(path_final_results, "/plots", sep=""), width = 12, height = 8)
+}
+```
+
+## Compare multiple models
+```{r}
+models_name_mapper <- c("Random Forest" = "RandomForestClassifier",
+                        "Logistic Regression" = "LogisticRegression",
+                        "XGBoost" = "XGBClassifier",
+                        # "ANN" = "BayesianOptimization",
+                        "Voting"="Voting")
+
+models_order <- names(models_name_mapper)
+
+metrics_order <- c("balanced_accuracy", "roc_auc", "pr_auc", "precision", "recall", "specificity", "f1", "mcc")
+
+# Create the metrics dataframe
+metrics_multi_df <- results_models %>%
+  group_by(model) %>%
+  # slice_min(run_ID) %>% # Choose the first run for each model
+  nest() %>%
+  mutate(metrics = map(data, calc_metrics)) %>%
+  unnest(cols = c(metrics)) %>%
+  select(-data)
+
+# Long format
+metrics_multi_df_long <- metrics_multi_df %>%
+  # rename(!!!models_name_mapper) %>%
+  mutate(model = recode(model, !!!as.list(setNames(names(models_name_mapper), models_name_mapper)))) %>% # rename values
+  mutate(model = factor(model, levels = models_order)) %>% # reorder
+  pivot_longer(names_to = "metric", values_to = "value", cols = -c(model)) %>%
+  filter(metric %in% metrics_order) %>%
+  mutate(metric = factor(metric, levels = metrics_order)) # reorder
+  
+# Save to file
+if (export){
+  write.csv(metrics_multi_df_long, file = paste0(path_intermediate_results, "metrics_multi_df_long.csv"), row.names = FALSE)
+}
+
+```
+
+### Compare types
+```{r}
+
+# Define the columns to group by based on the splitting method
+if (nested_cv){ # Nested CV
+  cols_to_group_by <- c("fold", "network", "type_train", "type_test")
+} else {
+  cols_to_group_by <- c("network", "type_train", "type_test")
+}
+
+# Define the metrics to calculate
+metrices_levels <- c("balanced_accuracy", "roc_auc", "pr_auc", "precision", "recall", "specificity", "f1", "mcc") #, "youden_j", "log_loss"
+
+# Calculate metrics for each community pair
+metrics_type_df <- results_types %>%
+  group_by(!!!syms(cols_to_group_by)) %>%
+  nest() %>%
+  mutate(metrics = map(data, ~ calc_metrics(.x, metrics = metrices_levels))) %>%
+  unnest(cols = c(metrics)) %>%
+  select(-data)
+
+# Long format
+metrics_type_df_long <- metrics_type_df %>%
+  pivot_longer(names_to = "metric", values_to = "value", -all_of(cols_to_group_by)) %>%
+  mutate(metric = factor(metric, levels = metrices_levels)) # reorder
+
+# Display the plot
+if (export){
+  write.csv(metrics_type_df_long, file = paste0(path_intermediate_results, "metrics_type_df_long.csv"), row.names = FALSE)
+}
+
+```
+
+
+## Exploratory Data Analysis
+
+### Prepare the data
+```{r prepare_network_level_features}
+
+
+# Create a dataframe containing the (un sampled) original network 
+original_networks_ids = subsamples_metadata$subsample_ID[subsamples_metadata$fraction == 1]
+original_networks_df = subsamples_edge_lists[subsamples_edge_lists$subsample_ID %in% original_networks_ids, ]
+
+# Create a dataframe of each (original) network and the network-level features
+network_lvl_features <- original_networks_df[!duplicated(original_networks_df$subsample_ID), ] # drop dulicated rows, leave only one row from each network
+network_lvl_features <- merge(network_lvl_features, subset(subsamples_metadata, select = c(subsample_ID, name, community)), by = "subsample_ID")
+network_lvl_features <- merge(network_lvl_features, features, by = "link_ID") # add features
+network_lvl_features <- subset(network_lvl_features, select = -c(link_ID, lower_level, higher_level, weight, class)) # drop unrelevant columns
+
+# Filter network types | keep only ecological
+network_lvl_features <- network_lvl_features %>% filter(community %in% c("Plant-Pollinator", "Host-Parasite", "Plant-Seed Dispersers", "Plant-Herbivore"))
+
+if (export){
+  write.csv(network_lvl_features, file = paste0(path_intermediate_results, "network_lvl_features.csv"), row.names = FALSE)
+}
+```
+
+## PCA
+```{r}
+
+
+# keep only these columns
+cols_keep = c('subsample_ID', 'name', 'community', 'network_size',
+       'species_ratio', 'interactions_count', 'edge_connectivity', 'density',
+       'bipartite_clustering', 'Spectral_bipartivity', 'average_clustering',
+       'degree_assortativity_coefficient', 'global_efficiency',
+       'local_efficiency', 'connected_components', 'connectance', 'web.asymmetry',
+       'links.per.species', 'number.of.compartments', #'compartment diversity',
+       'nestedness', 'NODF', 'Fisher.alpha', 'Shannon.diversity', 'interaction.evenness', 'H2',
+       'motif_1_norm', 'motif_2_norm', 'motif_3_norm', 'motif_4_norm', 'motif_5_norm', 'motif_6_norm', 'motif_7_norm', 
+       'motif_8_norm', 'motif_9_norm', 'motif_10_norm', 'motif_11_norm', 'motif_12_norm', 'motif_13_norm', 'motif_14_norm', 'motif_15_norm',
+       'motif_16_norm', 'motif_17_norm', 'cent_between', 'cent_close', 'cent_eigen')
+
+# Check if there are columns in cols_keep that are not found in network_lvl_features
+# print(cols_keep[!cols_keep %in% colnames(network_lvl_features)])
+
+# keep only these columns
+network_lvl_features_pca <- network_lvl_features[, cols_keep]
+
+# Split to x and y, y is 'community'
+X <- network_lvl_features_pca %>% select(-c(subsample_ID, name, community))
+y <- network_lvl_features_pca$community
+
+# Find empty columns
+# empty_cols <- sapply(X, function(x) all(is.na(x)))
+# X <- X[, !empty_cols]
+
+# Drop the following columns
+to_drop = c('network_size', 'species_ratio', 'web.asymmetry', 'bipartite_clustering',
+           'interactions_count',
+           'Shannon.diversity', 'interaction.evenness', 'density')
+
+# Keep only the columns that are not in to_drop
+X <- X[, !colnames(X) %in% to_drop]
+
+# Drop constant/zero columns
+X <- X[, sapply(X, function(x) length(unique(x)) > 1)]
+
+# Which columns are dropped?
+# print(colnames(network_lvl_features_pca)[!colnames(network_lvl_features_pca) %in% colnames(X)])
+
+# Print the columns that are kept
+# print(colnames(X))
+
+# X_train['Fisher alpha'] = X_train['Fisher alpha'].astype('float64')
+
+# Pca
+pca <- prcomp(X, center = TRUE, scale. = TRUE)
+
+# Plot
+pca_df <- as.data.frame(pca$x)
+pca_df$community <- y
+
+# Save to file
+if (export){
+  write.csv(pca_df, file = paste0(path_intermediate_results, "pca_df.csv"), row.names = FALSE)
+}
+
+```
+
+
+
+## Tables -- needs to be updated
+```{r}
+
+# Wrap URLs in latex - avoid problems with special characters in LaTeX
+wrap_url <- function(string) {
+  return(paste0("\\url{", string, "}"))
+}
+
+# Wrap text in latex - avoid problems with special characters in LaTeX
+wrap_text <- function(string) {
+  return(paste0("\\detokenize{", string, "}"))
+}
+
+```
+
+
+### Features table
+
+```{r}
+# Load features metadata
+library("readxl")
+
+# Function to map variable types to "string" or "numeric" or "bool"
+map_var_type <- function(var_type) {
+  if (var_type == "float64" | var_type == "int64") {
+    return("numeric")
+  } else if (var_type == "object") {
+     return("string")
+  } else if (var_type == "bool") {
+     return("boolean")
+  } else {
+    return("error")
+  }
+}
+
+# Function to rename features with underscores
+manual_features_rename <- function(feature) {
+  if (feature == "katz_measure_b0.005" | feature == "katz_measure_b0.05") {
+    return("katz measure")
+  } else {
+    return(feature)
+  }
+}
+
+# read xlsx file
+features_metadata_topology = read_excel('data/metadata/features.xlsx', sheet = "topology") %>%
+  select(c("feature", "level", "package", "type", "var_type", "reference"))
+  # 
+
+features_metadata_meta = read_excel('data/metadata/features.xlsx', sheet = "meta") %>% 
+  filter(
+    feature == c("community"),
+  ) %>%
+  select(c("feature", "level", "package", "type", "var_type", "reference"))
+
+# combine the two dataframes
+features_metadata = rbind(features_metadata_topology, features_metadata_meta)
+
+# Check which features lake metadata
+print(colnames(features)[!colnames(features) %in% features_metadata$feature])
+
+# 
+features_metadata <- features_metadata %>%
+  filter(feature %in% colnames(features)) %>% # Keep only features that are in the dataset
+  filter(!feature %in% c("H2")) %>%
+  mutate(
+    feature = map_chr(feature, manual_features_rename),
+    feature = map_chr(feature, rename_underscore),
+    var_type = map_chr(var_type, map_var_type),
+    reference = wrap_url(reference)
+  )
+
+if (export){
+  write.csv(features_metadata, file = paste0(path_final_results, "features.csv"), row.names = FALSE)
+}
+```
+
+
+### Bounds of the metrics
+
+```{r}
+# Function to calculate the bounds of the metrics, for a given fraction of simulated false positives
+calc_metrics_bounds <- function(data, fraction_simulated_fps = c(0.1, 0.2), metrics=c("roc_auc", "pr_auc", "recall", "precision", "specificity", "f1", "balanced_accuracy", "mcc", "youden_j", "log_loss")) {
+  
+  # Initialize a list to store metrics for each fraction
+  results_list <- list()
+
+  # Identify indices of 0 labels in y_true
+  zero_indices <- which(data$y_true == 0)
+
+  for (fraction_simulated_fp in fraction_simulated_fps){
+
+    # Calculate the number of 0 labels to flip to 1 based on the fraction
+    num_to_flip <- round(length(zero_indices) * fraction_simulated_fp) # called Lm in the paper
+
+    # Identify fn indices
+    # fn_indices <- which(data$y_true == 1 & data$y_proba < 0.5)
+
+    # Identify fp indices
+    fp_indices <- which(data$y_true == 0 & data$y_proba >= 0.5)
+
+    # Identify tn indices
+    tn_indices <- which(data$y_true == 0 & data$y_proba < 0.5)
+    
+    # Select random indices to flip (best case scenario, i.e. flipping FP (undetected missing links) to detected missing links)
+    if (length(fp_indices) >= num_to_flip) {
+      best_case_flip_indices <- sample(fp_indices, num_to_flip, replace = FALSE)
+    }
+    else { # If there are not enough FP indices to flip, sample from TN indices to make up the difference
+      reminder = num_to_flip - length(fp_indices)
+      best_case_flip_indices <- fp_indices
+      best_case_flip_indices <- c(best_case_flip_indices, sample(tn_indices, reminder, replace = FALSE))
+    }
+
+    # Select random indices to flip (worst case scenario, i.e. flipping "succesfully" detected non-links to undetected missing links)
+    if (length(tn_indices) >= num_to_flip) {
+      worst_case_flip_indices <- sample(tn_indices, num_to_flip, replace = FALSE)
+    }
+    else { # If there are not enough TN indices to flip, sample from FP indices to make up the difference
+      reminder = num_to_flip - length(tn_indices)
+      worst_case_flip_indices <- tn_indices
+      worst_case_flip_indices <- c(worst_case_flip_indices, sample(fp_indices, reminder, replace = FALSE))
+    }
+    
+    # Change y_true to simulate the best case scenario
+    data_modified <- data
+    data_modified$y_true[best_case_flip_indices] <- 1
+    best_case_metrics <- calc_metrics(data_modified, metrics = metrics)
+
+    # Change y_true to simulate the worst case scenario
+    data_modified <- data
+    data_modified$y_true[worst_case_flip_indices] <- 1
+    worst_case_metrics <- calc_metrics(data_modified, metrics = metrics)
+
+    # Initialize a list for this fraction
+    fraction_metrics_list <- list()
+
+    for (metric in metrics) {
+      # Calculate lower and upper bounds for each metric
+      lower_bound <- worst_case_metrics[[metric]]
+      upper_bound <- best_case_metrics[[metric]]
+      
+      # Store in the fraction-specific list
+      fraction_metrics_list[[metric]] <- data.frame(metric = metric, lower_bound = lower_bound, upper_bound = upper_bound)
+    }
+
+    # Store the results for this fraction
+    results_list[[as.character(fraction_simulated_fp)]] <- bind_rows(fraction_metrics_list)
+
+  }
+  
+  # Combine all fractions into a single dataframe, adding fraction as a column
+  results_df <- bind_rows(lapply(names(results_list), function(frac) {
+    cbind(fraction = as.numeric(frac), results_list[[frac]])
+  }))
+
+  return(results_df)
+}
+
+```
+
+
+```{r bounds}
+
+fraction_simulated_fps <- c(0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5)
+metrices_levels <- c("roc_auc", "pr_auc", "precision", "recall", "specificity", "f1", "mcc")
+
+# Create the metrics dataframe for reference, grouped by subsample_ID
+metrics_ungrouped <- test_data %>% 
+  group_by(subsample_ID) %>%
+  nest() %>%
+  mutate(metrics = map(data, ~ calc_metrics(.x, metrices_levels))) %>%
+  unnest(metrics) %>%
+  select(-data) %>%
+  select(subsample_ID, everything()) %>% 
+  pivot_longer(cols = -subsample_ID, 
+                names_to = "metric", 
+                values_to = "fixed_value")
+
+
+# Create the metrics dataframe for the bounds, grouped by subsample_ID
+bounds_df <- test_data %>%
+  group_by(subsample_ID) %>%
+  nest() %>%
+  mutate(metrics = map(data, ~ calc_metrics_bounds(.x, fraction_simulated_fps, metrices_levels))) %>%
+  unnest(metrics) %>%
+  mutate(metric = factor(metric, levels = metrices_levels)) %>% # reorder
+  select(-data) %>%
+  merge(metrics_ungrouped, by = c("subsample_ID", "metric"))
+
+# Calculate the averages and confidence intervals for each metric and fraction
+bounds_summary <- bounds_df %>%
+  group_by(fraction, metric) %>%
+  summarise(
+    avg_fixed_value = mean(fixed_value, na.rm = TRUE),
+    avg_lower_bound = mean(lower_bound, na.rm = TRUE),
+    avg_upper_bound = mean(upper_bound, na.rm = TRUE),
+    ci_lower_fixed = mean(fixed_value, na.rm = TRUE) - qt(0.975, df = n() - 1) * sd(fixed_value, na.rm = TRUE) / sqrt(n()),
+    ci_upper_fixed = mean(fixed_value, na.rm = TRUE) + qt(0.975, df = n() - 1) * sd(fixed_value, na.rm = TRUE) / sqrt(n()),
+    ci_lower_lower_bound = mean(lower_bound, na.rm = TRUE) - qt(0.975, df = n() - 1) * sd(lower_bound, na.rm = TRUE) / sqrt(n()),
+    ci_upper_lower_bound = mean(lower_bound, na.rm = TRUE) + qt(0.975, df = n() - 1) * sd(lower_bound, na.rm = TRUE) / sqrt(n()),
+    ci_lower_upper_bound = mean(upper_bound, na.rm = TRUE) - qt(0.975, df = n() - 1) * sd(upper_bound, na.rm = TRUE) / sqrt(n()),
+    ci_upper_upper_bound = mean(upper_bound, na.rm = TRUE) + qt(0.975, df = n() - 1) * sd(upper_bound, na.rm = TRUE) / sqrt(n())
+  )
+
+if (export){
+  write.csv(bounds_summary, file = paste0(path_intermediate_results, "bounds_summary_df.csv"), row.names = FALSE)
+}
+
+```
+
+#### Now for the trunsductive results
+TODO: Instead of using the same code, just add a column to the dataframe that states which model was used
+```{r}
+
+
+# Load the transductive results
+transductive_results = read.csv(paste0(path_raw_results, 'results_ML_by_single_networks.csv'))
+
+test_data_transductive = test_data %>% 
+  select(subsample_ID, link_ID, y_true) %>%
+  left_join(transductive_results, by = "link_ID") %>%
+  rename(y_proba = ML_single)
+
+# Fill missing columns, create the metrics dataframe for reference, grouped by subsample_ID
+metrics_ungrouped_transductive = test_data_transductive %>%
+  group_by(subsample_ID) %>%
+  nest() %>%
+  mutate(metrics = map(data, ~ calc_metrics(.x, metrices_levels))) %>%
+  unnest(metrics) %>%
+  select(-data) %>%
+  select(subsample_ID, everything()) %>% 
+  pivot_longer(cols = -subsample_ID, 
+                names_to = "metric", 
+                values_to = "fixed_value")
+
+# Create the metrics dataframe for the bounds, grouped by subsample_ID
+bounds_df_transductive <- test_data_transductive %>%
+  group_by(subsample_ID) %>%
+  nest() %>%
+  mutate(metrics = map(data, ~ calc_metrics_bounds(.x, fraction_simulated_fps, metrices_levels))) %>%
+  unnest(metrics) %>%
+  mutate(metric = factor(metric, levels = metrices_levels)) %>% # reorder
+  select(-data) %>%
+  merge(metrics_ungrouped_transductive, by = c("subsample_ID", "metric"))
+
+# Calculate the averages and confidence intervals for each metric and fraction
+bounds_summary_transductive <- bounds_df_transductive %>%
+  group_by(fraction, metric) %>%
+  summarise(
+    avg_fixed_value = mean(fixed_value, na.rm = TRUE),
+    avg_lower_bound = mean(lower_bound, na.rm = TRUE),
+    avg_upper_bound = mean(upper_bound, na.rm = TRUE),
+    ci_lower_fixed = mean(fixed_value, na.rm = TRUE) - qt(0.975, df = n() - 1) * sd(fixed_value, na.rm = TRUE) / sqrt(n()),
+    ci_upper_fixed = mean(fixed_value, na.rm = TRUE) + qt(0.975, df = n() - 1) * sd(fixed_value, na.rm = TRUE) / sqrt(n()),
+    ci_lower_lower_bound = mean(lower_bound, na.rm = TRUE) - qt(0.975, df = n() - 1) * sd(lower_bound, na.rm = TRUE) / sqrt(n()),
+    ci_upper_lower_bound = mean(lower_bound, na.rm = TRUE) + qt(0.975, df = n() - 1) * sd(lower_bound, na.rm = TRUE) / sqrt(n()),
+    ci_lower_upper_bound = mean(upper_bound, na.rm = TRUE) - qt(0.975, df = n() - 1) * sd(upper_bound, na.rm = TRUE) / sqrt(n()),
+    ci_upper_upper_bound = mean(upper_bound, na.rm = TRUE) + qt(0.975, df = n() - 1) * sd(upper_bound, na.rm = TRUE) / sqrt(n())
+  )
+
+if (export){
+  write.csv(bounds_summary_transductive, file = paste0(path_intermediate_results, "bounds_summary_df_transductive.csv"), row.names = FALSE)
+}
+
+```
+
+
+### Compare to other models
+```{r}
+
+other_models = read.csv(paste0(path_raw_results, 'other_models.csv'))
+transductive_results = read.csv(paste0(path_raw_results, 'results_ML_by_single_networks.csv'))
+
+models_name_mapper <- c("Random Forest (same type)" = "same_type",
+                        "Random Forest (all types)" = "all_types",
+                        "ML_single" = "ML_single",
+                        "SBM" = "SBM_Prob",
+                        "Connectance" = "C_Prob",
+                        "Ensamble" = "Ensamble")
+models_order <- names(models_name_mapper)
+metrics_order <- c("balanced_accuracy", "roc_auc", "pr_auc", "f1", "recall", "precision", "specificity", "mcc")
+
+communities_posssibilites = c("['Plant-Seed Dispersers']", "['Plant-Pollinator']", "['Host-Parasite']", "['Plant-Herbivore']", "['Plant-Seed Dispersers', 'Plant-Pollinator', 'Plant-Herbivore', 'Host-Parasite']")
+all_types = "['Plant-Seed Dispersers', 'Plant-Pollinator', 'Plant-Herbivore', 'Host-Parasite']"
+
+compare_models_df <- results_types %>%
+  filter(type_train == type_test) %>% # drop instances where type_train is not equal to type_test
+  filter( # filter the dataframe - choose a single excution of a single model
+    # model == 'RandomForestClassifier', # specific model
+    # frac_train == "[1.0]", # original networks
+    # frac_test == "[0.8]", # 20% removed links
+    type_train %in% communities_posssibilites,
+    type_test %in% communities_posssibilites
+    ) %>%
+  mutate( model_type = ifelse(type_train == all_types, "all_types", "same_type") ) %>% # add a column to indicate if the model was trained on all types or on the same type
+  select(subsample_ID, link_ID, y_proba, y_true, community, model_type) %>%
+  pivot_wider(names_from = "model_type", values_from = "y_proba") %>% # pivot wider to get the probabilities of the different models
+  left_join(other_models, by = "link_ID") %>%
+  left_join(transductive_results, by = "link_ID") %>%
+  mutate(C_Prob = ifelse(is.na(C_Prob), 0, C_Prob), # fill na in the columns "C_Prob" and "SBM_Prob" with 0 | those are a result of singltons
+         SBM_Prob = ifelse(is.na(SBM_Prob), 0, SBM_Prob)) %>%
+  mutate(Ensamble = (all_types + ML_single) / 2) %>% # add ensamble of models (by averaging the probabilities)
+  rename(!!!models_name_mapper) %>% # rename columns to match the models_name_mapper
+  pivot_longer(names_to = "model", values_to = "y_proba", cols = models_order)
+
+compare_models_metrics_df <- compare_models_df %>%
+  group_by(subsample_ID, model, community) %>%
+  nest() %>%
+  mutate(metric = map(data, ~ calc_metrics(.x, metric = metrics_order))) %>%
+  unnest(cols = c(metric)) %>%
+  select(-data) %>%
+  pivot_longer(names_to = "metric", values_to = "value", cols = metrics_order) %>%
+  mutate(metric = factor(metric, levels = metrics_order), # reorder
+         model = factor(model, levels = models_order)
+        )
+
+# Save to file
+if (export){
+  write.csv(compare_models_metrics_df, file = paste0(path_intermediate_results, "compare_other_models_metrics_df.csv"), row.names = FALSE)
+}
+
+# Create the plot
+compare_models_plot <- ggplot(compare_models_metrics_df, aes(x = metric, y = value, fill = model)) +
+  geom_boxplot() +
+  stat_summary(fun = mean, geom = "point", shape = 18, size = 4, color = "black", show.legend=F) +
+  labs(y = "Value", x = "Model") +
+  paper_figs_theme
+
+print(compare_models_plot)
+
+# ROC
+compare_models_roc_df <- compare_models_df %>%
+  group_by(model) %>%
+  nest() %>%
+  mutate(roc = map(data, ~ roc(.x$y_true, .x$y_proba, quiet = TRUE)),
+         auc = map_dbl(roc, ~ .x$auc), # Extract AUC for each ROC curve
+         coords = map(roc, ~ data.frame(tpr = .x$sensitivities, fpr = 1 - .x$specificities))) %>%
+  select(-data, -roc) %>%
+  unnest(cols = c(coords)) %>%
+  ungroup()
+
+# Plot the ROC curves
+compare_models_roc_plot <- ggplot(compare_models_roc_df, aes(x = fpr, y = tpr, color = model)) +
+  geom_line() +
+  geom_abline(linetype = "dashed") +
+  labs(title = "ROC Curves by Model and Subsample ID",
+       x = "False Positive Rate (1 - Specificity)",
+       y = "True Positive Rate (Sensitivity)",
+       color = "Model") +
+  theme_minimal()
+
+print(compare_models_roc_plot)
+
+# PR
+compare_models_pr_df <- compare_models_df %>%
+  group_by(model) %>%
+  nest() %>%
+  mutate(pr = map(data, ~ pr.curve(weights.class0 = .x$y_true, scores.class0 = .x$y_proba, curve = TRUE)),
+         auc = map_dbl(pr, ~ .x$auc.integral), # Extract AUC for each PR curve
+         coords = map(pr, ~ data.frame(recall = .x$curve[, 1], precision = .x$curve[, 2]))) %>%
+  select(-data, -pr) %>%
+  unnest(cols = c(coords)) %>%
+  ungroup()
+
+# Plot the PR curves
+compare_models_pr_plot <- ggplot(compare_models_pr_df, aes(x = recall, y = precision, color = model)) +
+  geom_line() +
+  labs(title = "PR Curves by Model and Subsample ID",
+       x = "Recall (Sensitivity)",
+       y = "Precision",
+       color = "Model") +
+  theme_minimal()
+
+print(compare_models_pr_plot)
+
+```

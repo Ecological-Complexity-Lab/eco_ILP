@@ -1,0 +1,1077 @@
+subsample_ID,name,community,type,layer,fraction,repetition
+3,M_SD_Snow_1988_SON,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4,M_SD_Snow_1988_SON,Plant-Seed Dispersers,Monolayer,1,1.0,1
+7,M_PL_Magrach2017_UK_2011_low,Plant-Pollinator,Monolayer,1,0.8,1
+8,M_PL_Magrach2017_UK_2011_low,Plant-Pollinator,Monolayer,1,1.0,1
+29,M_SD_Novoa_2011,Plant-Seed Dispersers,Monolayer,1,0.8,1
+30,M_SD_Novoa_2011,Plant-Seed Dispersers,Monolayer,1,1.0,1
+37,M_PL_Lara-Romero_2016_penalara-Pasture-5,Plant-Pollinator,Monolayer,1,0.8,1
+38,M_PL_Lara-Romero_2016_penalara-Pasture-5,Plant-Pollinator,Monolayer,1,1.0,1
+49,M_PL_Olesen2002,Plant-Pollinator,Monolayer,1,0.8,1
+50,M_PL_Olesen2002,Plant-Pollinator,Monolayer,1,1.0,1
+53,M_SD_Snow_1988_DJF,Plant-Seed Dispersers,Monolayer,1,0.8,1
+54,M_SD_Snow_1988_DJF,Plant-Seed Dispersers,Monolayer,1,1.0,1
+59,M_SD_Debussche_1989,Plant-Seed Dispersers,Monolayer,1,0.8,1
+60,M_SD_Debussche_1989,Plant-Seed Dispersers,Monolayer,1,1.0,1
+65,M_SD_Lou_2005,Plant-Seed Dispersers,Monolayer,1,0.8,1
+66,M_SD_Lou_2005,Plant-Seed Dispersers,Monolayer,1,1.0,1
+81,A_PH_site04_period01_Martins,Plant-Herbivore,Monolayer,1,0.8,1
+82,A_PH_site04_period01_Martins,Plant-Herbivore,Monolayer,1,1.0,1
+87,A_PH_Macfadyen2009_plant-herb_B2,Plant-Herbivore,Monolayer,1,0.8,1
+88,A_PH_Macfadyen2009_plant-herb_B2,Plant-Herbivore,Monolayer,1,1.0,1
+117,M_SD_Purificacao_2014_forest_dry,Plant-Seed Dispersers,Monolayer,1,0.8,1
+118,M_SD_Purificacao_2014_forest_dry,Plant-Seed Dispersers,Monolayer,1,1.0,1
+119,M_PL_Orford_2016_Field-9,Plant-Pollinator,Monolayer,1,0.8,1
+120,M_PL_Orford_2016_Field-9,Plant-Pollinator,Monolayer,1,1.0,1
+131,M_PL_Lara-Romero_2016_penalara-Pasture-6,Plant-Pollinator,Monolayer,1,0.8,1
+132,M_PL_Lara-Romero_2016_penalara-Pasture-6,Plant-Pollinator,Monolayer,1,1.0,1
+149,M_SD_Chama_2013_net9,Plant-Seed Dispersers,Monolayer,1,0.8,1
+150,M_SD_Chama_2013_net9,Plant-Seed Dispersers,Monolayer,1,1.0,1
+155,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-4,Plant-Pollinator,Monolayer,1,0.8,1
+156,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-4,Plant-Pollinator,Monolayer,1,1.0,1
+161,M_SD_Correa_2016_Caqueta,Plant-Seed Dispersers,Monolayer,1,0.8,1
+162,M_SD_Correa_2016_Caqueta,Plant-Seed Dispersers,Monolayer,1,1.0,1
+167,A_HP_Hadfield_2013_037,Host-Parasite,Monolayer,1,0.8,1
+168,A_HP_Hadfield_2013_037,Host-Parasite,Monolayer,1,1.0,1
+179,A_HP_Macfadyen2009_paras-herb_A8,Host-Parasite,Monolayer,1,0.8,1
+180,A_HP_Macfadyen2009_paras-herb_A8,Host-Parasite,Monolayer,1,1.0,1
+181,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-8,Plant-Pollinator,Monolayer,1,0.8,1
+182,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-8,Plant-Pollinator,Monolayer,1,1.0,1
+187,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-9,Plant-Pollinator,Monolayer,1,0.8,1
+188,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-9,Plant-Pollinator,Monolayer,1,1.0,1
+189,A_PH_Macfadyen2009_plant-herb_A4,Plant-Herbivore,Monolayer,1,0.8,1
+190,A_PH_Macfadyen2009_plant-herb_A4,Plant-Herbivore,Monolayer,1,1.0,1
+191,A_HP_Leong1981,Host-Parasite,Monolayer,1,0.8,1
+192,A_HP_Leong1981,Host-Parasite,Monolayer,1,1.0,1
+211,A_HP_Macfadyen2009_paras-herb_A5,Host-Parasite,Monolayer,1,0.8,1
+212,A_HP_Macfadyen2009_paras-herb_A5,Host-Parasite,Monolayer,1,1.0,1
+217,M_PL_Kaiser-Bunbury_2014_061_38,Plant-Pollinator,Monolayer,1,0.8,1
+218,M_PL_Kaiser-Bunbury_2014_061_38,Plant-Pollinator,Monolayer,1,1.0,1
+227,M_SD_SAAV2,Plant-Seed Dispersers,Monolayer,1,0.8,1
+228,M_SD_SAAV2,Plant-Seed Dispersers,Monolayer,1,1.0,1
+231,M_SD_Souza_Gomes_2008_secondary_fore,Plant-Seed Dispersers,Monolayer,1,0.8,1
+232,M_SD_Souza_Gomes_2008_secondary_fore,Plant-Seed Dispersers,Monolayer,1,1.0,1
+233,M_SD_Toledo_2018,Plant-Seed Dispersers,Monolayer,1,0.8,1
+234,M_SD_Toledo_2018,Plant-Seed Dispersers,Monolayer,1,1.0,1
+237,M_PL_Dicks2002-2,Plant-Pollinator,Monolayer,1,0.8,1
+238,M_PL_Dicks2002-2,Plant-Pollinator,Monolayer,1,1.0,1
+243,M_PL_Burkle2013,Plant-Pollinator,Monolayer,1,0.8,1
+244,M_PL_Burkle2013,Plant-Pollinator,Monolayer,1,1.0,1
+245,M_PL_Kaiser-Bunbury_2014_061_24,Plant-Pollinator,Monolayer,1,0.8,1
+246,M_PL_Kaiser-Bunbury_2014_061_24,Plant-Pollinator,Monolayer,1,1.0,1
+247,A_HP_Pilosof2013_1987,Host-Parasite,Monolayer,1,0.8,1
+248,A_HP_Pilosof2013_1987,Host-Parasite,Monolayer,1,1.0,1
+261,M_PL_Kaiser-Bunbury_2014_061_03,Plant-Pollinator,Monolayer,1,0.8,1
+262,M_PL_Kaiser-Bunbury_2014_061_03,Plant-Pollinator,Monolayer,1,1.0,1
+267,M_PL_Kaiser-Bunbury_2010_060_15,Plant-Pollinator,Monolayer,1,0.8,1
+268,M_PL_Kaiser-Bunbury_2010_060_15,Plant-Pollinator,Monolayer,1,1.0,1
+285,M_PL_Brosi2017_Judd_Falls_TH_2014_Manipulation,Plant-Pollinator,Monolayer,1,0.8,1
+286,M_PL_Brosi2017_Judd_Falls_TH_2014_Manipulation,Plant-Pollinator,Monolayer,1,1.0,1
+287,M_SD_Innis_1989_NVF_CNVF,Plant-Seed Dispersers,Monolayer,1,0.8,1
+288,M_SD_Innis_1989_NVF_CNVF,Plant-Seed Dispersers,Monolayer,1,1.0,1
+289,A_HP_Macfadyen2009_paras-herb_A2,Host-Parasite,Monolayer,1,0.8,1
+290,A_HP_Macfadyen2009_paras-herb_A2,Host-Parasite,Monolayer,1,1.0,1
+291,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-1,Plant-Pollinator,Monolayer,1,0.8,1
+292,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-1,Plant-Pollinator,Monolayer,1,1.0,1
+341,M_PL_Kaiser-Bunbury_2014_061_37,Plant-Pollinator,Monolayer,1,0.8,1
+342,M_PL_Kaiser-Bunbury_2014_061_37,Plant-Pollinator,Monolayer,1,1.0,1
+361,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-9,Plant-Pollinator,Monolayer,1,0.8,1
+362,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-9,Plant-Pollinator,Monolayer,1,1.0,1
+391,M_SD_KITA_mammals_added,Plant-Seed Dispersers,Monolayer,1,0.8,1
+392,M_SD_KITA_mammals_added,Plant-Seed Dispersers,Monolayer,1,1.0,1
+393,M_SD_Passos_2003,Plant-Seed Dispersers,Monolayer,1,0.8,1
+394,M_SD_Passos_2003,Plant-Seed Dispersers,Monolayer,1,1.0,1
+395,M_SD_Ruggera_2016_Chorro_de_Loros,Plant-Seed Dispersers,Monolayer,1,0.8,1
+396,M_SD_Ruggera_2016_Chorro_de_Loros,Plant-Seed Dispersers,Monolayer,1,1.0,1
+399,M_SD_Galetti1996-2,Plant-Seed Dispersers,Monolayer,1,0.8,1
+400,M_SD_Galetti1996-2,Plant-Seed Dispersers,Monolayer,1,1.0,1
+429,A_PH_Macfadyen2009_plant-herb_A10,Plant-Herbivore,Monolayer,1,0.8,1
+430,A_PH_Macfadyen2009_plant-herb_A10,Plant-Herbivore,Monolayer,1,1.0,1
+431,M_PL_Orford_2016_Field-19,Plant-Pollinator,Monolayer,1,0.8,1
+432,M_PL_Orford_2016_Field-19,Plant-Pollinator,Monolayer,1,1.0,1
+435,M_PL_Brosi2017_Back_of_Baldy_Bend_2014_Control,Plant-Pollinator,Monolayer,1,0.8,1
+436,M_PL_Brosi2017_Back_of_Baldy_Bend_2014_Control,Plant-Pollinator,Monolayer,1,1.0,1
+443,A_HP_Pilosof2013_1984,Host-Parasite,Monolayer,1,0.8,1
+444,A_HP_Pilosof2013_1984,Host-Parasite,Monolayer,1,1.0,1
+455,M_SD_Robinson_2015,Plant-Seed Dispersers,Monolayer,1,0.8,1
+456,M_SD_Robinson_2015,Plant-Seed Dispersers,Monolayer,1,1.0,1
+457,M_SD_Quitian_2018_2000Natural,Plant-Seed Dispersers,Monolayer,1,0.8,1
+458,M_SD_Quitian_2018_2000Natural,Plant-Seed Dispersers,Monolayer,1,1.0,1
+471,A_HP_Hadfield_2013_002,Host-Parasite,Monolayer,1,0.8,1
+472,A_HP_Hadfield_2013_002,Host-Parasite,Monolayer,1,1.0,1
+481,A_HP_Hadfield_2013_045,Host-Parasite,Monolayer,1,0.8,1
+482,A_HP_Hadfield_2013_045,Host-Parasite,Monolayer,1,1.0,1
+489,M_PL_Trojelsgaard_2015_Site2_WesternSahara2,Plant-Pollinator,Monolayer,1,0.8,1
+490,M_PL_Trojelsgaard_2015_Site2_WesternSahara2,Plant-Pollinator,Monolayer,1,1.0,1
+493,A_HP_Hadfield_2013_024,Host-Parasite,Monolayer,1,0.8,1
+494,A_HP_Hadfield_2013_024,Host-Parasite,Monolayer,1,1.0,1
+507,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-1,Plant-Pollinator,Monolayer,1,0.8,1
+508,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-1,Plant-Pollinator,Monolayer,1,1.0,1
+519,A_HP_Hadfield_2013_042,Host-Parasite,Monolayer,1,0.8,1
+520,A_HP_Hadfield_2013_042,Host-Parasite,Monolayer,1,1.0,1
+521,M_SD_Kessler-Rios_2012,Plant-Seed Dispersers,Monolayer,1,0.8,1
+522,M_SD_Kessler-Rios_2012,Plant-Seed Dispersers,Monolayer,1,1.0,1
+541,M_SD_Reid_2011,Plant-Seed Dispersers,Monolayer,1,0.8,1
+542,M_SD_Reid_2011,Plant-Seed Dispersers,Monolayer,1,1.0,1
+543,A_HP_belay26,Host-Parasite,Monolayer,1,0.8,1
+544,A_HP_belay26,Host-Parasite,Monolayer,1,1.0,1
+559,M_SD_Bastazini_2018,Plant-Seed Dispersers,Monolayer,1,0.8,1
+560,M_SD_Bastazini_2018,Plant-Seed Dispersers,Monolayer,1,1.0,1
+563,M_PL_Santos2010,Plant-Pollinator,Monolayer,1,0.8,1
+564,M_PL_Santos2010,Plant-Pollinator,Monolayer,1,1.0,1
+565,A_HP_Macfadyen2009_paras-herb_B1,Host-Parasite,Monolayer,1,0.8,1
+566,A_HP_Macfadyen2009_paras-herb_B1,Host-Parasite,Monolayer,1,1.0,1
+567,M_SD_Albrecht_203_2012,Plant-Seed Dispersers,Monolayer,1,0.8,1
+568,M_SD_Albrecht_203_2012,Plant-Seed Dispersers,Monolayer,1,1.0,1
+581,A_PH_Macfadyen2009_plant-herb_A3,Plant-Herbivore,Monolayer,1,0.8,1
+582,A_PH_Macfadyen2009_plant-herb_A3,Plant-Herbivore,Monolayer,1,1.0,1
+611,M_SD_Ramos-Robles_2016_net6,Plant-Seed Dispersers,Monolayer,1,0.8,1
+612,M_SD_Ramos-Robles_2016_net6,Plant-Seed Dispersers,Monolayer,1,1.0,1
+615,M_SD_Wyman_2017,Plant-Seed Dispersers,Monolayer,1,0.8,1
+616,M_SD_Wyman_2017,Plant-Seed Dispersers,Monolayer,1,1.0,1
+619,A_HP_Hadfield_2013_050,Host-Parasite,Monolayer,1,0.8,1
+620,A_HP_Hadfield_2013_050,Host-Parasite,Monolayer,1,1.0,1
+623,M_PL_Kaiser-Bunbury_2014_061_13,Plant-Pollinator,Monolayer,1,0.8,1
+624,M_PL_Kaiser-Bunbury_2014_061_13,Plant-Pollinator,Monolayer,1,1.0,1
+631,A_HP_Macfadyen2009_paras-herb_A6,Host-Parasite,Monolayer,1,0.8,1
+632,A_HP_Macfadyen2009_paras-herb_A6,Host-Parasite,Monolayer,1,1.0,1
+637,M_SD_Tutin1997,Plant-Seed Dispersers,Monolayer,1,0.8,1
+638,M_SD_Tutin1997,Plant-Seed Dispersers,Monolayer,1,1.0,1
+641,M_PL_Sabatino_4,Plant-Pollinator,Monolayer,1,0.8,1
+642,M_PL_Sabatino_4,Plant-Pollinator,Monolayer,1,1.0,1
+643,A_PH_Macfadyen2009_plant-herb_A5,Plant-Herbivore,Monolayer,1,0.8,1
+644,A_PH_Macfadyen2009_plant-herb_A5,Plant-Herbivore,Monolayer,1,1.0,1
+649,M_SD_Vizentin-Bugoni_2019_MOA,Plant-Seed Dispersers,Monolayer,1,0.8,1
+650,M_SD_Vizentin-Bugoni_2019_MOA,Plant-Seed Dispersers,Monolayer,1,1.0,1
+659,A_HP_Hadfield_2013_021,Host-Parasite,Monolayer,1,0.8,1
+660,A_HP_Hadfield_2013_021,Host-Parasite,Monolayer,1,1.0,1
+669,M_SD_Hasui_1998,Plant-Seed Dispersers,Monolayer,1,0.8,1
+670,M_SD_Hasui_1998,Plant-Seed Dispersers,Monolayer,1,1.0,1
+671,A_PH_site01_period01_Martins,Plant-Herbivore,Monolayer,1,0.8,1
+672,A_PH_site01_period01_Martins,Plant-Herbivore,Monolayer,1,1.0,1
+675,M_PL_Orford_2016_Field-72,Plant-Pollinator,Monolayer,1,0.8,1
+676,M_PL_Orford_2016_Field-72,Plant-Pollinator,Monolayer,1,1.0,1
+679,A_HP_Hadfield_2013_005,Host-Parasite,Monolayer,1,0.8,1
+680,A_HP_Hadfield_2013_005,Host-Parasite,Monolayer,1,1.0,1
+683,A_PH_site08_period01_Martins,Plant-Herbivore,Monolayer,1,0.8,1
+684,A_PH_site08_period01_Martins,Plant-Herbivore,Monolayer,1,1.0,1
+693,M_PL_Lundgren2005,Plant-Pollinator,Monolayer,1,0.8,1
+694,M_PL_Lundgren2005,Plant-Pollinator,Monolayer,1,1.0,1
+699,M_SD_Ruggera_2016_EcoPortal,Plant-Seed Dispersers,Monolayer,1,0.8,1
+700,M_SD_Ruggera_2016_EcoPortal,Plant-Seed Dispersers,Monolayer,1,1.0,1
+711,M_SD_Correia_2016_non-sanctuary,Plant-Seed Dispersers,Monolayer,1,0.8,1
+712,M_SD_Correia_2016_non-sanctuary,Plant-Seed Dispersers,Monolayer,1,1.0,1
+713,M_PL_Brosi2017_Gothic_Road_2013_Manipulation,Plant-Pollinator,Monolayer,1,0.8,1
+714,M_PL_Brosi2017_Gothic_Road_2013_Manipulation,Plant-Pollinator,Monolayer,1,1.0,1
+715,M_SD_Skutch_1980,Plant-Seed Dispersers,Monolayer,1,0.8,1
+716,M_SD_Skutch_1980,Plant-Seed Dispersers,Monolayer,1,1.0,1
+721,M_SD_fragmented_Farwig,Plant-Seed Dispersers,Monolayer,1,0.8,1
+722,M_SD_fragmented_Farwig,Plant-Seed Dispersers,Monolayer,1,1.0,1
+741,M_PL_Kaiser-Bunbury_2014_061_39,Plant-Pollinator,Monolayer,1,0.8,1
+742,M_PL_Kaiser-Bunbury_2014_061_39,Plant-Pollinator,Monolayer,1,1.0,1
+743,M_PL_Trojelsgaard_2015_Site5_GranCanaria1,Plant-Pollinator,Monolayer,1,0.8,1
+744,M_PL_Trojelsgaard_2015_Site5_GranCanaria1,Plant-Pollinator,Monolayer,1,1.0,1
+753,M_SD_Sanitjan_2009_ML_primary_forest,Plant-Seed Dispersers,Monolayer,1,0.8,1
+754,M_SD_Sanitjan_2009_ML_primary_forest,Plant-Seed Dispersers,Monolayer,1,1.0,1
+759,M_PL_Orford_2016_Field-13,Plant-Pollinator,Monolayer,1,0.8,1
+760,M_PL_Orford_2016_Field-13,Plant-Pollinator,Monolayer,1,1.0,1
+769,A_HP_belay15,Host-Parasite,Monolayer,1,0.8,1
+770,A_HP_belay15,Host-Parasite,Monolayer,1,1.0,1
+777,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-7,Plant-Pollinator,Monolayer,1,0.8,1
+778,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-7,Plant-Pollinator,Monolayer,1,1.0,1
+785,A_HP_Hadfield_2013_007,Host-Parasite,Monolayer,1,0.8,1
+786,A_HP_Hadfield_2013_007,Host-Parasite,Monolayer,1,1.0,1
+793,M_PL_Dicks2002-1,Plant-Pollinator,Monolayer,1,0.8,1
+794,M_PL_Dicks2002-1,Plant-Pollinator,Monolayer,1,1.0,1
+805,M_PL_Brosi2017_Judd_Falls_TH_2013_Control,Plant-Pollinator,Monolayer,1,0.8,1
+806,M_PL_Brosi2017_Judd_Falls_TH_2013_Control,Plant-Pollinator,Monolayer,1,1.0,1
+813,M_SD_Dehling_2017_San_Pedro_4,Plant-Seed Dispersers,Monolayer,1,0.8,1
+814,M_SD_Dehling_2017_San_Pedro_4,Plant-Seed Dispersers,Monolayer,1,1.0,1
+815,M_PL_Kaiser-Bunbury_2010_060_04,Plant-Pollinator,Monolayer,1,0.8,1
+816,M_PL_Kaiser-Bunbury_2010_060_04,Plant-Pollinator,Monolayer,1,1.0,1
+835,A_HP_Hadfield_2013_047,Host-Parasite,Monolayer,1,0.8,1
+836,A_HP_Hadfield_2013_047,Host-Parasite,Monolayer,1,1.0,1
+837,A_HP_Macfadyen2009_paras-herb_B8,Host-Parasite,Monolayer,1,0.8,1
+838,A_HP_Macfadyen2009_paras-herb_B8,Host-Parasite,Monolayer,1,1.0,1
+841,M_SD_Ramos-Robles_2016_net8,Plant-Seed Dispersers,Monolayer,1,0.8,1
+842,M_SD_Ramos-Robles_2016_net8,Plant-Seed Dispersers,Monolayer,1,1.0,1
+845,A_PH_Macfadyen2009_plant-herb_B1,Plant-Herbivore,Monolayer,1,0.8,1
+846,A_PH_Macfadyen2009_plant-herb_B1,Plant-Herbivore,Monolayer,1,1.0,1
+847,M_PL_Orford_2016_Field-24,Plant-Pollinator,Monolayer,1,0.8,1
+848,M_PL_Orford_2016_Field-24,Plant-Pollinator,Monolayer,1,1.0,1
+851,A_HP_Hadfield_2013_051,Host-Parasite,Monolayer,1,0.8,1
+852,A_HP_Hadfield_2013_051,Host-Parasite,Monolayer,1,1.0,1
+861,M_SD_Bleher_2003,Plant-Seed Dispersers,Monolayer,1,0.8,1
+862,M_SD_Bleher_2003,Plant-Seed Dispersers,Monolayer,1,1.0,1
+869,A_HP_Macfadyen2009_paras-herb_B7,Host-Parasite,Monolayer,1,0.8,1
+870,A_HP_Macfadyen2009_paras-herb_B7,Host-Parasite,Monolayer,1,1.0,1
+875,M_PL_Lara-Romero_2016_penalara-Pasture-1,Plant-Pollinator,Monolayer,1,0.8,1
+876,M_PL_Lara-Romero_2016_penalara-Pasture-1,Plant-Pollinator,Monolayer,1,1.0,1
+887,M_PL_Dupont2009-1,Plant-Pollinator,Monolayer,1,0.8,1
+888,M_PL_Dupont2009-1,Plant-Pollinator,Monolayer,1,1.0,1
+891,M_SD_Albrecht_30_2012,Plant-Seed Dispersers,Monolayer,1,0.8,1
+892,M_SD_Albrecht_30_2012,Plant-Seed Dispersers,Monolayer,1,1.0,1
+895,M_PL_Kaiser-Bunbury_2014_061_36,Plant-Pollinator,Monolayer,1,0.8,1
+896,M_PL_Kaiser-Bunbury_2014_061_36,Plant-Pollinator,Monolayer,1,1.0,1
+907,M_PL_Kaiser-Bunbury_2014_061_02,Plant-Pollinator,Monolayer,1,0.8,1
+908,M_PL_Kaiser-Bunbury_2014_061_02,Plant-Pollinator,Monolayer,1,1.0,1
+913,M_PL_Brosi2017_Belleview_Bench_2013_Control,Plant-Pollinator,Monolayer,1,0.8,1
+914,M_PL_Brosi2017_Belleview_Bench_2013_Control,Plant-Pollinator,Monolayer,1,1.0,1
+937,M_PL_Sabatino_5,Plant-Pollinator,Monolayer,1,0.8,1
+938,M_PL_Sabatino_5,Plant-Pollinator,Monolayer,1,1.0,1
+951,M_PL_Kaiser-Bunbury_2014_061_30,Plant-Pollinator,Monolayer,1,0.8,1
+952,M_PL_Kaiser-Bunbury_2014_061_30,Plant-Pollinator,Monolayer,1,1.0,1
+953,M_PL_Kaiser-Bunbury_2010_060_16,Plant-Pollinator,Monolayer,1,0.8,1
+954,M_PL_Kaiser-Bunbury_2010_060_16,Plant-Pollinator,Monolayer,1,1.0,1
+971,M_SD_Beehler1983,Plant-Seed Dispersers,Monolayer,1,0.8,1
+972,M_SD_Beehler1983,Plant-Seed Dispersers,Monolayer,1,1.0,1
+979,M_SD_Jayasekara_2007,Plant-Seed Dispersers,Monolayer,1,0.8,1
+980,M_SD_Jayasekara_2007,Plant-Seed Dispersers,Monolayer,1,1.0,1
+987,M_PL_Orford_2016_Field-55,Plant-Pollinator,Monolayer,1,0.8,1
+988,M_PL_Orford_2016_Field-55,Plant-Pollinator,Monolayer,1,1.0,1
+993,M_PL_Kaiser-Bunbury_2014_061_28,Plant-Pollinator,Monolayer,1,0.8,1
+994,M_PL_Kaiser-Bunbury_2014_061_28,Plant-Pollinator,Monolayer,1,1.0,1
+1005,M_SD_Genrich_2017,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1006,M_SD_Genrich_2017,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1007,M_PL_Gilarranz_2015_ElMorro,Plant-Pollinator,Monolayer,1,0.8,1
+1008,M_PL_Gilarranz_2015_ElMorro,Plant-Pollinator,Monolayer,1,1.0,1
+1021,M_SD_Plein_2013_Forest_autumn,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1022,M_SD_Plein_2013_Forest_autumn,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1027,M_SD_Fonseca_2007,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1028,M_SD_Fonseca_2007,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1029,M_PL_Brosi2017_Cold_Springs_Ranch_2014_Control,Plant-Pollinator,Monolayer,1,0.8,1
+1030,M_PL_Brosi2017_Cold_Springs_Ranch_2014_Control,Plant-Pollinator,Monolayer,1,1.0,1
+1035,A_PH_Macfadyen2009_plant-herb_B9,Plant-Herbivore,Monolayer,1,0.8,1
+1036,A_PH_Macfadyen2009_plant-herb_B9,Plant-Herbivore,Monolayer,1,1.0,1
+1051,M_SD_Dowsett-Lemaire_1988,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1052,M_SD_Dowsett-Lemaire_1988,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1053,M_SD_Plein_2013_Farmland_autumn,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1054,M_SD_Plein_2013_Farmland_autumn,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1063,M_SD_Skeate_1985,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1064,M_SD_Skeate_1985,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1067,A_HP_Hadfield_2013_014,Host-Parasite,Monolayer,1,0.8,1
+1068,A_HP_Hadfield_2013_014,Host-Parasite,Monolayer,1,1.0,1
+1087,M_SD_Ramos-Robles_2018,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1088,M_SD_Ramos-Robles_2018,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1091,M_SD_Lambert1989,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1092,M_SD_Lambert1989,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1103,M_SD_Ruggera_2016_Los_Chorizos,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1104,M_SD_Ruggera_2016_Los_Chorizos,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1117,M_PL_Lara-Romero_2016_nevero-Pasture-9,Plant-Pollinator,Monolayer,1,0.8,1
+1118,M_PL_Lara-Romero_2016_nevero-Pasture-9,Plant-Pollinator,Monolayer,1,1.0,1
+1125,M_PL_Kaiser-Bunbury_2014_061_43,Plant-Pollinator,Monolayer,1,0.8,1
+1126,M_PL_Kaiser-Bunbury_2014_061_43,Plant-Pollinator,Monolayer,1,1.0,1
+1133,M_SD_Ruggera_2016_Quebrada_del_Port,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1134,M_SD_Ruggera_2016_Quebrada_del_Port,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1143,M_PL_Gilarranz_2015_PiedraAlta,Plant-Pollinator,Monolayer,1,0.8,1
+1144,M_PL_Gilarranz_2015_PiedraAlta,Plant-Pollinator,Monolayer,1,1.0,1
+1147,M_PL_Kaiser-Bunbury_2010_060_21,Plant-Pollinator,Monolayer,1,0.8,1
+1148,M_PL_Kaiser-Bunbury_2010_060_21,Plant-Pollinator,Monolayer,1,1.0,1
+1153,M_PL_Brosi2017_Past_Rustlers_2013_Manipulation,Plant-Pollinator,Monolayer,1,0.8,1
+1154,M_PL_Brosi2017_Past_Rustlers_2013_Manipulation,Plant-Pollinator,Monolayer,1,1.0,1
+1167,A_HP_Arthur1976,Host-Parasite,Monolayer,1,0.8,1
+1168,A_HP_Arthur1976,Host-Parasite,Monolayer,1,1.0,1
+1169,M_SD_Souza_Laurindo_2017,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1170,M_SD_Souza_Laurindo_2017,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1189,M_PL_Lara-Romero_2016_penalara-Pasture-8,Plant-Pollinator,Monolayer,1,0.8,1
+1190,M_PL_Lara-Romero_2016_penalara-Pasture-8,Plant-Pollinator,Monolayer,1,1.0,1
+1195,M_PL_Carstensen2017_Gomera,Plant-Pollinator,Monolayer,1,0.8,1
+1196,M_PL_Carstensen2017_Gomera,Plant-Pollinator,Monolayer,1,1.0,1
+1199,M_SD_Wilms_2006,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1200,M_SD_Wilms_2006,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1201,M_SD_Quijano-Vasquez_2017,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1202,M_SD_Quijano-Vasquez_2017,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1213,A_HP_Hadfield_2013_013,Host-Parasite,Monolayer,1,0.8,1
+1214,A_HP_Hadfield_2013_013,Host-Parasite,Monolayer,1,1.0,1
+1225,M_PL_Orford_2016_Field-4,Plant-Pollinator,Monolayer,1,0.8,1
+1226,M_PL_Orford_2016_Field-4,Plant-Pollinator,Monolayer,1,1.0,1
+1233,M_SD_Walther_2018,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1234,M_SD_Walther_2018,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1243,M_SD_Albrecht_111_2012,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1244,M_SD_Albrecht_111_2012,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1267,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-2,Plant-Pollinator,Monolayer,1,0.8,1
+1268,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-2,Plant-Pollinator,Monolayer,1,1.0,1
+1277,M_PL_Brosi2017_Rustlers_2013_Control,Plant-Pollinator,Monolayer,1,0.8,1
+1278,M_PL_Brosi2017_Rustlers_2013_Control,Plant-Pollinator,Monolayer,1,1.0,1
+1285,M_SD_Chen_1999,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1286,M_SD_Chen_1999,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1293,A_HP_Hadfield_2013_046,Host-Parasite,Monolayer,1,0.8,1
+1294,A_HP_Hadfield_2013_046,Host-Parasite,Monolayer,1,1.0,1
+1295,M_SD_Castano_2009,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1296,M_SD_Castano_2009,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1321,M_SD_Fuentes_1994,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1322,M_SD_Fuentes_1994,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1331,M_SD_Kone_2008,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1332,M_SD_Kone_2008,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1337,M_SD_Garcia-Estrada_2012,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1338,M_SD_Garcia-Estrada_2012,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1347,M_PL_Orford_2016_Farm-2013-B1,Plant-Pollinator,Monolayer,1,0.8,1
+1348,M_PL_Orford_2016_Farm-2013-B1,Plant-Pollinator,Monolayer,1,1.0,1
+1349,M_SD_Ruggera_2016_A,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1350,M_SD_Ruggera_2016_A,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1355,M_PL_Kaiser-Bunbury_2014_061_26,Plant-Pollinator,Monolayer,1,0.8,1
+1356,M_PL_Kaiser-Bunbury_2014_061_26,Plant-Pollinator,Monolayer,1,1.0,1
+1365,A_HP_belay14,Host-Parasite,Monolayer,1,0.8,1
+1366,A_HP_belay14,Host-Parasite,Monolayer,1,1.0,1
+1371,M_SD_Jaroszewicz_2013,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1372,M_SD_Jaroszewicz_2013,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1387,M_PL_Orford_2016_Field-49,Plant-Pollinator,Monolayer,1,0.8,1
+1388,M_PL_Orford_2016_Field-49,Plant-Pollinator,Monolayer,1,1.0,1
+1391,A_HP_Hadfield_2013_008,Host-Parasite,Monolayer,1,0.8,1
+1392,A_HP_Hadfield_2013_008,Host-Parasite,Monolayer,1,1.0,1
+1395,M_SD_Williams_1996_Marsden,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1396,M_SD_Williams_1996_Marsden,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1405,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-7,Plant-Pollinator,Monolayer,1,0.8,1
+1406,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-7,Plant-Pollinator,Monolayer,1,1.0,1
+1411,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-3,Plant-Pollinator,Monolayer,1,0.8,1
+1412,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-3,Plant-Pollinator,Monolayer,1,1.0,1
+1413,M_PL_Kaiser-Bunbury_2014_061_16,Plant-Pollinator,Monolayer,1,0.8,1
+1414,M_PL_Kaiser-Bunbury_2014_061_16,Plant-Pollinator,Monolayer,1,1.0,1
+1427,A_PH_Macfadyen2009_plant-herb_A6,Plant-Herbivore,Monolayer,1,0.8,1
+1428,A_PH_Macfadyen2009_plant-herb_A6,Plant-Herbivore,Monolayer,1,1.0,1
+1429,M_PL_Kaiser-Bunbury_2010_060_19,Plant-Pollinator,Monolayer,1,0.8,1
+1430,M_PL_Kaiser-Bunbury_2010_060_19,Plant-Pollinator,Monolayer,1,1.0,1
+1439,M_PL_Orford_2016_Field-58,Plant-Pollinator,Monolayer,1,0.8,1
+1440,M_PL_Orford_2016_Field-58,Plant-Pollinator,Monolayer,1,1.0,1
+1447,A_PH_Macfadyen2009_plant-herb_B8,Plant-Herbivore,Monolayer,1,0.8,1
+1448,A_PH_Macfadyen2009_plant-herb_B8,Plant-Herbivore,Monolayer,1,1.0,1
+1461,M_SD_Gorchov_1995,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1462,M_SD_Gorchov_1995,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1463,M_SD_Jordano-1,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1464,M_SD_Jordano-1,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1465,M_PL_Schemske1978,Plant-Pollinator,Monolayer,1,0.8,1
+1466,M_PL_Schemske1978,Plant-Pollinator,Monolayer,1,1.0,1
+1471,A_HP_Hadfield_2013_006,Host-Parasite,Monolayer,1,0.8,1
+1472,A_HP_Hadfield_2013_006,Host-Parasite,Monolayer,1,1.0,1
+1507,M_SD_Castro_2015,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1508,M_SD_Castro_2015,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1521,M_SD_Llewellyn_1952,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1522,M_SD_Llewellyn_1952,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1535,M_SD_Garcia_2016,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1536,M_SD_Garcia_2016,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1537,M_SD_Chama_2013_net2,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1538,M_SD_Chama_2013_net2,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1539,M_PL_Maglianesi_mid,Plant-Pollinator,Monolayer,1,0.8,1
+1540,M_PL_Maglianesi_mid,Plant-Pollinator,Monolayer,1,1.0,1
+1549,M_SD_Marcos_da_Silva_2013,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1550,M_SD_Marcos_da_Silva_2013,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1567,M_SD_Ruggera_2016_El_Noglar,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1568,M_SD_Ruggera_2016_El_Noglar,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1581,M_PL_Kaiser-Bunbury_2010_060_01,Plant-Pollinator,Monolayer,1,0.8,1
+1582,M_PL_Kaiser-Bunbury_2010_060_01,Plant-Pollinator,Monolayer,1,1.0,1
+1583,M_SD_Pratt_1985,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1584,M_SD_Pratt_1985,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1615,M_PL_Trojelsgaard_2015_Site12_Gomera2,Plant-Pollinator,Monolayer,1,0.8,1
+1616,M_PL_Trojelsgaard_2015_Site12_Gomera2,Plant-Pollinator,Monolayer,1,1.0,1
+1621,A_HP_Macfadyen2009_paras-herb_B6,Host-Parasite,Monolayer,1,0.8,1
+1622,A_HP_Macfadyen2009_paras-herb_B6,Host-Parasite,Monolayer,1,1.0,1
+1623,A_PH_basset1996,Plant-Herbivore,Monolayer,1,0.8,1
+1624,A_PH_basset1996,Plant-Herbivore,Monolayer,1,1.0,1
+1629,M_SD_Dehling_2017_Wayqecha_3,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1630,M_SD_Dehling_2017_Wayqecha_3,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1649,M_PL_Brosi2017_Judd_Falls_TH_2014_Control,Plant-Pollinator,Monolayer,1,0.8,1
+1650,M_PL_Brosi2017_Judd_Falls_TH_2014_Control,Plant-Pollinator,Monolayer,1,1.0,1
+1651,M_SD_Suarez-Castro_2015,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1652,M_SD_Suarez-Castro_2015,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1659,M_SD_da_Silva_2015_site_B,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1660,M_SD_da_Silva_2015_site_B,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1661,M_PL_Orford_2016_Field-64,Plant-Pollinator,Monolayer,1,0.8,1
+1662,M_PL_Orford_2016_Field-64,Plant-Pollinator,Monolayer,1,1.0,1
+1669,M_PL_Carstensen2017_Fuerteventura,Plant-Pollinator,Monolayer,1,0.8,1
+1670,M_PL_Carstensen2017_Fuerteventura,Plant-Pollinator,Monolayer,1,1.0,1
+1671,A_HP_Chinniah1978,Host-Parasite,Monolayer,1,0.8,1
+1672,A_HP_Chinniah1978,Host-Parasite,Monolayer,1,1.0,1
+1673,M_PL_Orford_2016_Farm-2012-B8,Plant-Pollinator,Monolayer,1,0.8,1
+1674,M_PL_Orford_2016_Farm-2012-B8,Plant-Pollinator,Monolayer,1,1.0,1
+1681,M_PL_Orford_2016_Field-51,Plant-Pollinator,Monolayer,1,0.8,1
+1682,M_PL_Orford_2016_Field-51,Plant-Pollinator,Monolayer,1,1.0,1
+1683,M_SD_Dehling_2017_San_Pedro_3,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1684,M_SD_Dehling_2017_San_Pedro_3,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1693,M_SD_Dehling_2017_San_Pedro_1,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1694,M_SD_Dehling_2017_San_Pedro_1,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1703,M_PL_Orford_2016_Field-10,Plant-Pollinator,Monolayer,1,0.8,1
+1704,M_PL_Orford_2016_Field-10,Plant-Pollinator,Monolayer,1,1.0,1
+1709,M_SD_Preciado-Benitez_2015,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1710,M_SD_Preciado-Benitez_2015,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1715,M_SD_Balasubramanian_1996,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1716,M_SD_Balasubramanian_1996,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1729,M_PL_Kaiser-Bunbury_2014_061_07,Plant-Pollinator,Monolayer,1,0.8,1
+1730,M_PL_Kaiser-Bunbury_2014_061_07,Plant-Pollinator,Monolayer,1,1.0,1
+1733,M_SD_Quitian_2018_2000Fragmented,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1734,M_SD_Quitian_2018_2000Fragmented,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1735,M_PL_Small1976,Plant-Pollinator,Monolayer,1,0.8,1
+1736,M_PL_Small1976,Plant-Pollinator,Monolayer,1,1.0,1
+1737,M_PL_Abreu,Plant-Pollinator,Monolayer,1,0.8,1
+1738,M_PL_Abreu,Plant-Pollinator,Monolayer,1,1.0,1
+1739,M_SD_Sethi_2012,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1740,M_SD_Sethi_2012,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1745,M_SD_Frost1980,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1746,M_SD_Frost1980,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1761,M_PL_Brosi2017_Cold_Springs_Ranch_2014_Manipulation,Plant-Pollinator,Monolayer,1,0.8,1
+1762,M_PL_Brosi2017_Cold_Springs_Ranch_2014_Manipulation,Plant-Pollinator,Monolayer,1,1.0,1
+1763,A_PH_site06_period01_Martins,Plant-Herbivore,Monolayer,1,0.8,1
+1764,A_PH_site06_period01_Martins,Plant-Herbivore,Monolayer,1,1.0,1
+1769,M_PL_Kaiser-Bunbury_2014_061_31,Plant-Pollinator,Monolayer,1,0.8,1
+1770,M_PL_Kaiser-Bunbury_2014_061_31,Plant-Pollinator,Monolayer,1,1.0,1
+1789,M_PL_Trojelsgaard_2015_Site4_Fuerteventura2,Plant-Pollinator,Monolayer,1,0.8,1
+1790,M_PL_Trojelsgaard_2015_Site4_Fuerteventura2,Plant-Pollinator,Monolayer,1,1.0,1
+1795,M_SD_de_Oliveira_1999,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1796,M_SD_de_Oliveira_1999,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1797,M_PL_Kaiser-Bunbury_2010_060_24,Plant-Pollinator,Monolayer,1,0.8,1
+1798,M_PL_Kaiser-Bunbury_2010_060_24,Plant-Pollinator,Monolayer,1,1.0,1
+1815,M_PL_Brosi2017_Gothic_Road_Grate_2014_Manipulation,Plant-Pollinator,Monolayer,1,0.8,1
+1816,M_PL_Brosi2017_Gothic_Road_Grate_2014_Manipulation,Plant-Pollinator,Monolayer,1,1.0,1
+1835,M_SD_Aguiar_2007,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1836,M_SD_Aguiar_2007,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1843,M_SD_Montalvan_2015,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1844,M_SD_Montalvan_2015,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1863,M_SD_MacFarlane_2016,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1864,M_SD_MacFarlane_2016,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1883,M_PL_Carstensen2017_GranCanaria,Plant-Pollinator,Monolayer,1,0.8,1
+1884,M_PL_Carstensen2017_GranCanaria,Plant-Pollinator,Monolayer,1,1.0,1
+1885,M_PL_Brosi2017_Judd_Falls_TH_2013_Manipulation,Plant-Pollinator,Monolayer,1,0.8,1
+1886,M_PL_Brosi2017_Judd_Falls_TH_2013_Manipulation,Plant-Pollinator,Monolayer,1,1.0,1
+1887,M_PL_Orford_2016_Farm-2012-B2,Plant-Pollinator,Monolayer,1,0.8,1
+1888,M_PL_Orford_2016_Farm-2012-B2,Plant-Pollinator,Monolayer,1,1.0,1
+1889,A_HP_Hadfield_2013_009,Host-Parasite,Monolayer,1,0.8,1
+1890,A_HP_Hadfield_2013_009,Host-Parasite,Monolayer,1,1.0,1
+1903,A_PH_ueckert,Plant-Herbivore,Monolayer,1,0.8,1
+1904,A_PH_ueckert,Plant-Herbivore,Monolayer,1,1.0,1
+1907,M_SD_Ramos-Robles_2016_net10,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1908,M_SD_Ramos-Robles_2016_net10,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1917,M_PL_Orford_2016_Farm-2013-B2,Plant-Pollinator,Monolayer,1,0.8,1
+1918,M_PL_Orford_2016_Farm-2013-B2,Plant-Pollinator,Monolayer,1,1.0,1
+1923,M_PL_Lara-Romero_2016_nevero-Pasture-6,Plant-Pollinator,Monolayer,1,0.8,1
+1924,M_PL_Lara-Romero_2016_nevero-Pasture-6,Plant-Pollinator,Monolayer,1,1.0,1
+1925,A_PH_site10_period01_Martins,Plant-Herbivore,Monolayer,1,0.8,1
+1926,A_PH_site10_period01_Martins,Plant-Herbivore,Monolayer,1,1.0,1
+1927,M_PL_cotton,Plant-Pollinator,Monolayer,1,0.8,1
+1928,M_PL_cotton,Plant-Pollinator,Monolayer,1,1.0,1
+1933,M_SD_Chama_2013_net4,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1934,M_SD_Chama_2013_net4,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1935,M_SD_Ortiz-Pulido_2000,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1936,M_SD_Ortiz-Pulido_2000,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1937,A_HP_Macfadyen2009_paras-herb_A9,Host-Parasite,Monolayer,1,0.8,1
+1938,A_HP_Macfadyen2009_paras-herb_A9,Host-Parasite,Monolayer,1,1.0,1
+1945,M_PL_Lara-Romero_2016_penalara-Pasture-9,Plant-Pollinator,Monolayer,1,0.8,1
+1946,M_PL_Lara-Romero_2016_penalara-Pasture-9,Plant-Pollinator,Monolayer,1,1.0,1
+1949,M_PL_Olesen-3,Plant-Pollinator,Monolayer,1,0.8,1
+1950,M_PL_Olesen-3,Plant-Pollinator,Monolayer,1,1.0,1
+1953,M_SD_Donatti_2011,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1954,M_SD_Donatti_2011,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1955,A_HP_Hadfield_2013_012,Host-Parasite,Monolayer,1,0.8,1
+1956,A_HP_Hadfield_2013_012,Host-Parasite,Monolayer,1,1.0,1
+1959,M_SD_Dehling_2017_San_Pedro_2,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1960,M_SD_Dehling_2017_San_Pedro_2,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1961,M_SD_VELHO2,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1962,M_SD_VELHO2,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1963,M_PL_Carstensen2017_TenerifeSyd,Plant-Pollinator,Monolayer,1,0.8,1
+1964,M_PL_Carstensen2017_TenerifeSyd,Plant-Pollinator,Monolayer,1,1.0,1
+1965,M_SD_Scherer_2007,Plant-Seed Dispersers,Monolayer,1,0.8,1
+1966,M_SD_Scherer_2007,Plant-Seed Dispersers,Monolayer,1,1.0,1
+1971,A_HP_belay25,Host-Parasite,Monolayer,1,0.8,1
+1972,A_HP_belay25,Host-Parasite,Monolayer,1,1.0,1
+1989,A_HP_Hadfield_2013_038,Host-Parasite,Monolayer,1,0.8,1
+1990,A_HP_Hadfield_2013_038,Host-Parasite,Monolayer,1,1.0,1
+1991,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-6,Plant-Pollinator,Monolayer,1,0.8,1
+1992,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-6,Plant-Pollinator,Monolayer,1,1.0,1
+1997,M_PL_Bezerra2009,Plant-Pollinator,Monolayer,1,0.8,1
+1998,M_PL_Bezerra2009,Plant-Pollinator,Monolayer,1,1.0,1
+2003,M_PL_Brosi2017_Gothic_Road_Steep_2014_Manipulation,Plant-Pollinator,Monolayer,1,0.8,1
+2004,M_PL_Brosi2017_Gothic_Road_Steep_2014_Manipulation,Plant-Pollinator,Monolayer,1,1.0,1
+2007,M_PL_bartomeus,Plant-Pollinator,Monolayer,1,0.8,1
+2008,M_PL_bartomeus,Plant-Pollinator,Monolayer,1,1.0,1
+2025,M_PL_Trojelsgaard_2015_Site7_TenerifeSouth1,Plant-Pollinator,Monolayer,1,0.8,1
+2026,M_PL_Trojelsgaard_2015_Site7_TenerifeSouth1,Plant-Pollinator,Monolayer,1,1.0,1
+2031,A_HP_Hadfield_2013_025,Host-Parasite,Monolayer,1,0.8,1
+2032,A_HP_Hadfield_2013_025,Host-Parasite,Monolayer,1,1.0,1
+2033,M_PL_Brosi2017_Gothic_Road_Steep_2014_Control,Plant-Pollinator,Monolayer,1,0.8,1
+2034,M_PL_Brosi2017_Gothic_Road_Steep_2014_Control,Plant-Pollinator,Monolayer,1,1.0,1
+2035,M_SD_Plein_2013_Orchard_autumn,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2036,M_SD_Plein_2013_Orchard_autumn,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2039,M_PL_Orford_2016_Field-7,Plant-Pollinator,Monolayer,1,0.8,1
+2040,M_PL_Orford_2016_Field-7,Plant-Pollinator,Monolayer,1,1.0,1
+2043,M_SD_Olesen_2018,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2044,M_SD_Olesen_2018,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2047,M_PL_Kaiser-Bunbury_2010_060_23,Plant-Pollinator,Monolayer,1,0.8,1
+2048,M_PL_Kaiser-Bunbury_2010_060_23,Plant-Pollinator,Monolayer,1,1.0,1
+2057,A_HP_Sugiura2007,Host-Parasite,Monolayer,1,0.8,1
+2058,A_HP_Sugiura2007,Host-Parasite,Monolayer,1,1.0,1
+2075,M_SD_Palita_2011,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2076,M_SD_Palita_2011,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2083,A_HP_Hadfield_2013_026,Host-Parasite,Monolayer,1,0.8,1
+2084,A_HP_Hadfield_2013_026,Host-Parasite,Monolayer,1,1.0,1
+2089,M_PL_Kaiser-Bunbury_2014_061_46,Plant-Pollinator,Monolayer,1,0.8,1
+2090,M_PL_Kaiser-Bunbury_2014_061_46,Plant-Pollinator,Monolayer,1,1.0,1
+2099,M_SD_Velazquez_2010,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2100,M_SD_Velazquez_2010,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2117,M_PL_Orford_2016_Farm-2013-B7,Plant-Pollinator,Monolayer,1,0.8,1
+2118,M_PL_Orford_2016_Farm-2013-B7,Plant-Pollinator,Monolayer,1,1.0,1
+2119,M_SD_SARM_whole_network_from_paper,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2120,M_SD_SARM_whole_network_from_paper,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2131,M_PL_Primack1983-1,Plant-Pollinator,Monolayer,1,0.8,1
+2132,M_PL_Primack1983-1,Plant-Pollinator,Monolayer,1,1.0,1
+2133,M_PL_Brosi2017_Brush_Creek_Sign_2014_Control,Plant-Pollinator,Monolayer,1,0.8,1
+2134,M_PL_Brosi2017_Brush_Creek_Sign_2014_Control,Plant-Pollinator,Monolayer,1,1.0,1
+2137,A_PH_site05_period01_Martins,Plant-Herbivore,Monolayer,1,0.8,1
+2138,A_PH_site05_period01_Martins,Plant-Herbivore,Monolayer,1,1.0,1
+2139,M_PL_Barrett1987,Plant-Pollinator,Monolayer,1,0.8,1
+2140,M_PL_Barrett1987,Plant-Pollinator,Monolayer,1,1.0,1
+2149,M_PL_Gilarranz_2015_Vigilancia,Plant-Pollinator,Monolayer,1,0.8,1
+2150,M_PL_Gilarranz_2015_Vigilancia,Plant-Pollinator,Monolayer,1,1.0,1
+2153,M_SD_Vizentin-Bugoni_2019_WAI,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2154,M_SD_Vizentin-Bugoni_2019_WAI,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2157,M_SD_Carlo2003-3,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2158,M_SD_Carlo2003-3,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2163,M_SD_Suzuki_2007,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2164,M_SD_Suzuki_2007,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2165,M_PL_Orford_2016_Farm-2012-B7,Plant-Pollinator,Monolayer,1,0.8,1
+2166,M_PL_Orford_2016_Farm-2012-B7,Plant-Pollinator,Monolayer,1,1.0,1
+2173,M_SD_Chama_2013_net5,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2174,M_SD_Chama_2013_net5,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2181,M_SD_Lopez___Vaughn_2004,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2182,M_SD_Lopez___Vaughn_2004,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2183,M_PL_Trojelsgaard_2015_Site13_Hierro1,Plant-Pollinator,Monolayer,1,0.8,1
+2184,M_PL_Trojelsgaard_2015_Site13_Hierro1,Plant-Pollinator,Monolayer,1,1.0,1
+2187,A_HP_Hadfield_2013_040,Host-Parasite,Monolayer,1,0.8,1
+2188,A_HP_Hadfield_2013_040,Host-Parasite,Monolayer,1,1.0,1
+2197,M_PL_Kaiser-Bunbury_2010_060_20,Plant-Pollinator,Monolayer,1,0.8,1
+2198,M_PL_Kaiser-Bunbury_2010_060_20,Plant-Pollinator,Monolayer,1,1.0,1
+2199,M_SD_Chama_2013_net8,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2200,M_SD_Chama_2013_net8,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2201,M_PL_Kaiser-Bunbury_2014_061_48,Plant-Pollinator,Monolayer,1,0.8,1
+2202,M_PL_Kaiser-Bunbury_2014_061_48,Plant-Pollinator,Monolayer,1,1.0,1
+2205,M_PL_Kaiser-Bunbury_2014_061_19,Plant-Pollinator,Monolayer,1,0.8,1
+2206,M_PL_Kaiser-Bunbury_2014_061_19,Plant-Pollinator,Monolayer,1,1.0,1
+2209,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-5,Plant-Pollinator,Monolayer,1,0.8,1
+2210,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-5,Plant-Pollinator,Monolayer,1,1.0,1
+2215,M_PL_Brosi2017_Gothic_Road_2013_Control,Plant-Pollinator,Monolayer,1,0.8,1
+2216,M_PL_Brosi2017_Gothic_Road_2013_Control,Plant-Pollinator,Monolayer,1,1.0,1
+2245,A_HP_Hadfield_2013_043,Host-Parasite,Monolayer,1,0.8,1
+2246,A_HP_Hadfield_2013_043,Host-Parasite,Monolayer,1,1.0,1
+2249,M_SD_Kitamura_2002,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2250,M_SD_Kitamura_2002,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2251,M_SD_Ruggera_2016_Sevenguillar,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2252,M_SD_Ruggera_2016_Sevenguillar,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2259,A_HP_Arai_parsnip,Host-Parasite,Monolayer,1,0.8,1
+2260,A_HP_Arai_parsnip,Host-Parasite,Monolayer,1,1.0,1
+2261,M_SD_Albrecht_301_2012,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2262,M_SD_Albrecht_301_2012,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2265,A_PH_HennemanXXXX-2,Plant-Herbivore,Monolayer,1,0.8,1
+2266,A_PH_HennemanXXXX-2,Plant-Herbivore,Monolayer,1,1.0,1
+2269,M_SD_Sanitjan_2009_XTBG_arboretum,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2270,M_SD_Sanitjan_2009_XTBG_arboretum,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2277,M_SD_Malacco_da_Silva_2014,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2278,M_SD_Malacco_da_Silva_2014,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2285,M_SD_Souza_Gomes_2008_primary_forest,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2286,M_SD_Souza_Gomes_2008_primary_forest,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2289,M_SD_Menke_2012_edge_little_dist,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2290,M_SD_Menke_2012_edge_little_dist,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2291,A_HP_Macfadyen2009_paras-herb_A7,Host-Parasite,Monolayer,1,0.8,1
+2292,A_HP_Macfadyen2009_paras-herb_A7,Host-Parasite,Monolayer,1,1.0,1
+2305,M_PL_Carstensen2017_ElHierro,Plant-Pollinator,Monolayer,1,0.8,1
+2306,M_PL_Carstensen2017_ElHierro,Plant-Pollinator,Monolayer,1,1.0,1
+2313,M_SD_Falcon_2018,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2314,M_SD_Falcon_2018,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2317,M_SD_Dos_Reis_1983_Cult_et_form_sec,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2318,M_SD_Dos_Reis_1983_Cult_et_form_sec,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2333,M_SD_Koike_2008,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2334,M_SD_Koike_2008,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2347,M_PL_Trojelsgaard_2015_Site1_WesternSahara1,Plant-Pollinator,Monolayer,1,0.8,1
+2348,M_PL_Trojelsgaard_2015_Site1_WesternSahara1,Plant-Pollinator,Monolayer,1,1.0,1
+2353,M_SD_Garcia-Morales_2012,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2354,M_SD_Garcia-Morales_2012,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2355,M_PL_Ollerton2003,Plant-Pollinator,Monolayer,1,0.8,1
+2356,M_PL_Ollerton2003,Plant-Pollinator,Monolayer,1,1.0,1
+2377,M_SD_Daru_2015,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2378,M_SD_Daru_2015,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2389,A_HP_Hadfield_2013_003,Host-Parasite,Monolayer,1,0.8,1
+2390,A_HP_Hadfield_2013_003,Host-Parasite,Monolayer,1,1.0,1
+2413,M_PL_Mazan_tinoco,Plant-Pollinator,Monolayer,1,0.8,1
+2414,M_PL_Mazan_tinoco,Plant-Pollinator,Monolayer,1,1.0,1
+2421,M_PL_Orford_2016_Field-15,Plant-Pollinator,Monolayer,1,0.8,1
+2422,M_PL_Orford_2016_Field-15,Plant-Pollinator,Monolayer,1,1.0,1
+2441,M_SD_Sankamethawee_2011,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2442,M_SD_Sankamethawee_2011,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2451,M_PL_Kaiser-Bunbury_2010_060_18,Plant-Pollinator,Monolayer,1,0.8,1
+2452,M_PL_Kaiser-Bunbury_2010_060_18,Plant-Pollinator,Monolayer,1,1.0,1
+2477,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-4,Plant-Pollinator,Monolayer,1,0.8,1
+2478,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-4,Plant-Pollinator,Monolayer,1,1.0,1
+2481,M_PL_Orford_2016_Field-33,Plant-Pollinator,Monolayer,1,0.8,1
+2482,M_PL_Orford_2016_Field-33,Plant-Pollinator,Monolayer,1,1.0,1
+2493,M_SD_Lessa_2013,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2494,M_SD_Lessa_2013,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2499,M_SD_Hodgkison_2001,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2500,M_SD_Hodgkison_2001,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2503,M_PL_Lara-Romero_2016_nevero-Pasture-4,Plant-Pollinator,Monolayer,1,0.8,1
+2504,M_PL_Lara-Romero_2016_nevero-Pasture-4,Plant-Pollinator,Monolayer,1,1.0,1
+2507,A_HP_Hadfield_2013_027,Host-Parasite,Monolayer,1,0.8,1
+2508,A_HP_Hadfield_2013_027,Host-Parasite,Monolayer,1,1.0,1
+2543,M_PL_Kaiser-Bunbury_2010_060_13,Plant-Pollinator,Monolayer,1,0.8,1
+2544,M_PL_Kaiser-Bunbury_2010_060_13,Plant-Pollinator,Monolayer,1,1.0,1
+2545,M_SD_Poulin1999_psychotria,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2546,M_SD_Poulin1999_psychotria,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2547,M_SD_Dubost_1984,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2548,M_SD_Dubost_1984,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2557,M_SD_Menke_2012_edge_highly_dist,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2558,M_SD_Menke_2012_edge_highly_dist,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2559,M_SD_Chatterjee_2014,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2560,M_SD_Chatterjee_2014,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2565,M_PL_Orford_2016_Farm-2012-B4,Plant-Pollinator,Monolayer,1,0.8,1
+2566,M_PL_Orford_2016_Farm-2012-B4,Plant-Pollinator,Monolayer,1,1.0,1
+2587,M_SD_Vizentin-Bugoni_2019_KAH,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2588,M_SD_Vizentin-Bugoni_2019_KAH,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2591,A_HP_Macfadyen2009_paras-herb_B3,Host-Parasite,Monolayer,1,0.8,1
+2592,A_HP_Macfadyen2009_paras-herb_B3,Host-Parasite,Monolayer,1,1.0,1
+2597,M_PL_Kaiser-Bunbury_2010_060_10,Plant-Pollinator,Monolayer,1,0.8,1
+2598,M_PL_Kaiser-Bunbury_2010_060_10,Plant-Pollinator,Monolayer,1,1.0,1
+2615,M_PL_Kaiser-Bunbury_2014_061_47,Plant-Pollinator,Monolayer,1,0.8,1
+2616,M_PL_Kaiser-Bunbury_2014_061_47,Plant-Pollinator,Monolayer,1,1.0,1
+2617,M_SD_Burns_2013,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2618,M_SD_Burns_2013,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2619,M_SD_Andrade_2011,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2620,M_SD_Andrade_2011,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2627,A_HP_Hadfield_2013_019,Host-Parasite,Monolayer,1,0.8,1
+2628,A_HP_Hadfield_2013_019,Host-Parasite,Monolayer,1,1.0,1
+2643,M_SD_Santiago_2014_far_from_remnant,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2644,M_SD_Santiago_2014_far_from_remnant,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2645,M_PL_Trojelsgaard_2015_Site8_TenerifeSouth2,Plant-Pollinator,Monolayer,1,0.8,1
+2646,M_PL_Trojelsgaard_2015_Site8_TenerifeSouth2,Plant-Pollinator,Monolayer,1,1.0,1
+2647,M_SD_Albrecht_315_2012,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2648,M_SD_Albrecht_315_2012,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2649,M_SD_Moreno-Mosquera_2011,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2650,M_SD_Moreno-Mosquera_2011,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2655,M_PL_Tur2013-PC,Plant-Pollinator,Monolayer,1,0.8,1
+2656,M_PL_Tur2013-PC,Plant-Pollinator,Monolayer,1,1.0,1
+2663,M_SD_Wolfe_2014,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2664,M_SD_Wolfe_2014,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2665,M_PL_Orford_2016_Field-54,Plant-Pollinator,Monolayer,1,0.8,1
+2666,M_PL_Orford_2016_Field-54,Plant-Pollinator,Monolayer,1,1.0,1
+2677,M_SD_Plein_2013_Farmland_summer,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2678,M_SD_Plein_2013_Farmland_summer,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2681,M_PL_LasCasas,Plant-Pollinator,Monolayer,1,0.8,1
+2682,M_PL_LasCasas,Plant-Pollinator,Monolayer,1,1.0,1
+2711,M_PL_Kaiser-Bunbury_2014_061_32,Plant-Pollinator,Monolayer,1,0.8,1
+2712,M_PL_Kaiser-Bunbury_2014_061_32,Plant-Pollinator,Monolayer,1,1.0,1
+2713,A_HP_Macfadyen2009_paras-herb_A4,Host-Parasite,Monolayer,1,0.8,1
+2714,A_HP_Macfadyen2009_paras-herb_A4,Host-Parasite,Monolayer,1,1.0,1
+2715,M_PL_Brosi2017_Gothic_CG_2014_Manipulation,Plant-Pollinator,Monolayer,1,0.8,1
+2716,M_PL_Brosi2017_Gothic_CG_2014_Manipulation,Plant-Pollinator,Monolayer,1,1.0,1
+2721,M_SD_Baird1980,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2722,M_SD_Baird1980,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2727,A_HP_Hadfield_2013_010,Host-Parasite,Monolayer,1,0.8,1
+2728,A_HP_Hadfield_2013_010,Host-Parasite,Monolayer,1,1.0,1
+2737,M_SD_Sanchez_2012_Iguazu,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2738,M_SD_Sanchez_2012_Iguazu,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2757,M_SD_Chama_2013_net1,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2758,M_SD_Chama_2013_net1,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2767,M_PL_Lara-Romero_2016_nevero-Pasture-3,Plant-Pollinator,Monolayer,1,0.8,1
+2768,M_PL_Lara-Romero_2016_nevero-Pasture-3,Plant-Pollinator,Monolayer,1,1.0,1
+2771,M_PL_Kaiser-Bunbury_2010_060_02,Plant-Pollinator,Monolayer,1,0.8,1
+2772,M_PL_Kaiser-Bunbury_2010_060_02,Plant-Pollinator,Monolayer,1,1.0,1
+2779,M_PL_Orford_2016_Field-36,Plant-Pollinator,Monolayer,1,0.8,1
+2780,M_PL_Orford_2016_Field-36,Plant-Pollinator,Monolayer,1,1.0,1
+2787,M_SD_Bollen_2000,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2788,M_SD_Bollen_2000,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2791,M_PL_Kaiser-Bunbury_2014_061_08,Plant-Pollinator,Monolayer,1,0.8,1
+2792,M_PL_Kaiser-Bunbury_2014_061_08,Plant-Pollinator,Monolayer,1,1.0,1
+2799,M_PL_Brosi2017_Brush_Creek_Steep_2013_Manipulation,Plant-Pollinator,Monolayer,1,0.8,1
+2800,M_PL_Brosi2017_Brush_Creek_Steep_2013_Manipulation,Plant-Pollinator,Monolayer,1,1.0,1
+2801,M_PL_Carstensen2017_Teno,Plant-Pollinator,Monolayer,1,0.8,1
+2802,M_PL_Carstensen2017_Teno,Plant-Pollinator,Monolayer,1,1.0,1
+2821,M_SD_Lou_2007,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2822,M_SD_Lou_2007,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2823,A_HP_Arai_mcgregor,Host-Parasite,Monolayer,1,0.8,1
+2824,A_HP_Arai_mcgregor,Host-Parasite,Monolayer,1,1.0,1
+2839,M_SD_Hovestadt_1997,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2840,M_SD_Hovestadt_1997,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2849,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-10,Plant-Pollinator,Monolayer,1,0.8,1
+2850,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-10,Plant-Pollinator,Monolayer,1,1.0,1
+2867,M_SD_Carlo2003-2,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2868,M_SD_Carlo2003-2,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2873,A_HP_Hadfield_2013_036,Host-Parasite,Monolayer,1,0.8,1
+2874,A_HP_Hadfield_2013_036,Host-Parasite,Monolayer,1,1.0,1
+2883,M_SD_Gomes_2013,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2884,M_SD_Gomes_2013,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2885,A_HP_Hadfield_2013_041,Host-Parasite,Monolayer,1,0.8,1
+2886,A_HP_Hadfield_2013_041,Host-Parasite,Monolayer,1,1.0,1
+2893,M_PL_Kaiser-Bunbury_2010_060_11,Plant-Pollinator,Monolayer,1,0.8,1
+2894,M_PL_Kaiser-Bunbury_2010_060_11,Plant-Pollinator,Monolayer,1,1.0,1
+2907,M_PL_Carstensen2017_WesternSahara,Plant-Pollinator,Monolayer,1,0.8,1
+2908,M_PL_Carstensen2017_WesternSahara,Plant-Pollinator,Monolayer,1,1.0,1
+2909,M_PL_Brosi2017_Gothic_Road_Grate_2014_Control,Plant-Pollinator,Monolayer,1,0.8,1
+2910,M_PL_Brosi2017_Gothic_Road_Grate_2014_Control,Plant-Pollinator,Monolayer,1,1.0,1
+2911,M_PL_caradonna_rmbl_interaction_networks_data_EDI,Plant-Pollinator,Monolayer,1,0.8,1
+2912,M_PL_caradonna_rmbl_interaction_networks_data_EDI,Plant-Pollinator,Monolayer,1,1.0,1
+2915,M_PL_Arizmendi,Plant-Pollinator,Monolayer,1,0.8,1
+2916,M_PL_Arizmendi,Plant-Pollinator,Monolayer,1,1.0,1
+2923,M_PL_Kaiser-Bunbury_2014_061_18,Plant-Pollinator,Monolayer,1,0.8,1
+2924,M_PL_Kaiser-Bunbury_2014_061_18,Plant-Pollinator,Monolayer,1,1.0,1
+2937,M_SD_Hamann1999,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2938,M_SD_Hamann1999,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2947,M_PL_Lara-Romero_2016_penalara-Pasture-4,Plant-Pollinator,Monolayer,1,0.8,1
+2948,M_PL_Lara-Romero_2016_penalara-Pasture-4,Plant-Pollinator,Monolayer,1,1.0,1
+2959,M_PL_Trojelsgaard_2015_Site11_Gomera1,Plant-Pollinator,Monolayer,1,0.8,1
+2960,M_PL_Trojelsgaard_2015_Site11_Gomera1,Plant-Pollinator,Monolayer,1,1.0,1
+2961,A_HP_Hadfield_2013_031,Host-Parasite,Monolayer,1,0.8,1
+2962,A_HP_Hadfield_2013_031,Host-Parasite,Monolayer,1,1.0,1
+2963,M_PL_Nero_tinoco,Plant-Pollinator,Monolayer,1,0.8,1
+2964,M_PL_Nero_tinoco,Plant-Pollinator,Monolayer,1,1.0,1
+2997,M_SD_Athie_2009,Plant-Seed Dispersers,Monolayer,1,0.8,1
+2998,M_SD_Athie_2009,Plant-Seed Dispersers,Monolayer,1,1.0,1
+2999,M_SD_Vizentin-Bugoni_2019_TAN,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3000,M_SD_Vizentin-Bugoni_2019_TAN,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3005,M_PL_Kaiser-Bunbury_2014_061_05,Plant-Pollinator,Monolayer,1,0.8,1
+3006,M_PL_Kaiser-Bunbury_2014_061_05,Plant-Pollinator,Monolayer,1,1.0,1
+3033,M_PL_Kaiser-Bunbury_2010_060_08,Plant-Pollinator,Monolayer,1,0.8,1
+3034,M_PL_Kaiser-Bunbury_2010_060_08,Plant-Pollinator,Monolayer,1,1.0,1
+3037,M_PL_Orford_2016_Farm-2012-B6,Plant-Pollinator,Monolayer,1,0.8,1
+3038,M_PL_Orford_2016_Farm-2012-B6,Plant-Pollinator,Monolayer,1,1.0,1
+3047,M_PL_Orford_2016_Field-40,Plant-Pollinator,Monolayer,1,0.8,1
+3048,M_PL_Orford_2016_Field-40,Plant-Pollinator,Monolayer,1,1.0,1
+3061,M_PL_Orford_2016_Field-45,Plant-Pollinator,Monolayer,1,0.8,1
+3062,M_PL_Orford_2016_Field-45,Plant-Pollinator,Monolayer,1,1.0,1
+3067,M_SD_Chama_2013_net7,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3068,M_SD_Chama_2013_net7,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3071,M_SD_Kantak1979,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3072,M_SD_Kantak1979,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3075,M_PL_Lara-Romero_2016_penalara-Pasture-10,Plant-Pollinator,Monolayer,1,0.8,1
+3076,M_PL_Lara-Romero_2016_penalara-Pasture-10,Plant-Pollinator,Monolayer,1,1.0,1
+3081,M_PL_Memmott1999,Plant-Pollinator,Monolayer,1,0.8,1
+3082,M_PL_Memmott1999,Plant-Pollinator,Monolayer,1,1.0,1
+3091,M_SD_Sorensen_1981,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3092,M_SD_Sorensen_1981,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3093,M_PL_Kaiser-Bunbury_2010_060_03,Plant-Pollinator,Monolayer,1,0.8,1
+3094,M_PL_Kaiser-Bunbury_2010_060_03,Plant-Pollinator,Monolayer,1,1.0,1
+3101,M_PL_Kaiser-Bunbury_2014_061_06,Plant-Pollinator,Monolayer,1,0.8,1
+3102,M_PL_Kaiser-Bunbury_2014_061_06,Plant-Pollinator,Monolayer,1,1.0,1
+3107,A_PH_site07_period01_Martins,Plant-Herbivore,Monolayer,1,0.8,1
+3108,A_PH_site07_period01_Martins,Plant-Herbivore,Monolayer,1,1.0,1
+3127,M_SD_Castano_2018,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3128,M_SD_Castano_2018,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3151,M_SD_Blendinger_2015,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3152,M_SD_Blendinger_2015,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3157,M_SD_Casallas-Pabon_2017,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3158,M_SD_Casallas-Pabon_2017,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3163,A_HP_Hadfield_2013_022,Host-Parasite,Monolayer,1,0.8,1
+3164,A_HP_Hadfield_2013_022,Host-Parasite,Monolayer,1,1.0,1
+3175,M_SD_de_la_Pena_2003,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3176,M_SD_de_la_Pena_2003,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3179,M_PL_Lara-Romero_2016_penalara-Pasture-7,Plant-Pollinator,Monolayer,1,0.8,1
+3180,M_PL_Lara-Romero_2016_penalara-Pasture-7,Plant-Pollinator,Monolayer,1,1.0,1
+3199,M_SD_Menke_2012_interior_little_dist,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3200,M_SD_Menke_2012_interior_little_dist,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3205,M_PL_Kaiser-Bunbury_2010_060_22,Plant-Pollinator,Monolayer,1,0.8,1
+3206,M_PL_Kaiser-Bunbury_2010_060_22,Plant-Pollinator,Monolayer,1,1.0,1
+3207,A_HP_daGraca,Host-Parasite,Monolayer,1,0.8,1
+3208,A_HP_daGraca,Host-Parasite,Monolayer,1,1.0,1
+3213,M_SD_Menke_2012_interior_highly_dist,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3214,M_SD_Menke_2012_interior_highly_dist,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3221,A_HP_Hadfield_2013_030,Host-Parasite,Monolayer,1,0.8,1
+3222,A_HP_Hadfield_2013_030,Host-Parasite,Monolayer,1,1.0,1
+3223,A_PH_Joern-Altuda,Plant-Herbivore,Monolayer,1,0.8,1
+3224,A_PH_Joern-Altuda,Plant-Herbivore,Monolayer,1,1.0,1
+3225,A_HP_Hadfield_2013_032,Host-Parasite,Monolayer,1,0.8,1
+3226,A_HP_Hadfield_2013_032,Host-Parasite,Monolayer,1,1.0,1
+3231,M_PL_Brosi2017_Gothic_Town_2014_Manipulation,Plant-Pollinator,Monolayer,1,0.8,1
+3232,M_PL_Brosi2017_Gothic_Town_2014_Manipulation,Plant-Pollinator,Monolayer,1,1.0,1
+3253,A_HP_Hadfield_2013_004,Host-Parasite,Monolayer,1,0.8,1
+3254,A_HP_Hadfield_2013_004,Host-Parasite,Monolayer,1,1.0,1
+3259,M_SD_Odonnell_1994,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3260,M_SD_Odonnell_1994,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3261,M_PL_Vizentin,Plant-Pollinator,Monolayer,1,0.8,1
+3262,M_PL_Vizentin,Plant-Pollinator,Monolayer,1,1.0,1
+3273,M_SD_Palacios_2016,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3274,M_SD_Palacios_2016,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3287,M_SD_continuous_Farwig,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3288,M_SD_continuous_Farwig,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3293,A_PH_site03_period01_Martins,Plant-Herbivore,Monolayer,1,0.8,1
+3294,A_PH_site03_period01_Martins,Plant-Herbivore,Monolayer,1,1.0,1
+3301,A_HP_Macfadyen2009_paras-herb_B4,Host-Parasite,Monolayer,1,0.8,1
+3302,A_HP_Macfadyen2009_paras-herb_B4,Host-Parasite,Monolayer,1,1.0,1
+3303,M_PL_Kaiser-Bunbury_2014_061_23,Plant-Pollinator,Monolayer,1,0.8,1
+3304,M_PL_Kaiser-Bunbury_2014_061_23,Plant-Pollinator,Monolayer,1,1.0,1
+3305,M_PL_Trojelsgaard_2015_Site10_TenerifeTeno2,Plant-Pollinator,Monolayer,1,0.8,1
+3306,M_PL_Trojelsgaard_2015_Site10_TenerifeTeno2,Plant-Pollinator,Monolayer,1,1.0,1
+3307,M_PL_Llaviuco_tinoco,Plant-Pollinator,Monolayer,1,0.8,1
+3308,M_PL_Llaviuco_tinoco,Plant-Pollinator,Monolayer,1,1.0,1
+3309,M_SD_Garcia_2014_Puhi-Puhi_River,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3310,M_SD_Garcia_2014_Puhi-Puhi_River,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3313,M_SD_Innis_1989_ANVF,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3314,M_SD_Innis_1989_ANVF,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3337,M_PL_Brosi2017_Rustlers_2013_Manipulation,Plant-Pollinator,Monolayer,1,0.8,1
+3338,M_PL_Brosi2017_Rustlers_2013_Manipulation,Plant-Pollinator,Monolayer,1,1.0,1
+3349,A_HP_Hadfield_2013_048,Host-Parasite,Monolayer,1,0.8,1
+3350,A_HP_Hadfield_2013_048,Host-Parasite,Monolayer,1,1.0,1
+3359,M_SD_Carlo2003-4,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3360,M_SD_Carlo2003-4,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3367,A_HP_Macfadyen2009_paras-herb_B5,Host-Parasite,Monolayer,1,0.8,1
+3368,A_HP_Macfadyen2009_paras-herb_B5,Host-Parasite,Monolayer,1,1.0,1
+3373,A_HP_belay30,Host-Parasite,Monolayer,1,0.8,1
+3374,A_HP_belay30,Host-Parasite,Monolayer,1,1.0,1
+3375,M_SD_Dehling_2017_Wayqecha_2,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3376,M_SD_Dehling_2017_Wayqecha_2,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3381,M_SD_Ramos-Robles_2016_net2,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3382,M_SD_Ramos-Robles_2016_net2,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3385,M_PL_Magrach2017_Sweden_2011_high,Plant-Pollinator,Monolayer,1,0.8,1
+3386,M_PL_Magrach2017_Sweden_2011_high,Plant-Pollinator,Monolayer,1,1.0,1
+3387,M_SD_Carlo2003-1,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3388,M_SD_Carlo2003-1,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3405,A_PH_Macfadyen2009_plant-herb_B3,Plant-Herbivore,Monolayer,1,0.8,1
+3406,A_PH_Macfadyen2009_plant-herb_B3,Plant-Herbivore,Monolayer,1,1.0,1
+3417,A_HP_Hadfield_2013_033,Host-Parasite,Monolayer,1,0.8,1
+3418,A_HP_Hadfield_2013_033,Host-Parasite,Monolayer,1,1.0,1
+3421,M_PL_Lara-Romero_2016_nevero-Pasture-5,Plant-Pollinator,Monolayer,1,0.8,1
+3422,M_PL_Lara-Romero_2016_nevero-Pasture-5,Plant-Pollinator,Monolayer,1,1.0,1
+3423,M_PL_Magrach2017_UK_2012_high,Plant-Pollinator,Monolayer,1,0.8,1
+3424,M_PL_Magrach2017_UK_2012_high,Plant-Pollinator,Monolayer,1,1.0,1
+3427,M_SD_Nogales_2017,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3428,M_SD_Nogales_2017,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3429,M_SD_Estrada-Villegas_2010,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3430,M_SD_Estrada-Villegas_2010,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3433,A_HP_belay23,Host-Parasite,Monolayer,1,0.8,1
+3434,A_HP_belay23,Host-Parasite,Monolayer,1,1.0,1
+3451,M_SD_Costa_2016,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3452,M_SD_Costa_2016,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3465,A_PH_stary2008,Plant-Herbivore,Monolayer,1,0.8,1
+3466,A_PH_stary2008,Plant-Herbivore,Monolayer,1,1.0,1
+3473,M_SD_Fadini_2004,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3474,M_SD_Fadini_2004,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3481,M_SD_Plein_2013_Orchard_summer,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3482,M_SD_Plein_2013_Orchard_summer,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3483,M_PL_Lara-Romero_2016_nevero-Pasture-1,Plant-Pollinator,Monolayer,1,0.8,1
+3484,M_PL_Lara-Romero_2016_nevero-Pasture-1,Plant-Pollinator,Monolayer,1,1.0,1
+3493,M_SD_Hladik_1969,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3494,M_SD_Hladik_1969,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3505,A_PH_lewis2002,Plant-Herbivore,Monolayer,1,0.8,1
+3506,A_PH_lewis2002,Plant-Herbivore,Monolayer,1,1.0,1
+3515,M_SD_Heleno,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3516,M_SD_Heleno,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3521,M_SD_Dehling_2017_Wayqecha_1,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3522,M_SD_Dehling_2017_Wayqecha_1,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3525,A_HP_Font,Host-Parasite,Monolayer,1,0.8,1
+3526,A_HP_Font,Host-Parasite,Monolayer,1,1.0,1
+3547,M_SD_Chama_2013_net6,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3548,M_SD_Chama_2013_net6,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3551,A_HP_Macfadyen2009_paras-herb_A10,Host-Parasite,Monolayer,1,0.8,1
+3552,A_HP_Macfadyen2009_paras-herb_A10,Host-Parasite,Monolayer,1,1.0,1
+3553,M_PL_Lara-Romero_2016_nevero-Pasture-8,Plant-Pollinator,Monolayer,1,0.8,1
+3554,M_PL_Lara-Romero_2016_nevero-Pasture-8,Plant-Pollinator,Monolayer,1,1.0,1
+3555,M_SD_Quitian_2018_1000Natural,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3556,M_SD_Quitian_2018_1000Natural,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3577,M_PL_Trojelsgaard_2015_Site3_Fuerteventura1,Plant-Pollinator,Monolayer,1,0.8,1
+3578,M_PL_Trojelsgaard_2015_Site3_Fuerteventura1,Plant-Pollinator,Monolayer,1,1.0,1
+3579,M_PL_Orford_2016_Field-63,Plant-Pollinator,Monolayer,1,0.8,1
+3580,M_PL_Orford_2016_Field-63,Plant-Pollinator,Monolayer,1,1.0,1
+3581,M_PL_Trojelsgaard_2015_Site6_GranCanaria2,Plant-Pollinator,Monolayer,1,0.8,1
+3582,M_PL_Trojelsgaard_2015_Site6_GranCanaria2,Plant-Pollinator,Monolayer,1,1.0,1
+3595,M_SD_Faria_1996,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3596,M_SD_Faria_1996,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3607,A_HP_Hadfield_2013_018,Host-Parasite,Monolayer,1,0.8,1
+3608,A_HP_Hadfield_2013_018,Host-Parasite,Monolayer,1,1.0,1
+3613,M_PL_Orford_2016_Farm-2013-B4,Plant-Pollinator,Monolayer,1,0.8,1
+3614,M_PL_Orford_2016_Farm-2013-B4,Plant-Pollinator,Monolayer,1,1.0,1
+3623,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-10,Plant-Pollinator,Monolayer,1,0.8,1
+3624,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-10,Plant-Pollinator,Monolayer,1,1.0,1
+3625,M_SD_Purificacao_2014_savannah_dry,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3626,M_SD_Purificacao_2014_savannah_dry,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3627,A_PH_Ibanez2013,Plant-Herbivore,Monolayer,1,0.8,1
+3628,A_PH_Ibanez2013,Plant-Herbivore,Monolayer,1,1.0,1
+3639,A_HP_belay10,Host-Parasite,Monolayer,1,0.8,1
+3640,A_HP_belay10,Host-Parasite,Monolayer,1,1.0,1
+3653,M_SD_da_Silva_2015_site_C,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3654,M_SD_da_Silva_2015_site_C,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3663,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-8,Plant-Pollinator,Monolayer,1,0.8,1
+3664,M_PL_Lara-Romero_2016_penalara-Encroachedpasture-8,Plant-Pollinator,Monolayer,1,1.0,1
+3671,A_PH_Joern-Marathon,Plant-Herbivore,Monolayer,1,0.8,1
+3672,A_PH_Joern-Marathon,Plant-Herbivore,Monolayer,1,1.0,1
+3687,A_PH_Macfadyen2009_plant-herb_A2,Plant-Herbivore,Monolayer,1,0.8,1
+3688,A_PH_Macfadyen2009_plant-herb_A2,Plant-Herbivore,Monolayer,1,1.0,1
+3693,A_PH_Macfadyen2009_plant-herb_B4,Plant-Herbivore,Monolayer,1,0.8,1
+3694,A_PH_Macfadyen2009_plant-herb_B4,Plant-Herbivore,Monolayer,1,1.0,1
+3697,M_SD_Castley_2001,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3698,M_SD_Castley_2001,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3701,M_SD_Ruggera_2016_San_Javier,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3702,M_SD_Ruggera_2016_San_Javier,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3703,M_PL_Orford_2016_Field-27,Plant-Pollinator,Monolayer,1,0.8,1
+3704,M_PL_Orford_2016_Field-27,Plant-Pollinator,Monolayer,1,1.0,1
+3729,A_HP_Hadfield_2013_049,Host-Parasite,Monolayer,1,0.8,1
+3730,A_HP_Hadfield_2013_049,Host-Parasite,Monolayer,1,1.0,1
+3733,M_PL_Motten1982,Plant-Pollinator,Monolayer,1,0.8,1
+3734,M_PL_Motten1982,Plant-Pollinator,Monolayer,1,1.0,1
+3743,M_PL_Tur2013-CN,Plant-Pollinator,Monolayer,1,0.8,1
+3744,M_PL_Tur2013-CN,Plant-Pollinator,Monolayer,1,1.0,1
+3745,A_PH_Bergamini,Plant-Herbivore,Monolayer,1,0.8,1
+3746,A_PH_Bergamini,Plant-Herbivore,Monolayer,1,1.0,1
+3755,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-6,Plant-Pollinator,Monolayer,1,0.8,1
+3756,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-6,Plant-Pollinator,Monolayer,1,1.0,1
+3759,A_PH_Macfadyen2009_plant-herb_A1,Plant-Herbivore,Monolayer,1,0.8,1
+3760,A_PH_Macfadyen2009_plant-herb_A1,Plant-Herbivore,Monolayer,1,1.0,1
+3763,M_PL_Kaiser-Bunbury_2010_060_12,Plant-Pollinator,Monolayer,1,0.8,1
+3764,M_PL_Kaiser-Bunbury_2010_060_12,Plant-Pollinator,Monolayer,1,1.0,1
+3765,M_PL_Brosi2017_Gothic_Town_2014_Control,Plant-Pollinator,Monolayer,1,0.8,1
+3766,M_PL_Brosi2017_Gothic_Town_2014_Control,Plant-Pollinator,Monolayer,1,1.0,1
+3767,A_HP_Pilosof2013_1986,Host-Parasite,Monolayer,1,0.8,1
+3768,A_HP_Pilosof2013_1986,Host-Parasite,Monolayer,1,1.0,1
+3769,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-5,Plant-Pollinator,Monolayer,1,0.8,1
+3770,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-5,Plant-Pollinator,Monolayer,1,1.0,1
+3783,M_PL_Kaiser-Bunbury_2014_061_15,Plant-Pollinator,Monolayer,1,0.8,1
+3784,M_PL_Kaiser-Bunbury_2014_061_15,Plant-Pollinator,Monolayer,1,1.0,1
+3797,M_SD_Santiago_2014_close_to_remnant,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3798,M_SD_Santiago_2014_close_to_remnant,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3813,M_SD_Snow_1988_JJA,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3814,M_SD_Snow_1988_JJA,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3815,M_PL_Trojelsgaard_2015_Site9_TenerifeTeno1,Plant-Pollinator,Monolayer,1,0.8,1
+3816,M_PL_Trojelsgaard_2015_Site9_TenerifeTeno1,Plant-Pollinator,Monolayer,1,1.0,1
+3849,A_HP_Hadfield_2013_020,Host-Parasite,Monolayer,1,0.8,1
+3850,A_HP_Hadfield_2013_020,Host-Parasite,Monolayer,1,1.0,1
+3853,A_HP_Mendonca,Host-Parasite,Monolayer,1,0.8,1
+3854,A_HP_Mendonca,Host-Parasite,Monolayer,1,1.0,1
+3857,M_PL_Kaiser-Bunbury_2014_061_04,Plant-Pollinator,Monolayer,1,0.8,1
+3858,M_PL_Kaiser-Bunbury_2014_061_04,Plant-Pollinator,Monolayer,1,1.0,1
+3859,M_PL_Orford_2016_Field-67,Plant-Pollinator,Monolayer,1,0.8,1
+3860,M_PL_Orford_2016_Field-67,Plant-Pollinator,Monolayer,1,1.0,1
+3869,A_PH_Macfadyen2009_plant-herb_A7,Plant-Herbivore,Monolayer,1,0.8,1
+3870,A_PH_Macfadyen2009_plant-herb_A7,Plant-Herbivore,Monolayer,1,1.0,1
+3873,A_HP_Hadfield_2013_016,Host-Parasite,Monolayer,1,0.8,1
+3874,A_HP_Hadfield_2013_016,Host-Parasite,Monolayer,1,1.0,1
+3891,M_PL_Kaiser-Bunbury_2014_061_45,Plant-Pollinator,Monolayer,1,0.8,1
+3892,M_PL_Kaiser-Bunbury_2014_061_45,Plant-Pollinator,Monolayer,1,1.0,1
+3893,M_SD_Combined_Schleuning,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3894,M_SD_Combined_Schleuning,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3915,M_PL_Maruyama,Plant-Pollinator,Monolayer,1,0.8,1
+3916,M_PL_Maruyama,Plant-Pollinator,Monolayer,1,1.0,1
+3919,M_PL_Orford_2016_Farm-2012-B1,Plant-Pollinator,Monolayer,1,0.8,1
+3920,M_PL_Orford_2016_Farm-2012-B1,Plant-Pollinator,Monolayer,1,1.0,1
+3925,A_HP_Pilosof2013_1985,Host-Parasite,Monolayer,1,0.8,1
+3926,A_HP_Pilosof2013_1985,Host-Parasite,Monolayer,1,1.0,1
+3927,M_SD_Ramos-Robles_2016_net3,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3928,M_SD_Ramos-Robles_2016_net3,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3929,M_PL_Maglianesi_high,Plant-Pollinator,Monolayer,1,0.8,1
+3930,M_PL_Maglianesi_high,Plant-Pollinator,Monolayer,1,1.0,1
+3963,M_SD_Albrecht_15_2012,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3964,M_SD_Albrecht_15_2012,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3973,M_SD_Correia_2016_sanctuary,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3974,M_SD_Correia_2016_sanctuary,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3981,M_SD_Chama_2013_net3,Plant-Seed Dispersers,Monolayer,1,0.8,1
+3982,M_SD_Chama_2013_net3,Plant-Seed Dispersers,Monolayer,1,1.0,1
+3983,M_PL_Lara-Romero_2016_nevero-Pasture-2,Plant-Pollinator,Monolayer,1,0.8,1
+3984,M_PL_Lara-Romero_2016_nevero-Pasture-2,Plant-Pollinator,Monolayer,1,1.0,1
+3987,M_PL_Orford_2016_Farm-2012-B9,Plant-Pollinator,Monolayer,1,0.8,1
+3988,M_PL_Orford_2016_Farm-2012-B9,Plant-Pollinator,Monolayer,1,1.0,1
+4003,M_PL_Kaiser-Bunbury_2014_061_21,Plant-Pollinator,Monolayer,1,0.8,1
+4004,M_PL_Kaiser-Bunbury_2014_061_21,Plant-Pollinator,Monolayer,1,1.0,1
+4009,M_SD_Garcia_et_al,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4010,M_SD_Garcia_et_al,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4011,M_PL_Brosi2017_Brush_Creek_Sign_2014_Manipulation,Plant-Pollinator,Monolayer,1,0.8,1
+4012,M_PL_Brosi2017_Brush_Creek_Sign_2014_Manipulation,Plant-Pollinator,Monolayer,1,1.0,1
+4027,M_PL_Lara-Romero_2016_penalara-Pasture-2,Plant-Pollinator,Monolayer,1,0.8,1
+4028,M_PL_Lara-Romero_2016_penalara-Pasture-2,Plant-Pollinator,Monolayer,1,1.0,1
+4031,M_SD_Dehling_2017_Wayqecha_4,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4032,M_SD_Dehling_2017_Wayqecha_4,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4033,M_PL_Brosi2017_Gothic_CG_2014_Control,Plant-Pollinator,Monolayer,1,0.8,1
+4034,M_PL_Brosi2017_Gothic_CG_2014_Control,Plant-Pollinator,Monolayer,1,1.0,1
+4049,M_PL_Kaiser-Bunbury_2014_061_40,Plant-Pollinator,Monolayer,1,0.8,1
+4050,M_PL_Kaiser-Bunbury_2014_061_40,Plant-Pollinator,Monolayer,1,1.0,1
+4053,A_HP_Macfadyen2009_paras-herb_A3,Host-Parasite,Monolayer,1,0.8,1
+4054,A_HP_Macfadyen2009_paras-herb_A3,Host-Parasite,Monolayer,1,1.0,1
+4057,M_PL_Kaiser-Bunbury_2010_060_14,Plant-Pollinator,Monolayer,1,0.8,1
+4058,M_PL_Kaiser-Bunbury_2010_060_14,Plant-Pollinator,Monolayer,1,1.0,1
+4075,M_SD_Fontanari_2018,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4076,M_SD_Fontanari_2018,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4093,M_PL_Kaiser-Bunbury_2010_060_17,Plant-Pollinator,Monolayer,1,0.8,1
+4094,M_PL_Kaiser-Bunbury_2010_060_17,Plant-Pollinator,Monolayer,1,1.0,1
+4111,M_SD_Costa_2013_endozoochory,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4112,M_SD_Costa_2013_endozoochory,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4121,A_HP_belay27,Host-Parasite,Monolayer,1,0.8,1
+4122,A_HP_belay27,Host-Parasite,Monolayer,1,1.0,1
+4123,M_SD_Albrecht_11_2012,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4124,M_SD_Albrecht_11_2012,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4135,M_PL_Kaiser-Bunbury_2010_060_09,Plant-Pollinator,Monolayer,1,0.8,1
+4136,M_PL_Kaiser-Bunbury_2010_060_09,Plant-Pollinator,Monolayer,1,1.0,1
+4137,A_PH_HennemanXXXX-1,Plant-Herbivore,Monolayer,1,0.8,1
+4138,A_PH_HennemanXXXX-1,Plant-Herbivore,Monolayer,1,1.0,1
+4149,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-2,Plant-Pollinator,Monolayer,1,0.8,1
+4150,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-2,Plant-Pollinator,Monolayer,1,1.0,1
+4155,M_PL_Maglianesi_low,Plant-Pollinator,Monolayer,1,0.8,1
+4156,M_PL_Maglianesi_low,Plant-Pollinator,Monolayer,1,1.0,1
+4157,M_SD_Hayashi_1996,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4158,M_SD_Hayashi_1996,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4159,M_PL_Mosquin1967,Plant-Pollinator,Monolayer,1,0.8,1
+4160,M_PL_Mosquin1967,Plant-Pollinator,Monolayer,1,1.0,1
+4161,A_HP_Hadfield_2013_029,Host-Parasite,Monolayer,1,0.8,1
+4162,A_HP_Hadfield_2013_029,Host-Parasite,Monolayer,1,1.0,1
+4169,M_SD_Ruggera_2016_La_Florida,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4170,M_SD_Ruggera_2016_La_Florida,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4171,M_SD_Ramos-Robles_2016_net7,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4172,M_SD_Ramos-Robles_2016_net7,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4173,M_PL_Kaiser-Bunbury_2014_061_29,Plant-Pollinator,Monolayer,1,0.8,1
+4174,M_PL_Kaiser-Bunbury_2014_061_29,Plant-Pollinator,Monolayer,1,1.0,1
+4187,M_PL_Gilarranz_2015_Difuntos,Plant-Pollinator,Monolayer,1,0.8,1
+4188,M_PL_Gilarranz_2015_Difuntos,Plant-Pollinator,Monolayer,1,1.0,1
+4189,A_HP_Macfadyen2009_paras-herb_B2,Host-Parasite,Monolayer,1,0.8,1
+4190,A_HP_Macfadyen2009_paras-herb_B2,Host-Parasite,Monolayer,1,1.0,1
+4207,A_HP_Pilosof2013_1982,Host-Parasite,Monolayer,1,0.8,1
+4208,A_HP_Pilosof2013_1982,Host-Parasite,Monolayer,1,1.0,1
+4209,M_SD_Ruggera_2016_Pozo_Verde,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4210,M_SD_Ruggera_2016_Pozo_Verde,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4215,M_PL_Vazquez,Plant-Pollinator,Monolayer,1,0.8,1
+4216,M_PL_Vazquez,Plant-Pollinator,Monolayer,1,1.0,1
+4233,M_SD_Noma_1997,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4234,M_SD_Noma_1997,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4237,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-3,Plant-Pollinator,Monolayer,1,0.8,1
+4238,M_PL_Lara-Romero_2016_nevero-Encroachedpasture-3,Plant-Pollinator,Monolayer,1,1.0,1
+4239,M_SD_Castro-Luna_2012,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4240,M_SD_Castro-Luna_2012,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4243,M_PL_Orford_2016_Field-28,Plant-Pollinator,Monolayer,1,0.8,1
+4244,M_PL_Orford_2016_Field-28,Plant-Pollinator,Monolayer,1,1.0,1
+4259,M_PL_Dupont2003,Plant-Pollinator,Monolayer,1,0.8,1
+4260,M_PL_Dupont2003,Plant-Pollinator,Monolayer,1,1.0,1
+4275,M_PL_Lara-Romero_2016_penalara-Pasture-3,Plant-Pollinator,Monolayer,1,0.8,1
+4276,M_PL_Lara-Romero_2016_penalara-Pasture-3,Plant-Pollinator,Monolayer,1,1.0,1
+4295,M_PL_Orford_2016_Field-42,Plant-Pollinator,Monolayer,1,0.8,1
+4296,M_PL_Orford_2016_Field-42,Plant-Pollinator,Monolayer,1,1.0,1
+4299,M_SD_Munster_2008,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4300,M_SD_Munster_2008,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4303,M_SD_Prather_2000,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4304,M_SD_Prather_2000,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4307,A_HP_Hadfield_2013_044,Host-Parasite,Monolayer,1,0.8,1
+4308,A_HP_Hadfield_2013_044,Host-Parasite,Monolayer,1,1.0,1
+4317,A_HP_Hadfield_2013_001,Host-Parasite,Monolayer,1,0.8,1
+4318,A_HP_Hadfield_2013_001,Host-Parasite,Monolayer,1,1.0,1
+4325,M_PL_Orford_2016_Farm-2012-B5,Plant-Pollinator,Monolayer,1,0.8,1
+4326,M_PL_Orford_2016_Farm-2012-B5,Plant-Pollinator,Monolayer,1,1.0,1
+4327,M_SD_Galetti1996-1,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4328,M_SD_Galetti1996-1,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4341,M_SD_Camargo_2009,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4342,M_SD_Camargo_2009,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4343,M_SD_Lima_2016,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4344,M_SD_Lima_2016,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4347,M_SD_VELHO,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4348,M_SD_VELHO,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4363,M_PL_Brosi2017_Gothic_Road_Steep_2013_Control,Plant-Pollinator,Monolayer,1,0.8,1
+4364,M_PL_Brosi2017_Gothic_Road_Steep_2013_Control,Plant-Pollinator,Monolayer,1,1.0,1
+4371,M_SD_Poulsen_2001_2002_primates,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4372,M_SD_Poulsen_2001_2002_primates,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4375,M_SD_Kalko_BCI_zero_intx_removed,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4376,M_SD_Kalko_BCI_zero_intx_removed,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4383,M_SD_Quitian_2018_1000Fragmented,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4384,M_SD_Quitian_2018_1000Fragmented,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4389,M_SD_Kamruzzaman_2008,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4390,M_SD_Kamruzzaman_2008,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4395,M_PL_Gilarranz_2015_LaBrava,Plant-Pollinator,Monolayer,1,0.8,1
+4396,M_PL_Gilarranz_2015_LaBrava,Plant-Pollinator,Monolayer,1,1.0,1
+4411,M_PL_Trojelsgaard_2015_Site14_Hierro2,Plant-Pollinator,Monolayer,1,0.8,1
+4412,M_PL_Trojelsgaard_2015_Site14_Hierro2,Plant-Pollinator,Monolayer,1,1.0,1
+4413,M_SD_Crome1975,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4414,M_SD_Crome1975,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4417,M_SD_da_Silva_2015_site_A,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4418,M_SD_da_Silva_2015_site_A,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4427,M_SD_Correa_2016_Apaporis,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4428,M_SD_Correa_2016_Apaporis,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4439,A_HP_Macfadyen2009_paras-herb_A1,Host-Parasite,Monolayer,1,0.8,1
+4440,A_HP_Macfadyen2009_paras-herb_A1,Host-Parasite,Monolayer,1,1.0,1
+4453,M_SD_David_2011_tree_focal_watches,Plant-Seed Dispersers,Monolayer,1,0.8,1
+4454,M_SD_David_2011_tree_focal_watches,Plant-Seed Dispersers,Monolayer,1,1.0,1
+4463,A_HP_Pilosof2013_1983,Host-Parasite,Monolayer,1,0.8,1
+4464,A_HP_Pilosof2013_1983,Host-Parasite,Monolayer,1,1.0,1

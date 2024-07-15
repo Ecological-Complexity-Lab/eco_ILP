@@ -1,0 +1,33 @@
+"model","metric","value"
+"Random Forest","roc_auc",0.813833265310602
+"Random Forest","pr_auc",0.354014885111563
+"Random Forest","recall",0.636098824037113
+"Random Forest","precision",0.160365555132459
+"Random Forest","specificity",0.831004883176035
+"Random Forest","f1",0.256152927120669
+"Random Forest","balanced_accuracy",0.733551853606574
+"Random Forest","mcc",0.254467616048069
+"Logistic Regression","roc_auc",0.798821746470837
+"Logistic Regression","pr_auc",0.354014885111563
+"Logistic Regression","recall",0.544934728665444
+"Logistic Regression","precision",0.178954827280779
+"Logistic Regression","specificity",0.873135962511222
+"Logistic Regression","f1",0.269429775430736
+"Logistic Regression","balanced_accuracy",0.709035345588333
+"Logistic Regression","mcc",0.253069710362915
+"XGBoost","roc_auc",0.74600199053162
+"XGBoost","pr_auc",0.354014885111563
+"XGBoost","recall",0.239615924047902
+"XGBoost","precision",0.332783937668565
+"XGBoost","specificity",0.975622440712112
+"XGBoost","f1",0.278617575111334
+"XGBoost","balanced_accuracy",0.607619182380007
+"XGBoost","mcc",0.251872013805924
+"Voting","roc_auc",0.809601159883742
+"Voting","pr_auc",0.354014885111563
+"Voting","recall",0.490559930952638
+"Voting","precision",0.216328084114373
+"Voting","specificity",0.909825475726455
+"Voting","f1",0.300250924458531
+"Voting","balanced_accuracy",0.700192703339546
+"Voting","mcc",0.27486914503322
