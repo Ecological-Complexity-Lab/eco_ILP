@@ -1,26 +1,20 @@
 <!-- 
 library(badger)
-badger::badge_doi(doi = "10.1111/2041-210X.13569", color = 'orange')
+badger::badge_doi(doi = "XXXXXXX", color = 'orange')
 badger::badge_lifecycle(stage = 'stable', color = 'green')
 badger::badge_repostatus(status = 'Active')
 badger::badge_custom(x = 'devtools installation', y = 'v2.0', color = 'yellow')
 -->
 
-
-<!--
-* Make sure Infomap’s basics fits the latest version
-* Makes the packages in Installation are the dependencies
-* Are installation instructions still correct? Try to follow them
-* Examples should be accompanied with figures whenever possioble
--->
-
 [![](https://img.shields.io/badge/doi-10.1111/2041--210X.13569-orange.svg)](https://doi.org/10.1111/2041-210X.13569) [![](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable) [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) ![](https://img.shields.io/badge/devtools%20installation-v2.0-yellow.svg)
 
 ## :wave: About
-**This repository contains the code for the R package infomapecology.** infomapecology is an R package with functions that prepare monolayer and multilayer networks for analysis with Infomap, run Infomap from within R and parse the results back to R. It is inspired by analysis of ecological networks but is suitable for other areas of research as well.
+**This repository contains the code and results for the paper "Inductive link prediction boosts data availability and enables
+cross-community link prediction in ecological networks".** 
 
 ## :page_facing_up: Paper and citing
-Farage, C., D. Edler, A. Eklöf, M. Rosvall, and S. Pilosof. **Identifying flow modules in ecological networks using Infomap**. Methods in Ecology and Evolution. 2021. [DOI:10.1111/2041-210X.13569](https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13569). Please cite the paper when implementing the guidelines we describe or when using the package, this helps us a lot!
+B. Biton, R. Puzis, and S. Pilosof. **Inductive link prediction boosts data availability and enables
+cross-community link prediction in ecological networks**. 
 
 https://ecoevorxiv.org
 
