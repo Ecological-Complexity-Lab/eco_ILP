@@ -24,8 +24,11 @@ Please visit the [wiki](https://github.com/Ecological-Complexity-Lab/eco_ILP/wik
 
 
 ## :green_heart: Acknowledgements
-This work was supported by:
+We thank Prof. Peter Mucha for comments and suggestions.
+
+This work was supported by the following grants to Shai Pilosof:
+* Israeli Data Science Initiative
 * Israel Science Foundation (grant 1281/20) to Shai Pilosof.
-* Swedish Research Council (grant no. 2016-00796) to Martin Rosvall.
-* Swedish Research Council (grant no. 2016-04919) to Anna Eklof.
+* Human Frontiers Science Program Organization (grant number RGY0064/2022)
+* Binational Science Foundation (NSF-BSF grant 2022721)
 
