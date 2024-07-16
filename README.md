@@ -22,6 +22,9 @@ badger::badge_custom(x = 'devtools installation', y = 'v2.0', color = 'yellow')
 ## :page_facing_up: Paper and citing
 Farage, C., D. Edler, A. Eklöf, M. Rosvall, and S. Pilosof. **Identifying flow modules in ecological networks using Infomap**. Methods in Ecology and Evolution. 2021. [DOI:10.1111/2041-210X.13569](https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13569). Please cite the paper when implementing the guidelines we describe or when using the package, this helps us a lot!
 
+https://ecoevorxiv.org
+
+
 ## How to use the data and code
 Please visit the [wiki](https://github.com/Ecological-Complexity-Lab/eco_ILP/wiki) for more information about scripts and data descriptions.
 
