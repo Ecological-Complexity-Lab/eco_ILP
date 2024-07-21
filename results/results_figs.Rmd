@@ -1623,6 +1623,6 @@ summary_table <- networks_table %>%
 print(summary_table)
 
 if (export){
-  write.csv(summary_table, file = paste0(path_final_results, "networks_summary_properties.csv"), row.names = FALSE)
+  write.csv(summary_table, file = paste0(path_final_results, "SI_networks_summary_properties.csv"), row.names = FALSE)
 }
 ```

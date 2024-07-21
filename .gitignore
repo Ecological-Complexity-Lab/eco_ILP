@@ -1,1 +1,5 @@
 results/.DS_Store
+results/final/.DS_Store
+data/processed/features/features_R.csv
+results/delete_me.ipynb
+results/raw/results_domains.csv
