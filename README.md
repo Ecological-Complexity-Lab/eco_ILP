@@ -9,8 +9,7 @@ badger::badge_custom(x = 'devtools installation', y = 'v2.0', color = 'yellow')
 [![](https://img.shields.io/badge/doi-10.1111/2041--210X.13569-orange.svg)](https://doi.org/10.1111/2041-210X.13569) [![](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable) [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) ![](https://img.shields.io/badge/devtools%20installation-v2.0-yellow.svg)
 -->
 ## :wave: About
-**This repository contains the code and results for the paper "Inductive link prediction boosts data availability and enables
-cross-community link prediction in ecological networks".** 
+This repository contains the code and results for the paper "Inductive link prediction boosts data availability and enables cross-community link prediction in ecological networks".
 
 ## :page_facing_up: Paper and citing
 The paper is in review... wish us good luck!
