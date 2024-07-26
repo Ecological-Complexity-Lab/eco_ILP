@@ -13,11 +13,7 @@ badger::badge_custom(x = 'devtools installation', y = 'v2.0', color = 'yellow')
 cross-community link prediction in ecological networks".** 
 
 ## :page_facing_up: Paper and citing
-B. Biton, R. Puzis, and S. Pilosof. **Inductive link prediction boosts data availability and enables
-cross-community link prediction in ecological networks**. 
-
-https://ecoevorxiv.org
-
+The paper is in review... wish us good luck!
 
 ## How to use the data and code
 Please visit the [wiki](https://github.com/Ecological-Complexity-Lab/eco_ILP/wiki) for more information about scripts and data descriptions.
