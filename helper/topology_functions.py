@@ -513,7 +513,10 @@ def getNetFeatures(edgelist_df, features_list=[], log_time=True):
     B = pandas2bigraph(edgelist_df)
     
     # Get the subsample id
-    subsample_id = edgelist_df['subsample_ID'].iloc[0]
+    if 'subsample_ID' in edgelist_df.columns:
+        subsample_id = edgelist_df['subsample_ID'].iloc[0]
+    else:
+        subsample_id = None
 
     ## get top and bottom nodes
     bottom_nodes = [n for n in B.nodes if B.nodes[n]['bipartite'] == 0]
@@ -577,7 +580,7 @@ def getNetFeatures(edgelist_df, features_list=[], log_time=True):
 
         kwargs = {}
 
-        if log_time:
+        if log_time and subsample_id:
             kwargs.update({'subsample_ID': subsample_id})
 
         if feature in feature_functions:

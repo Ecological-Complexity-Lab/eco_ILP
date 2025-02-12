@@ -1,0 +1,539 @@
+"name","community","network_size","interactions_count","connectance","non_interactions_count"
+"A\_HP\_Arai\_mcgregor","Host-Parasite",65,114,0.16,4111
+"A\_HP\_Arai\_parsnip","Host-Parasite",70,158,0.18,4742
+"A\_HP\_Arthur1976","Host-Parasite",36,78,0.38,1218
+"A\_HP\_Chinniah1978","Host-Parasite",28,51,0.44,733
+"A\_HP\_Font","Host-Parasite",21,46,0.44,395
+"A\_HP\_Hadfield\_2013\_001","Host-Parasite",28,61,0.34,723
+"A\_HP\_Hadfield\_2013\_002","Host-Parasite",40,95,0.24,1505
+"A\_HP\_Hadfield\_2013\_003","Host-Parasite",30,107,0.61,793
+"A\_HP\_Hadfield\_2013\_004","Host-Parasite",25,51,0.51,574
+"A\_HP\_Hadfield\_2013\_005","Host-Parasite",20,51,0.56,349
+"A\_HP\_Hadfield\_2013\_006","Host-Parasite",53,123,0.21,2686
+"A\_HP\_Hadfield\_2013\_007","Host-Parasite",25,43,0.32,582
+"A\_HP\_Hadfield\_2013\_008","Host-Parasite",26,33,0.28,643
+"A\_HP\_Hadfield\_2013\_009","Host-Parasite",34,96,0.35,1060
+"A\_HP\_Hadfield\_2013\_010","Host-Parasite",49,88,0.16,2313
+"A\_HP\_Hadfield\_2013\_012","Host-Parasite",30,63,0.39,837
+"A\_HP\_Hadfield\_2013\_013","Host-Parasite",33,103,0.43,986
+"A\_HP\_Hadfield\_2013\_014","Host-Parasite",30,68,0.33,832
+"A\_HP\_Hadfield\_2013\_016","Host-Parasite",25,51,0.51,574
+"A\_HP\_Hadfield\_2013\_018","Host-Parasite",36,127,0.4,1169
+"A\_HP\_Hadfield\_2013\_019","Host-Parasite",27,36,0.22,693
+"A\_HP\_Hadfield\_2013\_020","Host-Parasite",31,104,0.43,857
+"A\_HP\_Hadfield\_2013\_021","Host-Parasite",24,57,0.42,519
+"A\_HP\_Hadfield\_2013\_022","Host-Parasite",34,68,0.24,1088
+"A\_HP\_Hadfield\_2013\_024","Host-Parasite",25,38,0.33,587
+"A\_HP\_Hadfield\_2013\_025","Host-Parasite",52,104,0.19,2600
+"A\_HP\_Hadfield\_2013\_026","Host-Parasite",33,142,0.53,947
+"A\_HP\_Hadfield\_2013\_027","Host-Parasite",43,106,0.25,1743
+"A\_HP\_Hadfield\_2013\_029","Host-Parasite",49,79,0.15,2322
+"A\_HP\_Hadfield\_2013\_030","Host-Parasite",27,50,0.27,679
+"A\_HP\_Hadfield\_2013\_031","Host-Parasite",50,170,0.28,2330
+"A\_HP\_Hadfield\_2013\_032","Host-Parasite",21,29,0.26,412
+"A\_HP\_Hadfield\_2013\_033","Host-Parasite",47,198,0.36,2011
+"A\_HP\_Hadfield\_2013\_036","Host-Parasite",21,30,0.29,411
+"A\_HP\_Hadfield\_2013\_037","Host-Parasite",38,90,0.25,1354
+"A\_HP\_Hadfield\_2013\_038","Host-Parasite",28,51,0.3,733
+"A\_HP\_Hadfield\_2013\_040","Host-Parasite",22,26,0.27,458
+"A\_HP\_Hadfield\_2013\_041","Host-Parasite",21,50,0.45,391
+"A\_HP\_Hadfield\_2013\_042","Host-Parasite",46,80,0.16,2036
+"A\_HP\_Hadfield\_2013\_043","Host-Parasite",36,72,0.32,1224
+"A\_HP\_Hadfield\_2013\_044","Host-Parasite",53,197,0.28,2612
+"A\_HP\_Hadfield\_2013\_045","Host-Parasite",23,57,0.51,472
+"A\_HP\_Hadfield\_2013\_046","Host-Parasite",56,202,0.3,2934
+"A\_HP\_Hadfield\_2013\_047","Host-Parasite",33,97,0.42,992
+"A\_HP\_Hadfield\_2013\_048","Host-Parasite",26,71,0.42,605
+"A\_HP\_Hadfield\_2013\_049","Host-Parasite",24,39,0.41,537
+"A\_HP\_Hadfield\_2013\_050","Host-Parasite",60,225,0.25,3375
+"A\_HP\_Hadfield\_2013\_051","Host-Parasite",39,107,0.32,1414
+"A\_HP\_Leong1981","Host-Parasite",50,91,0.23,2409
+"A\_HP\_Macfadyen2009\_paras-herb\_A1","Host-Parasite",49,70,0.12,2331
+"A\_HP\_Macfadyen2009\_paras-herb\_A10","Host-Parasite",31,40,0.24,921
+"A\_HP\_Macfadyen2009\_paras-herb\_A2","Host-Parasite",37,41,0.15,1328
+"A\_HP\_Macfadyen2009\_paras-herb\_A3","Host-Parasite",24,27,0.23,549
+"A\_HP\_Macfadyen2009\_paras-herb\_A4","Host-Parasite",35,44,0.17,1181
+"A\_HP\_Macfadyen2009\_paras-herb\_A5","Host-Parasite",39,47,0.15,1474
+"A\_HP\_Macfadyen2009\_paras-herb\_A6","Host-Parasite",29,32,0.19,809
+"A\_HP\_Macfadyen2009\_paras-herb\_A7","Host-Parasite",25,31,0.23,594
+"A\_HP\_Macfadyen2009\_paras-herb\_A8","Host-Parasite",46,69,0.17,2047
+"A\_HP\_Macfadyen2009\_paras-herb\_A9","Host-Parasite",20,19,0.25,381
+"A\_HP\_Macfadyen2009\_paras-herb\_B1","Host-Parasite",31,42,0.21,919
+"A\_HP\_Macfadyen2009\_paras-herb\_B2","Host-Parasite",25,31,0.25,594
+"A\_HP\_Macfadyen2009\_paras-herb\_B3","Host-Parasite",28,38,0.22,746
+"A\_HP\_Macfadyen2009\_paras-herb\_B4","Host-Parasite",25,30,0.22,595
+"A\_HP\_Macfadyen2009\_paras-herb\_B5","Host-Parasite",32,33,0.16,991
+"A\_HP\_Macfadyen2009\_paras-herb\_B6","Host-Parasite",21,22,0.22,419
+"A\_HP\_Macfadyen2009\_paras-herb\_B7","Host-Parasite",21,22,0.28,419
+"A\_HP\_Macfadyen2009\_paras-herb\_B8","Host-Parasite",28,38,0.26,746
+"A\_HP\_Mendonca","Host-Parasite",34,44,0.18,1112
+"A\_HP\_Pilosof2013\_1982","Host-Parasite",67,136,0.16,4353
+"A\_HP\_Pilosof2013\_1983","Host-Parasite",60,134,0.2,3466
+"A\_HP\_Pilosof2013\_1984","Host-Parasite",62,158,0.24,3686
+"A\_HP\_Pilosof2013\_1985","Host-Parasite",49,106,0.23,2295
+"A\_HP\_Pilosof2013\_1986","Host-Parasite",56,122,0.19,3014
+"A\_HP\_Pilosof2013\_1987","Host-Parasite",44,80,0.19,1856
+"A\_HP\_Sugiura2007","Host-Parasite",35,40,0.2,1185
+"A\_HP\_belay10","Host-Parasite",31,50,0.23,911
+"A\_HP\_belay14","Host-Parasite",22,33,0.29,451
+"A\_HP\_belay15","Host-Parasite",21,26,0.29,415
+"A\_HP\_belay23","Host-Parasite",40,46,0.14,1554
+"A\_HP\_belay25","Host-Parasite",72,247,0.21,4937
+"A\_HP\_belay26","Host-Parasite",137,490,0.11,18279
+"A\_HP\_belay27","Host-Parasite",53,132,0.25,2677
+"A\_HP\_belay30","Host-Parasite",44,104,0.31,1832
+"A\_HP\_daGraca","Host-Parasite",41,63,0.15,1618
+"A\_PH\_Bergamini","Plant-Herbivore",71,154,0.16,4887
+"A\_PH\_HennemanXXXX-1","Plant-Herbivore",37,43,0.13,1326
+"A\_PH\_HennemanXXXX-2","Plant-Herbivore",43,49,0.11,1800
+"A\_PH\_Ibanez2013","Plant-Herbivore",50,294,0.47,2206
+"A\_PH\_Joern-Altuda","Plant-Herbivore",74,184,0.16,5292
+"A\_PH\_Joern-Marathon","Plant-Herbivore",73,153,0.14,5176
+"A\_PH\_Macfadyen2009\_plant-herb\_A1","Plant-Herbivore",78,88,0.1,5996
+"A\_PH\_Macfadyen2009\_plant-herb\_A10","Plant-Herbivore",37,37,0.2,1332
+"A\_PH\_Macfadyen2009\_plant-herb\_A2","Plant-Herbivore",53,63,0.17,2746
+"A\_PH\_Macfadyen2009\_plant-herb\_A3","Plant-Herbivore",64,65,0.11,4031
+"A\_PH\_Macfadyen2009\_plant-herb\_A4","Plant-Herbivore",31,32,0.15,929
+"A\_PH\_Macfadyen2009\_plant-herb\_A5","Plant-Herbivore",30,29,0.15,871
+"A\_PH\_Macfadyen2009\_plant-herb\_A6","Plant-Herbivore",29,28,0.15,813
+"A\_PH\_Macfadyen2009\_plant-herb\_A7","Plant-Herbivore",39,41,0.18,1480
+"A\_PH\_Macfadyen2009\_plant-herb\_B1","Plant-Herbivore",59,72,0.16,3409
+"A\_PH\_Macfadyen2009\_plant-herb\_B2","Plant-Herbivore",21,22,0.2,419
+"A\_PH\_Macfadyen2009\_plant-herb\_B3","Plant-Herbivore",55,59,0.11,2966
+"A\_PH\_Macfadyen2009\_plant-herb\_B4","Plant-Herbivore",37,36,0.11,1333
+"A\_PH\_Macfadyen2009\_plant-herb\_B8","Plant-Herbivore",47,49,0.14,2160
+"A\_PH\_Macfadyen2009\_plant-herb\_B9","Plant-Herbivore",30,31,0.22,869
+"A\_PH\_basset1996","Plant-Herbivore",35,41,0.19,1184
+"A\_PH\_lewis2002","Plant-Herbivore",30,30,0.16,870
+"A\_PH\_site01\_period01\_Martins","Plant-Herbivore",26,40,0.33,636
+"A\_PH\_site03\_period01\_Martins","Plant-Herbivore",25,42,0.33,583
+"A\_PH\_site04\_period01\_Martins","Plant-Herbivore",30,38,0.2,862
+"A\_PH\_site05\_period01\_Martins","Plant-Herbivore",39,50,0.19,1471
+"A\_PH\_site06\_period01\_Martins","Plant-Herbivore",31,36,0.24,925
+"A\_PH\_site07\_period01\_Martins","Plant-Herbivore",21,32,0.4,409
+"A\_PH\_site08\_period01\_Martins","Plant-Herbivore",33,55,0.3,1034
+"A\_PH\_site10\_period01\_Martins","Plant-Herbivore",34,51,0.25,1105
+"A\_PH\_stary2008","Plant-Herbivore",42,42,0.11,1722
+"A\_PH\_ueckert","Plant-Herbivore",57,180,0.3,3069
+"M\_PL\_Abreu","Plant-Pollinator",22,32,0.29,452
+"M\_PL\_Arizmendi","Plant-Pollinator",26,44,0.42,632
+"M\_PL\_Barrett1987","Plant-Pollinator",112,166,0.15,12378
+"M\_PL\_Bezerra2009","Plant-Pollinator",26,71,0.42,605
+"M\_PL\_Brosi2017\_Back\_of\_Baldy\_Bend\_2014\_Control","Plant-Pollinator",27,36,0.2,693
+"M\_PL\_Brosi2017\_Belleview\_Bench\_2013\_Control","Plant-Pollinator",26,37,0.22,639
+"M\_PL\_Brosi2017\_Brush\_Creek\_Sign\_2014\_Control","Plant-Pollinator",23,36,0.3,493
+"M\_PL\_Brosi2017\_Brush\_Creek\_Sign\_2014\_Manipulation","Plant-Pollinator",24,34,0.29,542
+"M\_PL\_Brosi2017\_Brush\_Creek\_Steep\_2013\_Manipulation","Plant-Pollinator",20,37,0.37,363
+"M\_PL\_Brosi2017\_Cold\_Springs\_Ranch\_2014\_Control","Plant-Pollinator",24,34,0.29,542
+"M\_PL\_Brosi2017\_Cold\_Springs\_Ranch\_2014\_Manipulation","Plant-Pollinator",22,27,0.28,457
+"M\_PL\_Brosi2017\_Gothic\_CG\_2014\_Control","Plant-Pollinator",23,36,0.28,493
+"M\_PL\_Brosi2017\_Gothic\_CG\_2014\_Manipulation","Plant-Pollinator",24,35,0.25,541
+"M\_PL\_Brosi2017\_Gothic\_Road\_2013\_Control","Plant-Pollinator",24,36,0.27,540
+"M\_PL\_Brosi2017\_Gothic\_Road\_2013\_Manipulation","Plant-Pollinator",23,40,0.3,489
+"M\_PL\_Brosi2017\_Gothic\_Road\_Grate\_2014\_Control","Plant-Pollinator",26,38,0.29,638
+"M\_PL\_Brosi2017\_Gothic\_Road\_Grate\_2014\_Manipulation","Plant-Pollinator",22,32,0.29,452
+"M\_PL\_Brosi2017\_Gothic\_Road\_Steep\_2013\_Control","Plant-Pollinator",23,33,0.26,496
+"M\_PL\_Brosi2017\_Gothic\_Road\_Steep\_2014\_Control","Plant-Pollinator",25,42,0.27,583
+"M\_PL\_Brosi2017\_Gothic\_Road\_Steep\_2014\_Manipulation","Plant-Pollinator",23,35,0.28,494
+"M\_PL\_Brosi2017\_Gothic\_Town\_2014\_Control","Plant-Pollinator",26,42,0.27,634
+"M\_PL\_Brosi2017\_Gothic\_Town\_2014\_Manipulation","Plant-Pollinator",22,36,0.32,448
+"M\_PL\_Brosi2017\_Judd\_Falls\_TH\_2013\_Control","Plant-Pollinator",24,38,0.27,538
+"M\_PL\_Brosi2017\_Judd\_Falls\_TH\_2013\_Manipulation","Plant-Pollinator",20,28,0.28,372
+"M\_PL\_Brosi2017\_Judd\_Falls\_TH\_2014\_Control","Plant-Pollinator",20,31,0.31,369
+"M\_PL\_Brosi2017\_Judd\_Falls\_TH\_2014\_Manipulation","Plant-Pollinator",21,35,0.36,406
+"M\_PL\_Brosi2017\_Past\_Rustlers\_2013\_Manipulation","Plant-Pollinator",22,37,0.33,447
+"M\_PL\_Brosi2017\_Rustlers\_2013\_Control","Plant-Pollinator",22,37,0.33,447
+"M\_PL\_Brosi2017\_Rustlers\_2013\_Manipulation","Plant-Pollinator",21,38,0.39,403
+"M\_PL\_Burkle2013","Plant-Pollinator",78,250,0.19,5834
+"M\_PL\_Carstensen2017\_ElHierro","Plant-Pollinator",65,88,0.15,4137
+"M\_PL\_Carstensen2017\_Fuerteventura","Plant-Pollinator",65,92,0.18,4133
+"M\_PL\_Carstensen2017\_Gomera","Plant-Pollinator",67,116,0.15,4373
+"M\_PL\_Carstensen2017\_GranCanaria","Plant-Pollinator",60,108,0.2,3492
+"M\_PL\_Carstensen2017\_TenerifeSyd","Plant-Pollinator",84,139,0.13,6917
+"M\_PL\_Carstensen2017\_Teno","Plant-Pollinator",78,134,0.12,5950
+"M\_PL\_Carstensen2017\_WesternSahara","Plant-Pollinator",72,105,0.15,5079
+"M\_PL\_Dicks2002-1","Plant-Pollinator",78,146,0.14,5938
+"M\_PL\_Dicks2002-2","Plant-Pollinator",50,84,0.16,2416
+"M\_PL\_Dupont2003","Plant-Pollinator",49,106,0.25,2295
+"M\_PL\_Dupont2009-1","Plant-Pollinator",205,425,0.12,41600
+"M\_PL\_Gilarranz\_2015\_Difuntos","Plant-Pollinator",92,191,0.12,8273
+"M\_PL\_Gilarranz\_2015\_ElMorro","Plant-Pollinator",82,137,0.13,6587
+"M\_PL\_Gilarranz\_2015\_LaBrava","Plant-Pollinator",80,170,0.13,6230
+"M\_PL\_Gilarranz\_2015\_PiedraAlta","Plant-Pollinator",88,168,0.12,7576
+"M\_PL\_Gilarranz\_2015\_Vigilancia","Plant-Pollinator",106,242,0.1,10994
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_01","Plant-Pollinator",50,95,0.22,2405
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_02","Plant-Pollinator",50,107,0.23,2393
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_03","Plant-Pollinator",58,130,0.22,3234
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_04","Plant-Pollinator",67,134,0.14,4355
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_08","Plant-Pollinator",47,72,0.14,2137
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_09","Plant-Pollinator",56,77,0.12,3059
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_10","Plant-Pollinator",35,49,0.18,1176
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_11","Plant-Pollinator",34,43,0.15,1113
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_12","Plant-Pollinator",35,59,0.24,1166
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_13","Plant-Pollinator",36,47,0.26,1249
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_14","Plant-Pollinator",48,99,0.24,2205
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_15","Plant-Pollinator",51,131,0.25,2470
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_16","Plant-Pollinator",56,114,0.17,3022
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_17","Plant-Pollinator",52,100,0.17,2604
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_18","Plant-Pollinator",48,75,0.13,2229
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_19","Plant-Pollinator",31,41,0.18,920
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_20","Plant-Pollinator",30,37,0.17,863
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_21","Plant-Pollinator",28,32,0.24,752
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_22","Plant-Pollinator",44,64,0.16,1872
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_23","Plant-Pollinator",39,57,0.18,1464
+"M\_PL\_Kaiser-Bunbury\_2010\_060\_24","Plant-Pollinator",36,45,0.15,1251
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_02","Plant-Pollinator",22,27,0.32,457
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_03","Plant-Pollinator",20,24,0.29,376
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_04","Plant-Pollinator",20,28,0.31,372
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_05","Plant-Pollinator",34,51,0.19,1105
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_06","Plant-Pollinator",35,58,0.22,1167
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_07","Plant-Pollinator",30,61,0.35,839
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_08","Plant-Pollinator",25,35,0.31,590
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_13","Plant-Pollinator",26,39,0.29,637
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_15","Plant-Pollinator",24,33,0.31,543
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_16","Plant-Pollinator",27,41,0.27,688
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_18","Plant-Pollinator",29,35,0.18,806
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_19","Plant-Pollinator",32,44,0.19,980
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_21","Plant-Pollinator",29,43,0.22,798
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_23","Plant-Pollinator",34,44,0.2,1112
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_24","Plant-Pollinator",29,46,0.23,795
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_26","Plant-Pollinator",20,28,0.31,372
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_28","Plant-Pollinator",27,36,0.24,693
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_29","Plant-Pollinator",26,39,0.27,637
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_30","Plant-Pollinator",20,30,0.33,370
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_31","Plant-Pollinator",24,35,0.37,541
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_32","Plant-Pollinator",22,27,0.32,457
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_36","Plant-Pollinator",24,31,0.26,545
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_37","Plant-Pollinator",30,43,0.21,857
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_38","Plant-Pollinator",33,49,0.21,1040
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_39","Plant-Pollinator",30,46,0.29,854
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_40","Plant-Pollinator",33,57,0.28,1032
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_43","Plant-Pollinator",23,25,0.21,504
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_45","Plant-Pollinator",34,50,0.2,1106
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_46","Plant-Pollinator",34,45,0.16,1111
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_47","Plant-Pollinator",33,56,0.28,1033
+"M\_PL\_Kaiser-Bunbury\_2014\_061\_48","Plant-Pollinator",23,32,0.25,497
+"M\_PL\_Lara-Romero\_2016\_nevero-Encroachedpasture-1","Plant-Pollinator",36,35,0.16,1261
+"M\_PL\_Lara-Romero\_2016\_nevero-Encroachedpasture-10","Plant-Pollinator",56,70,0.12,3066
+"M\_PL\_Lara-Romero\_2016\_nevero-Encroachedpasture-2","Plant-Pollinator",36,36,0.16,1260
+"M\_PL\_Lara-Romero\_2016\_nevero-Encroachedpasture-3","Plant-Pollinator",38,44,0.18,1400
+"M\_PL\_Lara-Romero\_2016\_nevero-Encroachedpasture-4","Plant-Pollinator",40,52,0.19,1548
+"M\_PL\_Lara-Romero\_2016\_nevero-Encroachedpasture-5","Plant-Pollinator",36,42,0.17,1254
+"M\_PL\_Lara-Romero\_2016\_nevero-Encroachedpasture-6","Plant-Pollinator",27,27,0.21,702
+"M\_PL\_Lara-Romero\_2016\_nevero-Encroachedpasture-7","Plant-Pollinator",35,37,0.13,1188
+"M\_PL\_Lara-Romero\_2016\_nevero-Encroachedpasture-8","Plant-Pollinator",67,94,0.14,4395
+"M\_PL\_Lara-Romero\_2016\_nevero-Encroachedpasture-9","Plant-Pollinator",47,58,0.16,2151
+"M\_PL\_Lara-Romero\_2016\_nevero-Pasture-1","Plant-Pollinator",32,36,0.21,988
+"M\_PL\_Lara-Romero\_2016\_nevero-Pasture-2","Plant-Pollinator",34,37,0.2,1119
+"M\_PL\_Lara-Romero\_2016\_nevero-Pasture-3","Plant-Pollinator",26,29,0.24,647
+"M\_PL\_Lara-Romero\_2016\_nevero-Pasture-4","Plant-Pollinator",31,33,0.18,928
+"M\_PL\_Lara-Romero\_2016\_nevero-Pasture-5","Plant-Pollinator",29,30,0.19,811
+"M\_PL\_Lara-Romero\_2016\_nevero-Pasture-6","Plant-Pollinator",21,21,0.23,420
+"M\_PL\_Lara-Romero\_2016\_nevero-Pasture-8","Plant-Pollinator",35,46,0.2,1179
+"M\_PL\_Lara-Romero\_2016\_nevero-Pasture-9","Plant-Pollinator",38,57,0.24,1387
+"M\_PL\_Lara-Romero\_2016\_penalara-Encroachedpasture-1","Plant-Pollinator",44,70,0.19,1866
+"M\_PL\_Lara-Romero\_2016\_penalara-Encroachedpasture-10","Plant-Pollinator",49,63,0.16,2338
+"M\_PL\_Lara-Romero\_2016\_penalara-Encroachedpasture-2","Plant-Pollinator",44,63,0.16,1873
+"M\_PL\_Lara-Romero\_2016\_penalara-Encroachedpasture-3","Plant-Pollinator",36,57,0.28,1239
+"M\_PL\_Lara-Romero\_2016\_penalara-Encroachedpasture-4","Plant-Pollinator",45,64,0.16,1961
+"M\_PL\_Lara-Romero\_2016\_penalara-Encroachedpasture-5","Plant-Pollinator",54,67,0.13,2849
+"M\_PL\_Lara-Romero\_2016\_penalara-Encroachedpasture-6","Plant-Pollinator",56,86,0.19,3050
+"M\_PL\_Lara-Romero\_2016\_penalara-Encroachedpasture-7","Plant-Pollinator",45,63,0.18,1962
+"M\_PL\_Lara-Romero\_2016\_penalara-Encroachedpasture-8","Plant-Pollinator",34,50,0.22,1106
+"M\_PL\_Lara-Romero\_2016\_penalara-Encroachedpasture-9","Plant-Pollinator",31,41,0.2,920
+"M\_PL\_Lara-Romero\_2016\_penalara-Pasture-1","Plant-Pollinator",23,27,0.26,502
+"M\_PL\_Lara-Romero\_2016\_penalara-Pasture-10","Plant-Pollinator",33,56,0.28,1033
+"M\_PL\_Lara-Romero\_2016\_penalara-Pasture-2","Plant-Pollinator",29,40,0.26,801
+"M\_PL\_Lara-Romero\_2016\_penalara-Pasture-3","Plant-Pollinator",28,33,0.18,751
+"M\_PL\_Lara-Romero\_2016\_penalara-Pasture-4","Plant-Pollinator",31,39,0.23,922
+"M\_PL\_Lara-Romero\_2016\_penalara-Pasture-5","Plant-Pollinator",27,37,0.29,692
+"M\_PL\_Lara-Romero\_2016\_penalara-Pasture-6","Plant-Pollinator",24,31,0.26,545
+"M\_PL\_Lara-Romero\_2016\_penalara-Pasture-7","Plant-Pollinator",33,46,0.23,1043
+"M\_PL\_Lara-Romero\_2016\_penalara-Pasture-8","Plant-Pollinator",38,59,0.25,1385
+"M\_PL\_Lara-Romero\_2016\_penalara-Pasture-9","Plant-Pollinator",39,61,0.27,1460
+"M\_PL\_LasCasas","Plant-Pollinator",36,59,0.38,1237
+"M\_PL\_Llaviuco\_tinoco","Plant-Pollinator",31,53,0.23,908
+"M\_PL\_Lundgren2005","Plant-Pollinator",41,62,0.16,1619
+"M\_PL\_Maglianesi\_high","Plant-Pollinator",29,37,0.21,804
+"M\_PL\_Maglianesi\_low","Plant-Pollinator",28,40,0.27,744
+"M\_PL\_Maglianesi\_mid","Plant-Pollinator",31,47,0.28,914
+"M\_PL\_Magrach2017\_Sweden\_2011\_high","Plant-Pollinator",76,130,0.1,5646
+"M\_PL\_Magrach2017\_UK\_2011\_low","Plant-Pollinator",61,98,0.11,3623
+"M\_PL\_Magrach2017\_UK\_2012\_high","Plant-Pollinator",50,83,0.13,2417
+"M\_PL\_Maruyama","Plant-Pollinator",24,36,0.33,540
+"M\_PL\_Mazan\_tinoco","Plant-Pollinator",26,51,0.38,625
+"M\_PL\_Memmott1999","Plant-Pollinator",104,299,0.15,10517
+"M\_PL\_Mosquin1967","Plant-Pollinator",22,33,0.29,451
+"M\_PL\_Motten1982","Plant-Pollinator",57,143,0.25,3106
+"M\_PL\_Nero\_tinoco","Plant-Pollinator",28,52,0.3,732
+"M\_PL\_Olesen-3","Plant-Pollinator",22,30,0.25,454
+"M\_PL\_Olesen2002","Plant-Pollinator",27,52,0.29,677
+"M\_PL\_Ollerton2003","Plant-Pollinator",65,103,0.2,4122
+"M\_PL\_Orford\_2016\_Farm-2012-B1","Plant-Pollinator",44,57,0.16,1879
+"M\_PL\_Orford\_2016\_Farm-2012-B2","Plant-Pollinator",48,63,0.12,2241
+"M\_PL\_Orford\_2016\_Farm-2012-B4","Plant-Pollinator",63,81,0.11,3888
+"M\_PL\_Orford\_2016\_Farm-2012-B5","Plant-Pollinator",25,30,0.2,595
+"M\_PL\_Orford\_2016\_Farm-2012-B6","Plant-Pollinator",63,78,0.1,3891
+"M\_PL\_Orford\_2016\_Farm-2012-B7","Plant-Pollinator",44,52,0.12,1884
+"M\_PL\_Orford\_2016\_Farm-2012-B8","Plant-Pollinator",54,84,0.19,2832
+"M\_PL\_Orford\_2016\_Farm-2012-B9","Plant-Pollinator",27,31,0.2,698
+"M\_PL\_Orford\_2016\_Farm-2013-B1","Plant-Pollinator",20,21,0.28,379
+"M\_PL\_Orford\_2016\_Farm-2013-B2","Plant-Pollinator",25,26,0.26,599
+"M\_PL\_Orford\_2016\_Farm-2013-B4","Plant-Pollinator",32,36,0.19,988
+"M\_PL\_Orford\_2016\_Farm-2013-B7","Plant-Pollinator",20,21,0.25,379
+"M\_PL\_Orford\_2016\_Field-10","Plant-Pollinator",38,49,0.19,1395
+"M\_PL\_Orford\_2016\_Field-13","Plant-Pollinator",41,45,0.16,1636
+"M\_PL\_Orford\_2016\_Field-15","Plant-Pollinator",40,51,0.2,1549
+"M\_PL\_Orford\_2016\_Field-19","Plant-Pollinator",53,65,0.16,2744
+"M\_PL\_Orford\_2016\_Field-24","Plant-Pollinator",29,34,0.22,807
+"M\_PL\_Orford\_2016\_Field-27","Plant-Pollinator",50,76,0.23,2424
+"M\_PL\_Orford\_2016\_Field-28","Plant-Pollinator",47,62,0.18,2147
+"M\_PL\_Orford\_2016\_Field-33","Plant-Pollinator",29,38,0.28,803
+"M\_PL\_Orford\_2016\_Field-36","Plant-Pollinator",39,54,0.27,1467
+"M\_PL\_Orford\_2016\_Field-4","Plant-Pollinator",47,58,0.19,2151
+"M\_PL\_Orford\_2016\_Field-40","Plant-Pollinator",30,36,0.29,864
+"M\_PL\_Orford\_2016\_Field-42","Plant-Pollinator",45,58,0.18,1967
+"M\_PL\_Orford\_2016\_Field-45","Plant-Pollinator",44,51,0.14,1885
+"M\_PL\_Orford\_2016\_Field-49","Plant-Pollinator",39,48,0.21,1473
+"M\_PL\_Orford\_2016\_Field-51","Plant-Pollinator",42,51,0.21,1713
+"M\_PL\_Orford\_2016\_Field-54","Plant-Pollinator",61,87,0.19,3634
+"M\_PL\_Orford\_2016\_Field-55","Plant-Pollinator",61,86,0.15,3635
+"M\_PL\_Orford\_2016\_Field-58","Plant-Pollinator",47,58,0.16,2151
+"M\_PL\_Orford\_2016\_Field-63","Plant-Pollinator",42,48,0.22,1716
+"M\_PL\_Orford\_2016\_Field-64","Plant-Pollinator",39,46,0.17,1475
+"M\_PL\_Orford\_2016\_Field-67","Plant-Pollinator",50,64,0.16,2436
+"M\_PL\_Orford\_2016\_Field-7","Plant-Pollinator",40,55,0.2,1545
+"M\_PL\_Orford\_2016\_Field-72","Plant-Pollinator",43,62,0.22,1787
+"M\_PL\_Orford\_2016\_Field-9","Plant-Pollinator",41,56,0.18,1625
+"M\_PL\_Primack1983-1","Plant-Pollinator",75,118,0.12,5507
+"M\_PL\_Sabatino\_4","Plant-Pollinator",92,191,0.12,8273
+"M\_PL\_Sabatino\_5","Plant-Pollinator",82,137,0.13,6587
+"M\_PL\_Santos2010","Plant-Pollinator",76,190,0.15,5586
+"M\_PL\_Schemske1978","Plant-Pollinator",39,59,0.26,1462
+"M\_PL\_Small1976","Plant-Pollinator",47,141,0.32,2068
+"M\_PL\_Trojelsgaard\_2015\_Site10\_TenerifeTeno2","Plant-Pollinator",63,96,0.12,3873
+"M\_PL\_Trojelsgaard\_2015\_Site11\_Gomera1","Plant-Pollinator",44,67,0.18,1869
+"M\_PL\_Trojelsgaard\_2015\_Site12\_Gomera2","Plant-Pollinator",52,80,0.16,2624
+"M\_PL\_Trojelsgaard\_2015\_Site13\_Hierro1","Plant-Pollinator",41,54,0.2,1627
+"M\_PL\_Trojelsgaard\_2015\_Site14\_Hierro2","Plant-Pollinator",47,57,0.15,2152
+"M\_PL\_Trojelsgaard\_2015\_Site1\_WesternSahara1","Plant-Pollinator",47,57,0.15,2152
+"M\_PL\_Trojelsgaard\_2015\_Site2\_WesternSahara2","Plant-Pollinator",54,68,0.15,2848
+"M\_PL\_Trojelsgaard\_2015\_Site3\_Fuerteventura1","Plant-Pollinator",44,54,0.24,1882
+"M\_PL\_Trojelsgaard\_2015\_Site4\_Fuerteventura2","Plant-Pollinator",40,52,0.25,1548
+"M\_PL\_Trojelsgaard\_2015\_Site5\_GranCanaria1","Plant-Pollinator",45,79,0.23,1946
+"M\_PL\_Trojelsgaard\_2015\_Site6\_GranCanaria2","Plant-Pollinator",43,57,0.19,1792
+"M\_PL\_Trojelsgaard\_2015\_Site7\_TenerifeSouth1","Plant-Pollinator",53,73,0.13,2736
+"M\_PL\_Trojelsgaard\_2015\_Site8\_TenerifeSouth2","Plant-Pollinator",67,96,0.14,4393
+"M\_PL\_Trojelsgaard\_2015\_Site9\_TenerifeTeno1","Plant-Pollinator",48,72,0.16,2232
+"M\_PL\_Tur2013-CN","Plant-Pollinator",128,434,0.11,15950
+"M\_PL\_Tur2013-PC","Plant-Pollinator",110,360,0.12,11740
+"M\_PL\_Vazquez","Plant-Pollinator",104,164,0.13,10652
+"M\_PL\_Vizentin","Plant-Pollinator",64,123,0.25,3973
+"M\_PL\_bartomeus","Plant-Pollinator",111,318,0.13,12003
+"M\_PL\_caradonna\_rmbl\_interaction\_networks\_data\_EDI","Plant-Pollinator",139,631,0.15,18690
+"M\_PL\_cotton","Plant-Pollinator",43,87,0.21,1762
+"M\_SD\_Aguiar\_2007","Plant-Seed Dispersers",28,40,0.27,744
+"M\_SD\_Albrecht\_111\_2012","Plant-Seed Dispersers",20,28,0.29,372
+"M\_SD\_Albrecht\_11\_2012","Plant-Seed Dispersers",20,38,0.4,362
+"M\_SD\_Albrecht\_15\_2012","Plant-Seed Dispersers",22,42,0.36,442
+"M\_SD\_Albrecht\_203\_2012","Plant-Seed Dispersers",24,39,0.29,537
+"M\_SD\_Albrecht\_301\_2012","Plant-Seed Dispersers",25,40,0.35,585
+"M\_SD\_Albrecht\_30\_2012","Plant-Seed Dispersers",21,36,0.35,405
+"M\_SD\_Albrecht\_315\_2012","Plant-Seed Dispersers",24,51,0.4,525
+"M\_SD\_Andrade\_2011","Plant-Seed Dispersers",37,77,0.23,1292
+"M\_SD\_Athie\_2009","Plant-Seed Dispersers",57,138,0.19,3111
+"M\_SD\_Baird1980","Plant-Seed Dispersers",28,50,0.34,734
+"M\_SD\_Balasubramanian\_1996","Plant-Seed Dispersers",81,225,0.21,6336
+"M\_SD\_Bastazini\_2018","Plant-Seed Dispersers",32,72,0.31,952
+"M\_SD\_Beehler1983","Plant-Seed Dispersers",40,119,0.43,1481
+"M\_SD\_Bleher\_2003","Plant-Seed Dispersers",50,79,0.13,2421
+"M\_SD\_Blendinger\_2015","Plant-Seed Dispersers",39,71,0.19,1450
+"M\_SD\_Bollen\_2000","Plant-Seed Dispersers",48,159,0.33,2145
+"M\_SD\_Burns\_2013","Plant-Seed Dispersers",26,102,0.71,574
+"M\_SD\_Camargo\_2009","Plant-Seed Dispersers",24,33,0.26,543
+"M\_SD\_Carlo2003-1","Plant-Seed Dispersers",41,68,0.17,1613
+"M\_SD\_Carlo2003-2","Plant-Seed Dispersers",52,94,0.15,2610
+"M\_SD\_Carlo2003-3","Plant-Seed Dispersers",34,46,0.17,1110
+"M\_SD\_Carlo2003-4","Plant-Seed Dispersers",34,50,0.18,1106
+"M\_SD\_Casallas-Pabon\_2017","Plant-Seed Dispersers",46,87,0.18,2029
+"M\_SD\_Castano\_2009","Plant-Seed Dispersers",57,126,0.16,3123
+"M\_SD\_Castano\_2018","Plant-Seed Dispersers",50,108,0.22,2392
+"M\_SD\_Castley\_2001","Plant-Seed Dispersers",34,53,0.32,1103
+"M\_SD\_Castro-Luna\_2012","Plant-Seed Dispersers",51,104,0.22,2497
+"M\_SD\_Castro\_2015","Plant-Seed Dispersers",65,131,0.17,4094
+"M\_SD\_Chama\_2013\_net1","Plant-Seed Dispersers",28,50,0.29,734
+"M\_SD\_Chama\_2013\_net2","Plant-Seed Dispersers",38,80,0.27,1364
+"M\_SD\_Chama\_2013\_net3","Plant-Seed Dispersers",39,97,0.28,1424
+"M\_SD\_Chama\_2013\_net4","Plant-Seed Dispersers",42,81,0.22,1683
+"M\_SD\_Chama\_2013\_net5","Plant-Seed Dispersers",44,100,0.25,1836
+"M\_SD\_Chama\_2013\_net6","Plant-Seed Dispersers",30,45,0.24,855
+"M\_SD\_Chama\_2013\_net7","Plant-Seed Dispersers",36,61,0.22,1235
+"M\_SD\_Chama\_2013\_net8","Plant-Seed Dispersers",35,68,0.26,1157
+"M\_SD\_Chama\_2013\_net9","Plant-Seed Dispersers",29,56,0.28,785
+"M\_SD\_Chatterjee\_2014","Plant-Seed Dispersers",30,77,0.48,823
+"M\_SD\_Chen\_1999","Plant-Seed Dispersers",67,101,0.1,4388
+"M\_SD\_Combined\_Schleuning","Plant-Seed Dispersers",121,419,0.14,14222
+"M\_SD\_Correa\_2016\_Apaporis","Plant-Seed Dispersers",43,104,0.41,1745
+"M\_SD\_Correa\_2016\_Caqueta","Plant-Seed Dispersers",43,76,0.4,1773
+"M\_SD\_Correia\_2016\_non-sanctuary","Plant-Seed Dispersers",27,34,0.24,695
+"M\_SD\_Correia\_2016\_sanctuary","Plant-Seed Dispersers",50,70,0.12,2430
+"M\_SD\_Costa\_2013\_endozoochory","Plant-Seed Dispersers",36,66,0.2,1230
+"M\_SD\_Costa\_2016","Plant-Seed Dispersers",20,37,0.39,363
+"M\_SD\_Crome1975","Plant-Seed Dispersers",79,143,0.28,6098
+"M\_SD\_Daru\_2015","Plant-Seed Dispersers",48,129,0.4,2175
+"M\_SD\_David\_2011\_tree\_focal\_watches","Plant-Seed Dispersers",27,72,0.47,657
+"M\_SD\_Debussche\_1989","Plant-Seed Dispersers",74,207,0.17,5269
+"M\_SD\_Dehling\_2017\_San\_Pedro\_1","Plant-Seed Dispersers",75,203,0.16,5422
+"M\_SD\_Dehling\_2017\_San\_Pedro\_2","Plant-Seed Dispersers",64,114,0.13,3982
+"M\_SD\_Dehling\_2017\_San\_Pedro\_3","Plant-Seed Dispersers",49,93,0.18,2308
+"M\_SD\_Dehling\_2017\_San\_Pedro\_4","Plant-Seed Dispersers",50,80,0.13,2420
+"M\_SD\_Dehling\_2017\_Wayqecha\_1","Plant-Seed Dispersers",40,75,0.19,1525
+"M\_SD\_Dehling\_2017\_Wayqecha\_2","Plant-Seed Dispersers",42,94,0.22,1670
+"M\_SD\_Dehling\_2017\_Wayqecha\_3","Plant-Seed Dispersers",40,56,0.15,1544
+"M\_SD\_Dehling\_2017\_Wayqecha\_4","Plant-Seed Dispersers",38,61,0.17,1383
+"M\_SD\_Donatti\_2011","Plant-Seed Dispersers",91,273,0.13,8008
+"M\_SD\_Dos\_Reis\_1983\_Cult\_et\_form\_sec","Plant-Seed Dispersers",44,65,0.15,1871
+"M\_SD\_Dowsett-Lemaire\_1988","Plant-Seed Dispersers",142,380,0.18,19784
+"M\_SD\_Dubost\_1984","Plant-Seed Dispersers",98,222,0.35,9382
+"M\_SD\_Estrada-Villegas\_2010","Plant-Seed Dispersers",20,21,0.22,379
+"M\_SD\_Fadini\_2004","Plant-Seed Dispersers",54,92,0.13,2824
+"M\_SD\_Falcon\_2018","Plant-Seed Dispersers",47,100,0.27,2109
+"M\_SD\_Faria\_1996","Plant-Seed Dispersers",24,41,0.32,535
+"M\_SD\_Fonseca\_2007","Plant-Seed Dispersers",54,164,0.27,2752
+"M\_SD\_Fontanari\_2018","Plant-Seed Dispersers",88,361,0.19,7383
+"M\_SD\_Frost1980","Plant-Seed Dispersers",26,110,0.69,566
+"M\_SD\_Fuentes\_1994","Plant-Seed Dispersers",21,56,0.52,385
+"M\_SD\_Galetti1996-1","Plant-Seed Dispersers",25,38,0.3,587
+"M\_SD\_Galetti1996-2","Plant-Seed Dispersers",64,146,0.14,3950
+"M\_SD\_Garcia-Estrada\_2012","Plant-Seed Dispersers",44,102,0.45,1834
+"M\_SD\_Garcia-Morales\_2012","Plant-Seed Dispersers",22,36,0.34,448
+"M\_SD\_Garcia\_2014\_Puhi-Puhi\_River","Plant-Seed Dispersers",23,42,0.38,487
+"M\_SD\_Garcia\_2016","Plant-Seed Dispersers",24,56,0.47,520
+"M\_SD\_Garcia\_et\_al","Plant-Seed Dispersers",20,22,0.26,378
+"M\_SD\_Genrich\_2017","Plant-Seed Dispersers",36,43,0.21,1253
+"M\_SD\_Gomes\_2013","Plant-Seed Dispersers",29,31,0.2,810
+"M\_SD\_Gorchov\_1995","Plant-Seed Dispersers",100,226,0.15,9774
+"M\_SD\_Hamann1999","Plant-Seed Dispersers",55,197,0.29,2828
+"M\_SD\_Hasui\_1998","Plant-Seed Dispersers",75,136,0.1,5489
+"M\_SD\_Hayashi\_1996","Plant-Seed Dispersers",20,29,0.32,371
+"M\_SD\_Heleno","Plant-Seed Dispersers",49,76,0.23,2325
+"M\_SD\_Hladik\_1969","Plant-Seed Dispersers",70,98,0.3,4802
+"M\_SD\_Hodgkison\_2001","Plant-Seed Dispersers",42,62,0.21,1702
+"M\_SD\_Hovestadt\_1997","Plant-Seed Dispersers",91,351,0.2,7930
+"M\_SD\_Innis\_1989\_ANVF","Plant-Seed Dispersers",22,36,0.42,448
+"M\_SD\_Innis\_1989\_NVF\_CNVF","Plant-Seed Dispersers",46,84,0.41,2032
+"M\_SD\_Jaroszewicz\_2013","Plant-Seed Dispersers",197,365,0.38,38444
+"M\_SD\_Jayasekara\_2007","Plant-Seed Dispersers",36,66,0.21,1230
+"M\_SD\_Jordano-1","Plant-Seed Dispersers",58,150,0.18,3214
+"M\_SD\_KITA\_mammals\_added","Plant-Seed Dispersers",43,106,0.25,1743
+"M\_SD\_Kalko\_BCI\_zero\_intx\_removed","Plant-Seed Dispersers",54,165,0.25,2751
+"M\_SD\_Kamruzzaman\_2008","Plant-Seed Dispersers",46,95,0.19,2021
+"M\_SD\_Kantak1979","Plant-Seed Dispersers",32,86,0.64,938
+"M\_SD\_Kessler-Rios\_2012","Plant-Seed Dispersers",45,124,0.3,1901
+"M\_SD\_Kitamura\_2002","Plant-Seed Dispersers",213,682,0.34,44687
+"M\_SD\_Koike\_2008","Plant-Seed Dispersers",21,55,0.69,386
+"M\_SD\_Kone\_2008","Plant-Seed Dispersers",59,131,0.36,3350
+"M\_SD\_Lambert1989","Plant-Seed Dispersers",85,500,0.34,6725
+"M\_SD\_Lessa\_2013","Plant-Seed Dispersers",30,72,0.45,828
+"M\_SD\_Lima\_2016","Plant-Seed Dispersers",36,57,0.19,1239
+"M\_SD\_Llewellyn\_1952","Plant-Seed Dispersers",22,35,0.41,449
+"M\_SD\_Lopez\_\_\_Vaughn\_2004","Plant-Seed Dispersers",49,119,0.24,2282
+"M\_SD\_Lou\_2005","Plant-Seed Dispersers",40,86,0.27,1514
+"M\_SD\_Lou\_2007","Plant-Seed Dispersers",26,61,0.46,615
+"M\_SD\_MacFarlane\_2016","Plant-Seed Dispersers",20,31,0.37,369
+"M\_SD\_Malacco\_da\_Silva\_2014","Plant-Seed Dispersers",51,88,0.14,2513
+"M\_SD\_Marcos\_da\_Silva\_2013","Plant-Seed Dispersers",41,65,0.36,1616
+"M\_SD\_Menke\_2012\_edge\_highly\_dist","Plant-Seed Dispersers",47,115,0.37,2094
+"M\_SD\_Menke\_2012\_edge\_little\_dist","Plant-Seed Dispersers",45,104,0.39,1921
+"M\_SD\_Menke\_2012\_interior\_highly\_dist","Plant-Seed Dispersers",42,88,0.32,1676
+"M\_SD\_Menke\_2012\_interior\_little\_dist","Plant-Seed Dispersers",38,69,0.29,1375
+"M\_SD\_Montalvan\_2015","Plant-Seed Dispersers",74,113,0.12,5363
+"M\_SD\_Moreno-Mosquera\_2011","Plant-Seed Dispersers",31,41,0.19,920
+"M\_SD\_Munster\_2008","Plant-Seed Dispersers",35,68,0.35,1157
+"M\_SD\_Nogales\_2017","Plant-Seed Dispersers",65,128,0.16,4097
+"M\_SD\_Noma\_1997","Plant-Seed Dispersers",32,61,0.29,963
+"M\_SD\_Novoa\_2011","Plant-Seed Dispersers",29,45,0.29,796
+"M\_SD\_Odonnell\_1994","Plant-Seed Dispersers",47,126,0.26,2083
+"M\_SD\_Olesen\_2018","Plant-Seed Dispersers",64,131,0.16,3965
+"M\_SD\_Ortiz-Pulido\_2000","Plant-Seed Dispersers",84,176,0.11,6880
+"M\_SD\_Palacios\_2016","Plant-Seed Dispersers",135,720,0.16,17505
+"M\_SD\_Palita\_2011","Plant-Seed Dispersers",32,75,0.48,949
+"M\_SD\_Passos\_2003","Plant-Seed Dispersers",29,43,0.31,798
+"M\_SD\_Plein\_2013\_Farmland\_autumn","Plant-Seed Dispersers",36,69,0.24,1227
+"M\_SD\_Plein\_2013\_Farmland\_summer","Plant-Seed Dispersers",29,56,0.27,785
+"M\_SD\_Plein\_2013\_Forest\_autumn","Plant-Seed Dispersers",36,85,0.27,1211
+"M\_SD\_Plein\_2013\_Orchard\_autumn","Plant-Seed Dispersers",43,74,0.17,1775
+"M\_SD\_Plein\_2013\_Orchard\_summer","Plant-Seed Dispersers",34,55,0.21,1101
+"M\_SD\_Poulin1999\_psychotria","Plant-Seed Dispersers",24,53,0.37,523
+"M\_SD\_Poulsen\_2001\_2002\_primates","Plant-Seed Dispersers",155,426,0.41,23599
+"M\_SD\_Prather\_2000","Plant-Seed Dispersers",27,41,0.37,688
+"M\_SD\_Pratt\_1985","Plant-Seed Dispersers",36,102,0.32,1194
+"M\_SD\_Preciado-Benitez\_2015","Plant-Seed Dispersers",24,39,0.28,537
+"M\_SD\_Purificacao\_2014\_forest\_dry","Plant-Seed Dispersers",65,107,0.11,4118
+"M\_SD\_Purificacao\_2014\_savannah\_dry","Plant-Seed Dispersers",37,43,0.15,1326
+"M\_SD\_Quijano-Vasquez\_2017","Plant-Seed Dispersers",22,27,0.28,457
+"M\_SD\_Quitian\_2018\_1000Fragmented","Plant-Seed Dispersers",57,162,0.22,3087
+"M\_SD\_Quitian\_2018\_1000Natural","Plant-Seed Dispersers",61,185,0.21,3536
+"M\_SD\_Quitian\_2018\_2000Fragmented","Plant-Seed Dispersers",34,58,0.2,1098
+"M\_SD\_Quitian\_2018\_2000Natural","Plant-Seed Dispersers",27,47,0.26,682
+"M\_SD\_Ramos-Robles\_2016\_net10","Plant-Seed Dispersers",28,31,0.17,753
+"M\_SD\_Ramos-Robles\_2016\_net2","Plant-Seed Dispersers",24,26,0.18,550
+"M\_SD\_Ramos-Robles\_2016\_net3","Plant-Seed Dispersers",33,49,0.24,1040
+"M\_SD\_Ramos-Robles\_2016\_net6","Plant-Seed Dispersers",24,36,0.3,540
+"M\_SD\_Ramos-Robles\_2016\_net7","Plant-Seed Dispersers",22,27,0.26,457
+"M\_SD\_Ramos-Robles\_2016\_net8","Plant-Seed Dispersers",36,58,0.2,1238
+"M\_SD\_Ramos-Robles\_2018","Plant-Seed Dispersers",80,220,0.15,6180
+"M\_SD\_Reid\_2011","Plant-Seed Dispersers",22,37,0.31,447
+"M\_SD\_Robinson\_2015","Plant-Seed Dispersers",35,62,0.36,1163
+"M\_SD\_Ruggera\_2016\_A","Plant-Seed Dispersers",38,63,0.17,1381
+"M\_SD\_Ruggera\_2016\_Chorro\_de\_Loros","Plant-Seed Dispersers",43,74,0.16,1775
+"M\_SD\_Ruggera\_2016\_EcoPortal","Plant-Seed Dispersers",33,82,0.3,1007
+"M\_SD\_Ruggera\_2016\_El\_Noglar","Plant-Seed Dispersers",30,72,0.33,828
+"M\_SD\_Ruggera\_2016\_La\_Florida","Plant-Seed Dispersers",31,46,0.19,915
+"M\_SD\_Ruggera\_2016\_Los\_Chorizos","Plant-Seed Dispersers",41,97,0.23,1584
+"M\_SD\_Ruggera\_2016\_Pozo\_Verde","Plant-Seed Dispersers",27,68,0.38,661
+"M\_SD\_Ruggera\_2016\_Quebrada\_del\_Port","Plant-Seed Dispersers",22,38,0.36,446
+"M\_SD\_Ruggera\_2016\_San\_Javier","Plant-Seed Dispersers",29,48,0.23,793
+"M\_SD\_Ruggera\_2016\_Sevenguillar","Plant-Seed Dispersers",35,75,0.25,1150
+"M\_SD\_SAAV2","Plant-Seed Dispersers",39,46,0.12,1475
+"M\_SD\_SARM\_whole\_network\_from\_paper","Plant-Seed Dispersers",72,102,0.1,5082
+"M\_SD\_Sanchez\_2012\_Iguazu","Plant-Seed Dispersers",22,40,0.47,444
+"M\_SD\_Sanitjan\_2009\_ML\_primary\_forest","Plant-Seed Dispersers",28,54,0.37,730
+"M\_SD\_Sanitjan\_2009\_XTBG\_arboretum","Plant-Seed Dispersers",25,73,0.51,552
+"M\_SD\_Sankamethawee\_2011","Plant-Seed Dispersers",58,211,0.3,3153
+"M\_SD\_Santiago\_2014\_close\_to\_remnant","Plant-Seed Dispersers",21,39,0.4,402
+"M\_SD\_Santiago\_2014\_far\_from\_remnant","Plant-Seed Dispersers",24,44,0.33,532
+"M\_SD\_Scherer\_2007","Plant-Seed Dispersers",29,50,0.25,791
+"M\_SD\_Sethi\_2012","Plant-Seed Dispersers",37,70,0.38,1299
+"M\_SD\_Skeate\_1985","Plant-Seed Dispersers",52,125,0.19,2579
+"M\_SD\_Skutch\_1980","Plant-Seed Dispersers",98,267,0.28,9337
+"M\_SD\_Snow\_1988\_DJF","Plant-Seed Dispersers",33,116,0.43,973
+"M\_SD\_Snow\_1988\_JJA","Plant-Seed Dispersers",38,101,0.28,1343
+"M\_SD\_Snow\_1988\_SON","Plant-Seed Dispersers",43,132,0.29,1717
+"M\_SD\_Sorensen\_1981","Plant-Seed Dispersers",25,46,0.3,579
+"M\_SD\_Souza\_Gomes\_2008\_primary\_forest","Plant-Seed Dispersers",20,21,0.21,379
+"M\_SD\_Souza\_Gomes\_2008\_secondary\_fore","Plant-Seed Dispersers",29,36,0.17,805
+"M\_SD\_Souza\_Laurindo\_2017","Plant-Seed Dispersers",22,34,0.3,450
+"M\_SD\_Suarez-Castro\_2015","Plant-Seed Dispersers",35,54,0.18,1171
+"M\_SD\_Suzuki\_2007","Plant-Seed Dispersers",70,195,0.44,4705
+"M\_SD\_Toledo\_2018","Plant-Seed Dispersers",60,87,0.14,3513
+"M\_SD\_Tutin1997","Plant-Seed Dispersers",24,72,0.56,504
+"M\_SD\_VELHO","Plant-Seed Dispersers",34,53,0.32,1103
+"M\_SD\_VELHO2","Plant-Seed Dispersers",28,44,0.33,740
+"M\_SD\_Velazquez\_2010","Plant-Seed Dispersers",27,29,0.16,700
+"M\_SD\_Vizentin-Bugoni\_2019\_KAH","Plant-Seed Dispersers",21,32,0.31,409
+"M\_SD\_Vizentin-Bugoni\_2019\_MOA","Plant-Seed Dispersers",25,39,0.34,586
+"M\_SD\_Vizentin-Bugoni\_2019\_TAN","Plant-Seed Dispersers",28,44,0.33,740
+"M\_SD\_Vizentin-Bugoni\_2019\_WAI","Plant-Seed Dispersers",26,39,0.24,637
+"M\_SD\_Walther\_2018","Plant-Seed Dispersers",24,42,0.44,534
+"M\_SD\_Williams\_1996\_Marsden","Plant-Seed Dispersers",27,44,0.35,685
+"M\_SD\_Wilms\_2006","Plant-Seed Dispersers",42,68,0.15,1696
+"M\_SD\_Wolfe\_2014","Plant-Seed Dispersers",24,33,0.24,543
+"M\_SD\_Wyman\_2017","Plant-Seed Dispersers",36,53,0.24,1243
+"M\_SD\_continuous\_Farwig","Plant-Seed Dispersers",36,81,0.33,1215
+"M\_SD\_da\_Silva\_2015\_site\_A","Plant-Seed Dispersers",31,36,0.15,925
+"M\_SD\_da\_Silva\_2015\_site\_B","Plant-Seed Dispersers",61,154,0.17,3567
+"M\_SD\_da\_Silva\_2015\_site\_C","Plant-Seed Dispersers",30,38,0.17,862
+"M\_SD\_de\_Oliveira\_1999","Plant-Seed Dispersers",63,168,0.2,3801
+"M\_SD\_de\_la\_Pena\_2003","Plant-Seed Dispersers",37,82,0.27,1287
+"M\_SD\_fragmented\_Farwig","Plant-Seed Dispersers",35,86,0.37,1139

@@ -1,33 +1,33 @@
 "model","metric","value"
-"Random Forest","roc_auc",0.813833265310602
+"Random Forest","roc_auc",0.803535104679923
 "Random Forest","pr_auc",0.354014885111563
-"Random Forest","recall",0.636098824037113
-"Random Forest","precision",0.160365555132459
-"Random Forest","specificity",0.831004883176035
-"Random Forest","f1",0.256152927120669
-"Random Forest","balanced_accuracy",0.733551853606574
-"Random Forest","mcc",0.254467616048069
-"Logistic Regression","roc_auc",0.798821746470837
+"Random Forest","recall",0.610098176718093
+"Random Forest","precision",0.152586276678989
+"Random Forest","specificity",0.828070598024832
+"Random Forest","f1",0.244118281890783
+"Random Forest","balanced_accuracy",0.719084387371462
+"Random Forest","mcc",0.237978911968524
+"Logistic Regression","roc_auc",0.807562707219865
 "Logistic Regression","pr_auc",0.354014885111563
-"Logistic Regression","recall",0.544934728665444
-"Logistic Regression","precision",0.178954827280779
-"Logistic Regression","specificity",0.873135962511222
-"Logistic Regression","f1",0.269429775430736
-"Logistic Regression","balanced_accuracy",0.709035345588333
-"Logistic Regression","mcc",0.253069710362915
-"XGBoost","roc_auc",0.74600199053162
+"Logistic Regression","recall",0.600604164419031
+"Logistic Regression","precision",0.160975045542608
+"Logistic Regression","specificity",0.841154444128145
+"Logistic Regression","f1",0.253899480069324
+"Logistic Regression","balanced_accuracy",0.720879304273588
+"Logistic Regression","mcc",0.246412351577683
+"XGBoost","roc_auc",0.666760383523136
 "XGBoost","pr_auc",0.354014885111563
-"XGBoost","recall",0.239615924047902
-"XGBoost","precision",0.332783937668565
-"XGBoost","specificity",0.975622440712112
-"XGBoost","f1",0.278617575111334
-"XGBoost","balanced_accuracy",0.607619182380007
-"XGBoost","mcc",0.251872013805924
-"Voting","roc_auc",0.809601159883742
+"XGBoost","recall",0.202826626389039
+"XGBoost","precision",0.355454717337871
+"XGBoost","specificity",0.981337727461843
+"XGBoost","f1",0.25827723588405
+"XGBoost","balanced_accuracy",0.592082176925441
+"XGBoost","mcc",0.241187501014814
+"Voting","roc_auc",0.807387782934434
 "Voting","pr_auc",0.354014885111563
-"Voting","recall",0.490559930952638
-"Voting","precision",0.216328084114373
-"Voting","specificity",0.909825475726455
-"Voting","f1",0.300250924458531
-"Voting","balanced_accuracy",0.700192703339546
-"Voting","mcc",0.27486914503322
+"Voting","recall",0.561225590678606
+"Voting","precision",0.178904288612993
+"Voting","specificity",0.869298399281757
+"Voting","f1",0.27131904240338
+"Voting","balanced_accuracy",0.715261994980182
+"Voting","mcc",0.257432290621428

@@ -38,9 +38,14 @@ parallel_processing = TRUE
 # Import functions
 source("helper/topology_functions.R")
 
+# Arguments
+args <- commandArgs(trailingOnly = TRUE)
+input_file <- args[1]
+output_file <- args[2]
+
 # Load data
 message('Loading dataframe')
-data <- read.csv("data/processed/networks/subsamples_edge_lists.csv", header=TRUE, stringsAsFactors=FALSE, check.names=FALSE, na.strings="")
+data <- read.csv(input_file, header=TRUE, stringsAsFactors=FALSE, check.names=FALSE, na.strings="") # | debug: , nrows = 10124
 message('Done\n')
 
 # drop (later) all columns which are not 'link_ID'
@@ -86,6 +91,6 @@ df = df[,!(names(df) %in% drop_columns)]
 
 # Update the new entries
 cat('Exporting new dataframe\n')
-write.csv(df, "data/processed/features/features_R.csv", row.names = FALSE)
+write.csv(df, output_file, row.names = FALSE)
 cat('Done')
 

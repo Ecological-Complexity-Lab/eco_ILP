@@ -37,6 +37,7 @@ library(reshape2)
 library(ggpubr)
 library(stringr)
 library(RColorBrewer)
+library("readxl")
 ```
 
 ## Set important variables
@@ -54,15 +55,16 @@ nested_cv = TRUE
 ## Load data
 ```{r load_data}
 
-process_results_dataframe <- function(df) {
+process_results_dataframe <- function(df, edgelist, metadata) {
   # add 'subsample_ID' and 'class' to the results dataframe
-  df <- merge(df, subset(subsamples_edge_lists, select = c(link_ID, subsample_ID, class)), by = "link_ID")
+  df <- merge(df, subset(edgelist, select = c(link_ID, subsample_ID, class)), by = "link_ID")
   
   # add 'subsample_ID' and additional metadata to the results dataframe
-  df <- merge(df, subset(subsamples_metadata, select = c(subsample_ID, name, community)), by = "subsample_ID")
+  df <- merge(df, subset(metadata, select = c(subsample_ID, name, community)), by = "subsample_ID")
   
   # change classes values
-  df$class <- ifelse(df$class %in% c("TP", "FN"), 1, 0)
+  # df$class <- ifelse(df$class %in% c("TP", "FN"), 1, 0)
+  df$class <- ifelse(df$class == -1, 1, 0)
   
   # rename columns
   names(df)[names(df) == "name"] <- "network"
@@ -82,15 +84,18 @@ features_py <- read.csv(paste0(path_metadata, "features/features_py.csv"))
 features_R <- read.csv(paste0(path_metadata, "features/features_R.csv"))
 features <- merge(features_py, features_R, by = "link_ID") # Merge features from both languages
 
+features_not_included = c('density', 'flow_infomap_HL', 'flow_infomap_LL', 'modular_centrality_infomap_HL', 'modular_centrality_infomap_LL','discrepancy.HL', 'discrepancy.LL')
+features <- features[, !colnames(features) %in% features_not_included]
+
 # Load results
-results_types <- read.csv(paste0(path_raw_results, "results_domains.csv")) # types comparison
+results_types_f1score <- read.csv(paste0(path_raw_results, "results_domains_F1.csv")) # types comparison
+results_types_BAscore <- read.csv(paste0(path_raw_results, "results_domains_BA.csv")) # types comparison
 results_models <- read.csv(paste0(path_raw_results, "results_models.csv")) # models comparison
-# results_subset <- read.csv(paste0(path_raw_results, "results_subset.csv")) # subset comparison
 
 # Process the results dataframes
-results_types <- process_results_dataframe(results_types)
-results_models <- process_results_dataframe(results_models)
-# results_subset <- process_results_dataframe(results_subset)
+results_types_f1score <- process_results_dataframe(results_types_f1score, subsamples_edge_lists, subsamples_metadata)
+results_types_BAscore <- process_results_dataframe(results_types_BAscore, subsamples_edge_lists, subsamples_metadata)
+results_models <- process_results_dataframe(results_models, subsamples_edge_lists, subsamples_metadata)
 
 ```
 
@@ -103,10 +108,18 @@ calc_metrics <- function(data, metrics=c("roc_auc", "pr_auc", "recall", "precisi
   
   cm <- confusionMatrix(factor(ifelse(data$y_proba > 0.5, 1, 0), levels = c('1', '0')), factor(data$y_true, levels = c('1', '0')), positive = "1") # calculate confusion matrix
 
+  if (is.na(cm$byClass['Precision'])) cm$byClass['Precision'] <- 0
+  if (is.na(cm$byClass['Recall'])) cm$byClass['Recall'] <- 0
+
   res_list <- list() # create an empty list to store the results
   if("roc_auc" %in% metrics) {
-    roc_obj <- roc(data$y_true, data$y_proba, quiet = TRUE) # calculate ROC curve
-    res_list$roc_auc <- roc_obj$auc[1] # store the ROC AUC value
+    if (length(unique(data$y_true)) == 2) { # calculate ROC AUC only if there are both classes in the data
+      roc_obj <- roc(data$y_true, data$y_proba, quiet = TRUE) # calculate ROC curve
+      res_list$roc_auc <- roc_obj$auc[1] # store the ROC AUC value
+    } else {
+      res_list$roc_auc <- NA
+      # res_list$roc_auc <- 0
+    }
   }
   if("pr_auc" %in% metrics) { 
     pr_obj <- pr.curve(data$y_true, data$y_proba) # calculate PR curve
@@ -123,7 +136,10 @@ calc_metrics <- function(data, metrics=c("roc_auc", "pr_auc", "recall", "precisi
     }
   }
   if("accuracy" %in% metrics) res_list$accuracy <- cm$overall['Accuracy'] # store the accuracy value
-  if("balanced_accuracy" %in% metrics) res_list$balanced_accuracy <- cm$byClass['Balanced Accuracy'] # store the balanced accuracy value
+  if("balanced_accuracy" %in% metrics) {
+    res_list$balanced_accuracy <- cm$byClass['Balanced Accuracy'] # store the balanced accuracy value
+    # if (is.na(res_list$balanced_accuracy)) res_list$balanced_accuracy <- 0
+  }
   if("mcc" %in% metrics) { # Calculate MCC
     TP <- cm$table[2, 2] # Extracting the elements of the confusion matrix
     TN <- cm$table[1, 1]
@@ -178,7 +194,7 @@ rename_underscore <- function(old_name) {
 ```{r prepare_data}
 
 # test_data is the test set of the main model, trained on all communities
-test_data <- results_types %>%
+test_data <- results_types_f1score %>%
   filter( # filter the dataframe - choose a single excution of a single model
     # model == 'RandomForestClassifier', # specific model
     # frac_train == "[1.0]", # original networks
@@ -390,7 +406,7 @@ for (fold in unique(test_data$fold)) {
 if (export) {
   write.csv(roc_combined_df, file = paste0(path_intermediate_results, "roc_df_fold.csv"), row.names = FALSE)
   write.csv(pr_combined_df, file = paste0(path_intermediate_results, "pr_df_fold.csv"), row.names = FALSE)
-  write.csv(auc_df, paste0(path_intermediate_results, "auc_df.csv"), row.names = FALSE)
+  write.csv(auc_df, paste0(path_intermediate_results, "auc_df_fold.csv"), row.names = FALSE)
 }
 ```
 
@@ -428,7 +444,7 @@ df_$correct_prediction <- replace_na(df_$correct_prediction, "neutral")
 df_melt <- melt(df_, id.vars = c("lower_level", "higher_level", "correct_prediction", "class"), measure.vars = c("y_proba"))
 
 # Create a new column indicating whether the cell should have a pattern
-df_melt$is_FN <- df_melt$class == "FN"
+df_melt$is_FN <- df_melt$class == -1
 
 # Save to file
 if (export){
@@ -479,16 +495,23 @@ if (export){
 
 # Define the columns to group by based on the splitting method
 if (nested_cv){ # Nested CV
-  cols_to_group_by <- c("fold", "network", "type_train", "type_test")
+  cols_to_group_by <- c("fold", "subsample_ID", "type_train", "type_test")
 } else {
-  cols_to_group_by <- c("network", "type_train", "type_test")
+  cols_to_group_by <- c("subsample_ID", "type_train", "type_test")
 }
 
 # Define the metrics to calculate
 metrices_levels <- c("balanced_accuracy", "roc_auc", "pr_auc", "precision", "recall", "specificity", "f1", "mcc") #, "youden_j", "log_loss"
 
 # Calculate metrics for each community pair
-metrics_type_df <- results_types %>%
+metrics_type_f1score_df <- results_types_f1score %>%
+  group_by(!!!syms(cols_to_group_by)) %>%
+  nest() %>%
+  mutate(metrics = map(data, ~ calc_metrics(.x, metrics = metrices_levels))) %>%
+  unnest(cols = c(metrics)) %>%
+  select(-data)
+
+metrics_type_BAscore_df <- results_types_BAscore %>%
   group_by(!!!syms(cols_to_group_by)) %>%
   nest() %>%
   mutate(metrics = map(data, ~ calc_metrics(.x, metrics = metrices_levels))) %>%
@@ -496,13 +519,19 @@ metrics_type_df <- results_types %>%
   select(-data)
 
 # Long format
-metrics_type_df_long <- metrics_type_df %>%
+metrics_type_f1score_df_long <- metrics_type_f1score_df %>%
   pivot_longer(names_to = "metric", values_to = "value", -all_of(cols_to_group_by)) %>%
   mutate(metric = factor(metric, levels = metrices_levels)) # reorder
 
+metrics_type_BAscore_df_long <- metrics_type_BAscore_df %>%
+  pivot_longer(names_to = "metric", values_to = "value", -all_of(cols_to_group_by)) %>%
+  mutate(metric = factor(metric, levels = metrices_levels)) # reorder
+
+
 # Display the plot
 if (export){
-  write.csv(metrics_type_df_long, file = paste0(path_intermediate_results, "metrics_type_df_long.csv"), row.names = FALSE)
+  write.csv(metrics_type_f1score_df_long, file = paste0(path_intermediate_results, "metrics_type_f1score_df_long.csv"), row.names = FALSE)
+  write.csv(metrics_type_BAscore_df_long, file = paste0(path_intermediate_results, "metrics_type_BAscore_df_long.csv"), row.names = FALSE)
 }
 
 ```
@@ -513,23 +542,64 @@ if (export){
 ### Prepare the data
 ```{r prepare_network_level_features}
 
+# Get the features levels
 
-# Create a dataframe containing the (un sampled) original network 
+features_levels = read_excel('data/metadata/features.xlsx', sheet = "topology") %>%
+  select(c("feature", "level", "type",))
+
+network_level_features <- 
+  features_levels %>% 
+  filter(level == 'network') %>% 
+  select(feature)
+
+node_level_features <- 
+  features_levels %>% 
+  filter(level == 'node') %>% 
+  select(feature)
+
+link_level_features <- 
+  features_levels %>% 
+  filter(level == 'link') %>% 
+  select(feature)
+
+# Create a dataframe containing the (un-sampled) original network 
 original_networks_ids = subsamples_metadata$subsample_ID[subsamples_metadata$fraction == 1]
-original_networks_df = subsamples_edge_lists[subsamples_edge_lists$subsample_ID %in% original_networks_ids, ]
+
+original_networks_df = subsamples_edge_lists[subsamples_edge_lists$subsample_ID %in% original_networks_ids, ] %>%
+  merge(subset(subsamples_metadata, select = c(subsample_ID, name, community)), by = "subsample_ID") %>% 
+  filter(community %in% c("Plant-Pollinator", "Host-Parasite", "Plant-Seed Dispersers", "Plant-Herbivore"))  # Filter network types | keep only ecological
 
 # Create a dataframe of each (original) network and the network-level features
-network_lvl_features <- original_networks_df[!duplicated(original_networks_df$subsample_ID), ] # drop dulicated rows, leave only one row from each network
-network_lvl_features <- merge(network_lvl_features, subset(subsamples_metadata, select = c(subsample_ID, name, community)), by = "subsample_ID")
-network_lvl_features <- merge(network_lvl_features, features, by = "link_ID") # add features
-network_lvl_features <- subset(network_lvl_features, select = -c(link_ID, lower_level, higher_level, weight, class)) # drop unrelevant columns
+network_lvl_df <- original_networks_df[!duplicated(original_networks_df$subsample_ID), ] %>%  # drop dulicated rows, leave only one row from each network
+  merge(features %>% select(link_ID, network_level_features$feature[network_level_features$feature %in% colnames(features)]), by = "link_ID") %>% # add features
+  subset(select = -c(subsample_ID, link_ID, name, lower_level, higher_level, weight, class)) # drop unrelevant columns
 
-# Filter network types | keep only ecological
-network_lvl_features <- network_lvl_features %>% filter(community %in% c("Plant-Pollinator", "Host-Parasite", "Plant-Seed Dispersers", "Plant-Herbivore"))
+link_lvl_df <- original_networks_df %>% 
+  merge(features %>% select(link_ID, link_level_features$feature[link_level_features$feature %in% colnames(features)]), by = "link_ID") %>% # add features
+  subset(select = -c(subsample_ID, link_ID, name, community, lower_level, higher_level, weight, class)) # drop unrelevant columns
+
+# Create separate dataframes for lower and higher level nodes
+node_lower_lvl_df <- original_networks_df %>%
+  merge(features %>% # Merge with features
+          select(link_ID, node_level_features$feature[node_level_features$feature %in% colnames(features) & grepl('LL$', node_level_features$feature)]), 
+        by = "link_ID") %>%
+  distinct(subsample_ID, lower_level, .keep_all = TRUE) %>%
+  subset(select = -c(subsample_ID, link_ID, name, community, lower_level, higher_level, weight, class)) # drop unrelevant columns
+
+node_higher_lvl_df <- original_networks_df %>%
+  merge(features %>% # Merge with features
+          select(link_ID, node_level_features$feature[node_level_features$feature %in% colnames(features) & grepl('HL$', node_level_features$feature)]), 
+        by = "link_ID") %>%
+  distinct(subsample_ID, higher_level, .keep_all = TRUE) %>%
+  subset(select = -c(subsample_ID, link_ID, name, community, lower_level, higher_level, weight, class)) # drop unrelevant columns
 
 if (export){
-  write.csv(network_lvl_features, file = paste0(path_intermediate_results, "network_lvl_features.csv"), row.names = FALSE)
+  write.csv(network_lvl_df, file = paste0(path_intermediate_results, "network_lvl_df.csv"), row.names = FALSE)
+  write.csv(link_lvl_df, file = paste0(path_intermediate_results, "link_lvl_df.csv"), row.names = FALSE)
+  write.csv(node_lower_lvl_df, file = paste0(path_intermediate_results, "node_lower_lvl_df.csv"), row.names = FALSE)
+  write.csv(node_higher_lvl_df, file = paste0(path_intermediate_results, "node_higher_lvl_df.csv"), row.names = FALSE)
 }
+
 ```
 
 ## PCA
@@ -548,15 +618,15 @@ cols_keep = c('subsample_ID', 'name', 'community', 'network_size',
        'motif_8_norm', 'motif_9_norm', 'motif_10_norm', 'motif_11_norm', 'motif_12_norm', 'motif_13_norm', 'motif_14_norm', 'motif_15_norm',
        'motif_16_norm', 'motif_17_norm', 'cent_between', 'cent_close', 'cent_eigen')
 
-# Check if there are columns in cols_keep that are not found in network_lvl_features
-# print(cols_keep[!cols_keep %in% colnames(network_lvl_features)])
+# Check if there are columns in cols_keep that are not found in network_lvl_df
+# print(cols_keep[!cols_keep %in% colnames(network_lvl_df)])
 
 # keep only these columns
-network_lvl_features_pca <- network_lvl_features[, cols_keep]
+network_lvl_df_pca <- network_lvl_df[, cols_keep]
 
 # Split to x and y, y is 'community'
-X <- network_lvl_features_pca %>% select(-c(subsample_ID, name, community))
-y <- network_lvl_features_pca$community
+X <- network_lvl_df_pca %>% select(-c(subsample_ID, name, community))
+y <- network_lvl_df_pca$community
 
 # Find empty columns
 # empty_cols <- sapply(X, function(x) all(is.na(x)))
@@ -574,7 +644,7 @@ X <- X[, !colnames(X) %in% to_drop]
 X <- X[, sapply(X, function(x) length(unique(x)) > 1)]
 
 # Which columns are dropped?
-# print(colnames(network_lvl_features_pca)[!colnames(network_lvl_features_pca) %in% colnames(X)])
+# print(colnames(network_lvl_df_pca)[!colnames(network_lvl_df_pca) %in% colnames(X)])
 
 # Print the columns that are kept
 # print(colnames(X))
@@ -617,7 +687,6 @@ wrap_text <- function(string) {
 
 ```{r}
 # Load features metadata
-library("readxl")
 
 # Function to map variable types to "string" or "numeric" or "bool"
 map_var_type <- function(var_type) {
@@ -808,13 +877,12 @@ if (export){
 
 ```
 
-#### Now for the trunsductive results
+#### Trunsductive
 TODO: Instead of using the same code, just add a column to the dataframe that states which model was used
 ```{r}
 
-
 # Load the transductive results
-transductive_results = read.csv(paste0(path_raw_results, 'results_ML_by_single_networks.csv'))
+transductive_results = read.csv(paste0(path_raw_results, 'results_transductiveML.csv'))
 
 test_data_transductive = test_data %>% 
   select(subsample_ID, link_ID, y_true) %>%
@@ -869,13 +937,14 @@ if (export){
 ```{r}
 
 other_models = read.csv(paste0(path_raw_results, 'other_models.csv'))
-transductive_results = read.csv(paste0(path_raw_results, 'results_ML_by_single_networks.csv'))
+transductive_results = read.csv(paste0(path_raw_results, 'results_transductiveML.csv'))
 
 models_name_mapper <- c("Random Forest (same type)" = "same_type",
                         "Random Forest (all types)" = "all_types",
                         "ML_single" = "ML_single",
                         "SBM" = "SBM_Prob",
                         "Connectance" = "C_Prob",
+                        "Matching_Centrality" = "MC_Prob",
                         "Ensamble" = "Ensamble")
 models_order <- names(models_name_mapper)
 metrics_order <- c("balanced_accuracy", "roc_auc", "pr_auc", "f1", "recall", "precision", "specificity", "mcc")
@@ -883,7 +952,7 @@ metrics_order <- c("balanced_accuracy", "roc_auc", "pr_auc", "f1", "recall", "pr
 communities_posssibilites = c("['Plant-Seed Dispersers']", "['Plant-Pollinator']", "['Host-Parasite']", "['Plant-Herbivore']", "['Plant-Seed Dispersers', 'Plant-Pollinator', 'Plant-Herbivore', 'Host-Parasite']")
 all_types = "['Plant-Seed Dispersers', 'Plant-Pollinator', 'Plant-Herbivore', 'Host-Parasite']"
 
-compare_models_df <- results_types %>%
+compare_models_df <- results_types_f1score %>%
   filter(type_train == type_test) %>% # drop instances where type_train is not equal to type_test
   filter( # filter the dataframe - choose a single excution of a single model
     # model == 'RandomForestClassifier', # specific model
@@ -898,7 +967,8 @@ compare_models_df <- results_types %>%
   left_join(other_models, by = "link_ID") %>%
   left_join(transductive_results, by = "link_ID") %>%
   mutate(C_Prob = ifelse(is.na(C_Prob), 0, C_Prob), # fill na in the columns "C_Prob" and "SBM_Prob" with 0 | those are a result of singltons
-         SBM_Prob = ifelse(is.na(SBM_Prob), 0, SBM_Prob)) %>%
+         SBM_Prob = ifelse(is.na(SBM_Prob), 0, SBM_Prob),
+         MC_Prob = ifelse(is.na(MC_Prob), 0, MC_Prob)) %>%
   mutate(Ensamble = (all_types + ML_single) / 2) %>% # add ensamble of models (by averaging the probabilities)
   rename(!!!models_name_mapper) %>% # rename columns to match the models_name_mapper
   pivot_longer(names_to = "model", values_to = "y_proba", cols = models_order)
@@ -919,58 +989,278 @@ if (export){
   write.csv(compare_models_metrics_df, file = paste0(path_intermediate_results, "compare_other_models_metrics_df.csv"), row.names = FALSE)
 }
 
-# Create the plot
-compare_models_plot <- ggplot(compare_models_metrics_df, aes(x = metric, y = value, fill = model)) +
-  geom_boxplot() +
-  stat_summary(fun = mean, geom = "point", shape = 18, size = 4, color = "black", show.legend=F) +
-  labs(y = "Value", x = "Model") +
-  paper_figs_theme
+```
 
-print(compare_models_plot)
+```{r}
 
-# ROC
-compare_models_roc_df <- compare_models_df %>%
-  group_by(model) %>%
-  nest() %>%
-  mutate(roc = map(data, ~ roc(.x$y_true, .x$y_proba, quiet = TRUE)),
-         auc = map_dbl(roc, ~ .x$auc), # Extract AUC for each ROC curve
-         coords = map(roc, ~ data.frame(tpr = .x$sensitivities, fpr = 1 - .x$specificities))) %>%
-  select(-data, -roc) %>%
-  unnest(cols = c(coords)) %>%
+compare_models_features <- merge(compare_models_df, features, by = "link_ID") # add features
+
+features_names <- colnames(features)
+
+features_to_keep <- c("preferential_attachment", "shortest_path_length", "friends_measure", "degree_LL", "degree_HL", "pagerank_LL", "pagerank_HL") # features to remove
+features_to_drop <- c("network_size", "species_ratio", "interactions_count", "edge_connectivity", "density", "bipartite_clustering", "Spectral_bipartivity", "average_clustering", "degree_assortativity_coefficient", "global_efficiency", "local_efficiency", "connected_components") # features to remove
+models_to_keep <- c("Random Forest (all types)", "SBM", "Matching_Centrality", "Connectance","ML_single") # models to keep
+
+compare_models_features_long <- compare_models_features %>%
+  filter(model %in% models_to_keep) %>%
+  pivot_longer(cols = features_names[features_names != "link_ID"],
+                names_to = "feature", 
+                values_to = "value") %>%
+  filter(feature %in% features_to_keep) %>%
+  filter(!feature %in% features_to_drop) %>%
+  mutate(outcome = case_when(
+    y_proba >= 0.5 & y_true == 1 ~ "TP",
+    y_proba < 0.5 & y_true == 0 ~ "TN",
+    y_proba >= 0.5 & y_true == 0 ~ "FP",
+    y_proba < 0.5 & y_true == 1 ~ "FN"
+  ))
+
+# TODO: the below can be done in a more elegant way in one dataframe
+
+# Binning feature values into quartiles
+compare_models_features_long_binned_pos <- compare_models_features_long %>%
+  filter(outcome %in% c("FN", "TP")) %>%
+  group_by(feature) %>%
+  mutate(feature_bin = ntile(value, 6))
+
+compare_models_features_long_binned_neg <- compare_models_features_long %>%
+  filter(outcome %in% c("FP", "TN")) %>%
+  group_by(feature) %>%
+  mutate(feature_bin = ntile(value, 6))
+
+# Calculating the proportion of correct predictions per bin
+models_preformance_trend_pos <- compare_models_features_long_binned_pos %>%
+  group_by(model, feature, feature_bin) %>%
+  summarise(
+    total = n(),
+    correct = sum(outcome == "TP"),
+    proportion_correct = correct / total
+  ) %>%
   ungroup()
 
-# Plot the ROC curves
-compare_models_roc_plot <- ggplot(compare_models_roc_df, aes(x = fpr, y = tpr, color = model)) +
-  geom_line() +
-  geom_abline(linetype = "dashed") +
-  labs(title = "ROC Curves by Model and Subsample ID",
-       x = "False Positive Rate (1 - Specificity)",
-       y = "True Positive Rate (Sensitivity)",
-       color = "Model") +
-  theme_minimal()
-
-print(compare_models_roc_plot)
-
-# PR
-compare_models_pr_df <- compare_models_df %>%
-  group_by(model) %>%
-  nest() %>%
-  mutate(pr = map(data, ~ pr.curve(weights.class0 = .x$y_true, scores.class0 = .x$y_proba, curve = TRUE)),
-         auc = map_dbl(pr, ~ .x$auc.integral), # Extract AUC for each PR curve
-         coords = map(pr, ~ data.frame(recall = .x$curve[, 1], precision = .x$curve[, 2]))) %>%
-  select(-data, -pr) %>%
-  unnest(cols = c(coords)) %>%
+models_preformance_trend_neg <- compare_models_features_long_binned_neg %>%
+  group_by(model, feature, feature_bin) %>%
+  summarise(
+    total = n(),
+    correct = sum(outcome == "TN"),
+    proportion_correct = correct / total
+  ) %>%
   ungroup()
 
-# Plot the PR curves
-compare_models_pr_plot <- ggplot(compare_models_pr_df, aes(x = recall, y = precision, color = model)) +
-  geom_line() +
-  labs(title = "PR Curves by Model and Subsample ID",
-       x = "Recall (Sensitivity)",
-       y = "Precision",
-       color = "Model") +
-  theme_minimal()
+# Save to file
+if (export){
+  write.csv(models_preformance_trend_pos, file = paste0(path_intermediate_results, "models_preformance_trend_pos.csv"), row.names = FALSE)
+  write.csv(models_preformance_trend_neg, file = paste0(path_intermediate_results, "models_preformance_trend_neg.csv"), row.names = FALSE)
+}
+```
 
-print(compare_models_pr_plot)
 
+```{r}
+# temp
+# file too big, save as rds
+saveRDS(compare_models_features_long, file = paste0(path_intermediate_results, "temp_compare_models_features_long.rds"))
+
+
+# Define the number of bins
+num_bins <- 5
+
+# Binning feature values into fixed-width bins
+compare_models_features_long_binned_pos <- compare_models_features_long %>%
+  filter(outcome %in% c("FN", "TP")) %>%
+  group_by(feature) %>%
+  group_modify(~ {
+    feature_min <- min(.x$value)
+    feature_max <- max(.x$value)
+    bin_width <- (feature_max - feature_min) / num_bins
+    .x %>%
+      mutate(feature_bin = cut(value, breaks = seq(feature_min, feature_max, by = bin_width), include.lowest = TRUE))
+  }) %>%
+  ungroup()
+
+# Calculating the proportion of correct predictions per bin
+models_preformance_trend_pos <- compare_models_features_long_binned_pos %>%
+  group_by(model, feature, feature_bin) %>%
+  summarise(
+    total = n(),
+    correct = sum(outcome == "TP"),
+    proportion_correct = correct / total
+  ) %>%
+  ungroup()
+
+# Line plot of proportion correct across feature bins
+trend_pos_plot <- models_preformance_trend_pos %>%
+  ggplot(aes(x = feature_bin, y = proportion_correct, color = model, group = model)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  facet_wrap(~ feature, scales = "free_x") +
+  labs(
+    title = "Model Performance Trends Across Feature Bins",
+    x = "Feature Value Bins",
+    y = "Proportion Correct",
+    color = "Model"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position = "bottom",
+    strip.text = element_text(size = 12, face = "bold"),
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 10)
+  ) +
+  scale_x_discrete(labels = function(x) gsub(",", "-", gsub("\\(|\\]|\\[", "", x)))
+
+
+print(trend_pos_plot)
+```
+
+
+### Biased/Random Sampling
+
+```{r}
+
+# Load results
+
+ML_noBias = test_data
+other_models_noBias = read.csv(paste0(path_raw_results, 'other_models.csv'))
+ML_transductive_noBias = read.csv(paste0(path_raw_results, 'results_transductiveML.csv'))
+
+ML_highDegBiasSampling = read.csv(paste0(path_raw_results, 'results_highDegBiasSampling.csv'))
+other_models_highDegBiasSampling = read.csv(paste0(path_raw_results, 'other_models_highDegBiasSampling.csv'))
+ML_transductive_highDegBiasSampling = read.csv(paste0(path_raw_results, 'results_transductiveML_highDegBias.csv'))
+
+ML_lowDegBiasSampling = read.csv(paste0(path_raw_results, 'results_lowDegBiasSampling.csv'))
+other_models_lowDegBiasSampling = read.csv(paste0(path_raw_results, 'other_models_lowDegBiasSampling.csv'))
+ML_transductive_lowDegBiasSampling = read.csv(paste0(path_raw_results, 'results_transductiveML_lowDegBias.csv'))
+
+# Load subsamples (edgelists) data
+highDegBiasSampling_edge_lists <- read.csv(paste0(path_metadata, "networks/biased_sampling/highDegBiasSampling_edge_lists.csv"))
+lowDegBiasSampling_edge_lists <- read.csv(paste0(path_metadata, "networks/biased_sampling/lowDegBiasSampling_edge_lists.csv"))
+
+# Load subsamples metadata
+highDegBiasSampling_metadata <- read.csv(paste0(path_metadata, "networks/biased_sampling/highDegBiasSampling_metadata.csv"))
+lowDegBiasSampling_metadata <- read.csv(paste0(path_metadata, "networks/biased_sampling/lowDegBiasSampling_metadata.csv"))
+
+# Process the results dataframes
+ML_highDegBiasSampling <- process_results_dataframe(ML_highDegBiasSampling, highDegBiasSampling_edge_lists, highDegBiasSampling_metadata)
+ML_lowDegBiasSampling <- process_results_dataframe(ML_lowDegBiasSampling, lowDegBiasSampling_edge_lists, lowDegBiasSampling_metadata)
+
+models_name_mapper <- c(
+  "Random Forest" = "ML_Prob",
+  "SBM" = "SBM_Prob",
+  "Matching_Centrality" = "MC_Prob",
+  "Centrality" = "C_Prob",
+  "TLP" = "ML_single"
+  )
+models_order <- names(models_name_mapper)
+metrics_order <- c("balanced_accuracy", "roc_auc", "pr_auc", "f1", "recall", "precision", "specificity", "mcc")
+
+all_types = "['Plant-Seed Dispersers', 'Plant-Pollinator', 'Plant-Herbivore', 'Host-Parasite']"
+
+# -----------------
+
+compare_models_noBias_df <- ML_noBias %>%
+  select(subsample_ID, link_ID, y_true, community, y_proba) %>%
+  rename(ML_Prob = y_proba) %>%
+  left_join(other_models_noBias, by = "link_ID") %>%
+  left_join(ML_transductive_noBias, by = "link_ID") %>%
+  mutate(SBM_Prob = ifelse(is.na(SBM_Prob), 0, SBM_Prob),
+         MC_Prob = ifelse(is.na(MC_Prob), 0, MC_Prob),
+         ) %>%
+  rename(!!!models_name_mapper) %>% # rename columns to match the models_name_mapper
+  pivot_longer(names_to = "model", values_to = "y_proba", cols = models_order)
+
+compare_models_highDegBias_df <- ML_highDegBiasSampling %>%
+  select(subsample_ID, link_ID, y_true, community, y_proba) %>%
+  rename(ML_Prob = y_proba) %>%
+  left_join(other_models_highDegBiasSampling, by = "link_ID") %>%
+  left_join(ML_transductive_highDegBiasSampling, by = "link_ID") %>%
+  mutate(SBM_Prob = ifelse(is.na(SBM_Prob), 0, SBM_Prob),
+         MC_Prob = ifelse(is.na(MC_Prob), 0, MC_Prob),
+         ) %>%
+  rename(!!!models_name_mapper) %>% # rename columns to match the models_name_mapper
+  pivot_longer(names_to = "model", values_to = "y_proba", cols = models_order)
+
+compare_models_lowDegBias_df <- ML_lowDegBiasSampling %>%
+  select(subsample_ID, link_ID, y_true, community, y_proba) %>%
+  rename(ML_Prob = y_proba) %>%
+  left_join(other_models_lowDegBiasSampling, by = "link_ID") %>%
+  left_join(ML_transductive_lowDegBiasSampling, by = "link_ID") %>%
+  mutate(SBM_Prob = ifelse(is.na(SBM_Prob), 0, SBM_Prob),
+         MC_Prob = ifelse(is.na(MC_Prob), 0, MC_Prob),
+         ) %>%
+  rename(!!!models_name_mapper) %>% # rename columns to match the models_name_mapper
+  pivot_longer(names_to = "model", values_to = "y_proba", cols = models_order)
+
+# -----------------
+
+compare_models_noBias_metrics_df <- compare_models_noBias_df %>%
+  filter(!model %in% c("Centrality")) %>%
+  group_by(subsample_ID, model) %>%
+  nest() %>%
+  mutate(metric = map(data, ~ calc_metrics(.x, metric = metrics_order))) %>%
+  unnest(cols = c(metric)) %>%
+  select(-data) %>%
+  pivot_longer(names_to = "metric", values_to = "value", cols = metrics_order) %>%
+  mutate(metric = factor(metric, levels = metrics_order), # reorder
+         model = factor(model, levels = models_order)
+        )
+
+compare_models_highDegBias_metrics_df <- compare_models_highDegBias_df %>%
+  filter(!model %in% c("Centrality")) %>%
+  group_by(subsample_ID, model) %>%
+  nest() %>%
+  mutate(metric = map(data, ~ calc_metrics(.x, metric = metrics_order))) %>%
+  unnest(cols = c(metric)) %>%
+  select(-data) %>%
+  pivot_longer(names_to = "metric", values_to = "value", cols = metrics_order) %>%
+  mutate(metric = factor(metric, levels = metrics_order), # reorder
+         model = factor(model, levels = models_order)
+        )
+
+compare_models_lowDegBias_metrics_df <- compare_models_lowDegBias_df %>%
+  filter(!model %in% c("Centrality")) %>%
+  group_by(subsample_ID, model) %>%
+  nest() %>%
+  mutate(metric = map(data, ~ calc_metrics(.x, metric = metrics_order))) %>%
+  unnest(cols = c(metric)) %>%
+  select(-data) %>%
+  pivot_longer(names_to = "metric", values_to = "value", cols = metrics_order) %>%
+  mutate(metric = factor(metric, levels = metrics_order), # reorder
+         model = factor(model, levels = models_order)
+        )
+
+
+# -----------------
+
+# Save to file
+if (export){
+  write.csv(compare_models_noBias_metrics_df, file = paste0(path_intermediate_results, "compare_models_noBias_metrics_df.csv"), row.names = FALSE)
+  write.csv(compare_models_highDegBias_metrics_df, file = paste0(path_intermediate_results, "compare_models_highDegBias_metrics_df.csv"), row.names = FALSE)
+  write.csv(compare_models_lowDegBias_metrics_df, file = paste0(path_intermediate_results, "compare_models_lowDegBias_metrics_df.csv"), row.names = FALSE)
+}
+
+```
+
+
+### Network filtering analysis
+```{r}
+filtered_networks_edge_lists <- read.csv(paste0(path_metadata, "networks/filtering/subsamples_filtered_edge_lists.csv"))
+filtered_networks_metadata <- read.csv(paste0(path_metadata, "networks/filtering/subsamples_filtered_metadata.csv"))
+results_filtered_networks = read.csv(paste0(path_raw_results, 'results_filtered_networks.csv'))
+
+results_filtered_networks <- process_results_dataframe(results_filtered_networks, filtered_networks_edge_lists, filtered_networks_metadata)
+
+# Save to file
+write.csv(results_filtered_networks, file = paste0(path_intermediate_results, "results_filtered_networks.csv"), row.names = FALSE)
+
+```
+
+### Sensitivity analysis
+```{r}
+sensitivity_edge_lists <- read.csv(paste0(path_metadata, "networks/sensitivity/subsamples_sensitivity_edge_lists.csv"))
+sensitivity_metadata <- read.csv(paste0(path_metadata, "networks/sensitivity/subsamples_sensitivity_metadata.csv"))
+sensitivity_results = read.csv(paste0(path_raw_results, 'results_sensitivity.csv'))
+
+sensitivity_results <- process_results_dataframe(sensitivity_results, sensitivity_edge_lists, sensitivity_metadata)
+
+# Save to file
+write.csv(sensitivity_results, file = paste0(path_intermediate_results, "sensitivity_results.csv"), row.names = FALSE)
 ```

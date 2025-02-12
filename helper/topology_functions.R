@@ -73,7 +73,7 @@ get_net_features <- function(matrix){
                                             #  'togetherness',
                                             #  'C score',
                                              'V ratio',
-                                             'discrepancy',
+                                            #  'discrepancy',
                                              'nestedness',
                                              'NODF',
                                              #'weighted nestedness', #weighted

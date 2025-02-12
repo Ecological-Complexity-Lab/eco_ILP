@@ -1,0 +1,169 @@
+"model","feature","feature_bin","total","correct","proportion_correct"
+"ML_single","degree_HL",1,30445,29381,0.965051732632616
+"ML_single","degree_HL",2,30445,29664,0.974347183445558
+"ML_single","degree_HL",3,30444,29319,0.963046905794245
+"ML_single","degree_HL",4,30445,27450,0.901625882739366
+"ML_single","degree_HL",5,30445,24218,0.795467235999343
+"ML_single","degree_HL",6,30444,23905,0.785212192878728
+"ML_single","degree_LL",1,30445,30076,0.987879783215635
+"ML_single","degree_LL",2,30445,29980,0.984726556084743
+"ML_single","degree_LL",3,30444,28982,0.951977401129944
+"ML_single","degree_LL",4,30445,27851,0.914797175234029
+"ML_single","degree_LL",5,30445,25838,0.848677943833142
+"ML_single","degree_LL",6,30444,21210,0.696689002759164
+"ML_single","friends_measure",1,30445,29650,0.973887337822303
+"ML_single","friends_measure",2,30445,29810,0.979142716373789
+"ML_single","friends_measure",3,30444,29518,0.969583497569308
+"ML_single","friends_measure",4,30445,28443,0.934242075874528
+"ML_single","friends_measure",5,30445,26402,0.867203153227131
+"ML_single","friends_measure",6,30444,20114,0.660688477204047
+"ML_single","pagerank_HL",1,30445,29309,0.962686812284447
+"ML_single","pagerank_HL",2,30445,28035,0.920840860568238
+"ML_single","pagerank_HL",3,30444,28027,0.920608330048614
+"ML_single","pagerank_HL",4,30445,27498,0.903202496304812
+"ML_single","pagerank_HL",5,30445,26342,0.865232386270324
+"ML_single","pagerank_HL",6,30444,24726,0.812179739850217
+"ML_single","pagerank_LL",1,30445,30024,0.986171785186402
+"ML_single","pagerank_LL",2,30445,29028,0.9534570537034
+"ML_single","pagerank_LL",3,30444,27919,0.917060833004861
+"ML_single","pagerank_LL",4,30445,27166,0.892297585810478
+"ML_single","pagerank_LL",5,30445,25765,0.846280177369026
+"ML_single","pagerank_LL",6,30444,24035,0.789482328209171
+"ML_single","preferential_attachment",1,30445,29928,0.98301855805551
+"ML_single","preferential_attachment",2,30445,30374,0.997667925767778
+"ML_single","preferential_attachment",3,30444,30094,0.988503481802654
+"ML_single","preferential_attachment",4,30445,28895,0.949088520282477
+"ML_single","preferential_attachment",5,30445,26112,0.857677779602562
+"ML_single","preferential_attachment",6,30444,18534,0.608789909341742
+"ML_single","shortest_path_length",1,30445,29769,0.97779602561997
+"ML_single","shortest_path_length",2,30445,26023,0.854754475283298
+"ML_single","shortest_path_length",3,30444,26353,0.865622125870451
+"ML_single","shortest_path_length",4,30445,26846,0.881786828707505
+"ML_single","shortest_path_length",5,30445,25503,0.837674494990967
+"ML_single","shortest_path_length",6,30444,29443,0.967119957955591
+"Matching_Centrality","degree_HL",1,30444,26922,0.88431217973985
+"Matching_Centrality","degree_HL",2,30445,22318,0.733059615700443
+"Matching_Centrality","degree_HL",3,30445,22060,0.724585317786172
+"Matching_Centrality","degree_HL",4,30445,18262,0.599835769420266
+"Matching_Centrality","degree_HL",5,30444,14462,0.475036131914335
+"Matching_Centrality","degree_HL",6,30445,8222,0.270060765314502
+"Matching_Centrality","degree_LL",1,30444,25325,0.831855209565103
+"Matching_Centrality","degree_LL",2,30445,23932,0.786073246838561
+"Matching_Centrality","degree_LL",3,30445,21186,0.695877812448678
+"Matching_Centrality","degree_LL",4,30445,18558,0.609558219740516
+"Matching_Centrality","degree_LL",5,30444,14186,0.465970306135856
+"Matching_Centrality","degree_LL",6,30445,9059,0.297552964361964
+"Matching_Centrality","friends_measure",1,30444,26824,0.881093154644593
+"Matching_Centrality","friends_measure",2,30445,26612,0.874100837575957
+"Matching_Centrality","friends_measure",3,30445,22194,0.728986697323042
+"Matching_Centrality","friends_measure",4,30445,18045,0.592708162259813
+"Matching_Centrality","friends_measure",5,30444,12905,0.42389304953357
+"Matching_Centrality","friends_measure",6,30445,5666,0.186106092954508
+"Matching_Centrality","pagerank_HL",1,30444,27257,0.895315990014453
+"Matching_Centrality","pagerank_HL",2,30445,23698,0.778387255707013
+"Matching_Centrality","pagerank_HL",3,30445,20464,0.672162916735096
+"Matching_Centrality","pagerank_HL",4,30445,17862,0.58669732304155
+"Matching_Centrality","pagerank_HL",5,30444,14572,0.478649323347786
+"Matching_Centrality","pagerank_HL",6,30445,8393,0.275677451141403
+"Matching_Centrality","pagerank_LL",1,30444,23423,0.76937984496124
+"Matching_Centrality","pagerank_LL",2,30445,23895,0.78485794054853
+"Matching_Centrality","pagerank_LL",3,30445,21756,0.714600098538348
+"Matching_Centrality","pagerank_LL",4,30445,19497,0.640400722614551
+"Matching_Centrality","pagerank_LL",5,30444,16231,0.533142819603206
+"Matching_Centrality","pagerank_LL",6,30445,7444,0.244506487107899
+"Matching_Centrality","preferential_attachment",1,30444,30440,0.999868611220602
+"Matching_Centrality","preferential_attachment",2,30445,29676,0.974741336836919
+"Matching_Centrality","preferential_attachment",3,30445,23343,0.766726884545902
+"Matching_Centrality","preferential_attachment",4,30445,15393,0.505600262768928
+"Matching_Centrality","preferential_attachment",5,30444,9495,0.311884115096571
+"Matching_Centrality","preferential_attachment",6,30445,3899,0.128067006076531
+"Matching_Centrality","shortest_path_length",1,30444,28397,0.932761792142951
+"Matching_Centrality","shortest_path_length",2,30445,15514,0.509574642798489
+"Matching_Centrality","shortest_path_length",3,30445,14990,0.492363278042372
+"Matching_Centrality","shortest_path_length",4,30445,14937,0.490622433897192
+"Matching_Centrality","shortest_path_length",5,30444,15116,0.496518197345947
+"Matching_Centrality","shortest_path_length",6,30445,23292,0.765051732632616
+"Random Forest (all types)","degree_HL",1,30445,28617,0.939957300049269
+"Random Forest (all types)","degree_HL",2,30445,29841,0.980160945968139
+"Random Forest (all types)","degree_HL",3,30445,28823,0.946723599934308
+"Random Forest (all types)","degree_HL",4,30444,24979,0.820490080147155
+"Random Forest (all types)","degree_HL",5,30445,22081,0.725275086221054
+"Random Forest (all types)","degree_HL",6,30444,19532,0.641571409801603
+"Random Forest (all types)","degree_LL",1,30445,29101,0.955854820167515
+"Random Forest (all types)","degree_LL",2,30445,30005,0.985547708983413
+"Random Forest (all types)","degree_LL",3,30445,27323,0.897454426014124
+"Random Forest (all types)","degree_LL",4,30444,25408,0.834581526737617
+"Random Forest (all types)","degree_LL",5,30445,22955,0.753982591558548
+"Random Forest (all types)","degree_LL",6,30444,19081,0.626757324924451
+"Random Forest (all types)","friends_measure",1,30445,28664,0.941501067498768
+"Random Forest (all types)","friends_measure",2,30445,28312,0.929939234685498
+"Random Forest (all types)","friends_measure",3,30445,29046,0.954048283790442
+"Random Forest (all types)","friends_measure",4,30444,27699,0.909834450137958
+"Random Forest (all types)","friends_measure",5,30445,24527,0.805616685826901
+"Random Forest (all types)","friends_measure",6,30444,15625,0.513237419524373
+"Random Forest (all types)","pagerank_HL",1,30445,28983,0.951978978485794
+"Random Forest (all types)","pagerank_HL",2,30445,28393,0.932599770077188
+"Random Forest (all types)","pagerank_HL",3,30445,27666,0.908720643783873
+"Random Forest (all types)","pagerank_HL",4,30444,26259,0.862534489554592
+"Random Forest (all types)","pagerank_HL",5,30445,23626,0.776022335358844
+"Random Forest (all types)","pagerank_HL",6,30444,18946,0.622322953619761
+"Random Forest (all types)","pagerank_LL",1,30445,28314,0.930004926917392
+"Random Forest (all types)","pagerank_LL",2,30445,28736,0.943865987846937
+"Random Forest (all types)","pagerank_LL",3,30445,27621,0.907242568566267
+"Random Forest (all types)","pagerank_LL",4,30444,25890,0.850413874655104
+"Random Forest (all types)","pagerank_LL",5,30445,23810,0.782066020693053
+"Random Forest (all types)","pagerank_LL",6,30444,19502,0.640585993956116
+"Random Forest (all types)","preferential_attachment",1,30445,27829,0.914074560683199
+"Random Forest (all types)","preferential_attachment",2,30445,30445,1
+"Random Forest (all types)","preferential_attachment",3,30445,30230,0.99293808507144
+"Random Forest (all types)","preferential_attachment",4,30444,28405,0.933024569701748
+"Random Forest (all types)","preferential_attachment",5,30445,23912,0.785416324519626
+"Random Forest (all types)","preferential_attachment",6,30444,13052,0.428721587176455
+"Random Forest (all types)","shortest_path_length",1,30445,27659,0.908490720972245
+"Random Forest (all types)","shortest_path_length",2,30445,25026,0.822006897684349
+"Random Forest (all types)","shortest_path_length",3,30445,24000,0.788306782722943
+"Random Forest (all types)","shortest_path_length",4,30444,24260,0.796872947050322
+"Random Forest (all types)","shortest_path_length",5,30445,24172,0.793956314665791
+"Random Forest (all types)","shortest_path_length",6,30444,28756,0.944553935093943
+"SBM","degree_HL",1,30445,23953,0.786763015273444
+"SBM","degree_HL",2,30444,16688,0.548153987649455
+"SBM","degree_HL",3,30445,16729,0.549482673673838
+"SBM","degree_HL",4,30445,15305,0.50270980456561
+"SBM","degree_HL",5,30444,15322,0.503284719484956
+"SBM","degree_HL",6,30445,13039,0.428280505830186
+"SBM","degree_LL",1,30445,22389,0.735391689932665
+"SBM","degree_LL",2,30444,17419,0.572165287084483
+"SBM","degree_LL",3,30445,16842,0.553194284775825
+"SBM","degree_LL",4,30445,16476,0.5411726063393
+"SBM","degree_LL",5,30444,15680,0.515044015241098
+"SBM","degree_LL",6,30445,12230,0.401707998029233
+"SBM","friends_measure",1,30445,25073,0.823550665133848
+"SBM","friends_measure",2,30444,24380,0.800814610432269
+"SBM","friends_measure",3,30445,16388,0.538282148135983
+"SBM","friends_measure",4,30445,14153,0.464871078994909
+"SBM","friends_measure",5,30444,12341,0.405367231638418
+"SBM","friends_measure",6,30445,8701,0.285794054853014
+"SBM","pagerank_HL",1,30445,24499,0.804696994580391
+"SBM","pagerank_HL",2,30444,19061,0.62610038102746
+"SBM","pagerank_HL",3,30445,16185,0.531614386598785
+"SBM","pagerank_HL",4,30445,14986,0.492231893578584
+"SBM","pagerank_HL",5,30444,13823,0.454046774405466
+"SBM","pagerank_HL",6,30445,12482,0.409985219247824
+"SBM","pagerank_LL",1,30445,22306,0.732665462309082
+"SBM","pagerank_LL",2,30444,18980,0.623439758244646
+"SBM","pagerank_LL",3,30445,17223,0.565708654951552
+"SBM","pagerank_LL",4,30445,15846,0.520479553292823
+"SBM","pagerank_LL",5,30444,14482,0.475693075811326
+"SBM","pagerank_LL",6,30445,12199,0.400689768434883
+"SBM","preferential_attachment",1,30445,28627,0.940285761208737
+"SBM","preferential_attachment",2,30444,18218,0.598410195769281
+"SBM","preferential_attachment",3,30445,16671,0.547577598948924
+"SBM","preferential_attachment",4,30445,14736,0.484020364591887
+"SBM","preferential_attachment",5,30444,12882,0.42313756405203
+"SBM","preferential_attachment",6,30445,9902,0.325242240105108
+"SBM","shortest_path_length",1,30445,27445,0.901461652159632
+"SBM","shortest_path_length",2,30444,14695,0.482689528314282
+"SBM","shortest_path_length",3,30445,12651,0.415536212842831
+"SBM","shortest_path_length",4,30445,12801,0.42046313023485
+"SBM","shortest_path_length",5,30444,12977,0.426258047562738
+"SBM","shortest_path_length",6,30445,20467,0.672261455082936

@@ -1,5 +1,5 @@
 import os
-import yaml
+import joblib
 import logging
 
 import numpy as np
@@ -11,7 +11,6 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score#, top_k_accuracy_score
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score, log_loss, brier_score_loss, matthews_corrcoef
 from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay, RocCurveDisplay, PrecisionRecallDisplay, make_scorer
-from matplotlib.patches import Rectangle
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from sklearn.inspection import permutation_importance
 
@@ -22,43 +21,28 @@ from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 # from sklearn.utils.class_weight import compute_sample_weight
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, RobustScaler, QuantileTransformer, OneHotEncoder
-from sklearn.utils import shuffle
+from sklearn.feature_selection import SelectKBest, mutual_info_classif
+
 
 # models
 import xgboost as xgb
 # import lightgbm as lgb
 from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier, VotingClassifier, IsolationForest#, GradientBoostingClassifier, AdaBoostClassifier
-from sklearn.base import BaseEstimator, TransformerMixin
-# from sklearn.neural_network import MLPClassifier
-# from sklearn import svm
-# from sklearn.naive_bayes import GaussianNB
+from sklearn.ensemble import RandomForestClassifier, VotingClassifier
 # from sklearn.neighbors import KNeighborsClassifier
 # from sklearn.tree import DecisionTreeClassifier
 
-
 # cross-validation
-from sklearn.model_selection import cross_val_score, GridSearchCV, RandomizedSearchCV, GroupShuffleSplit, GroupKFold, StratifiedGroupKFold
+from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 
 # -----------------------------
-# DNN
-# input_dim = 1
-# import kerastuner as kt
-# import tensorflow as tf
-# from kerastuner.tuners import BayesianOptimization
-# from keras.wrappers.scikit_learn import KerasClassifier
-# os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' # disable tensorflow's debugging logs
-# from helper.DNN import create_model, create_model_cv, dnn_tuner
-
-# -----------------------------
-# import shap
 import warnings
 
 import warnings # TODO: check if this code can be here or in the main file
 from sklearn.exceptions import ConvergenceWarning
 warnings.simplefilter("ignore", category=ConvergenceWarning) # turn off some annoying warnings (LogisticRegression's convergence warning)
 
-from helper.scorer import custom_scorer
+# from helper.custom_scorer import custom_scorer
 
 class LinkPredict():
 
@@ -81,23 +65,11 @@ class LinkPredict():
         # 'top_k_accuracy': lambda y_true, y_pred, y_proba: top_k_accuracy_score(y_true, y_pred, k=5) # Top-K Accuracy
     }
     classifiers = {
-        ''
-            'LogisticRegression':LogisticRegression(max_iter=300, n_jobs=-1), # Logistic Regression
-            'RandomForestClassifier':RandomForestClassifier(n_jobs=-1), # Random Forest 
-            # 'KNeighborsClassifier':KNeighborsClassifier(n_jobs=-1), # KNN
-            'XGBClassifier':xgb.XGBClassifier(n_jobs=-1), # XGBoost
-            # 'KerasClassifier':KerasClassifier(build_fn=create_model, epochs=5), # DNN | dummy model
-            # 'LGBMClassifier':lgb.LGBMClassifier(n_jobs=-1), # LightGBM
-            # 'BayesianOptimization':BayesianOptimization(create_model_cv, # DNN cv (testing)
-            #                                             objective=kt.Objective('val_balanced_accuracy', direction="max"),
-            #                                             max_trials=10, #10
-            #                                             executions_per_trial=3, #3?
-            #                                             overwrite=True,
-            #                                             # directory='my_dir',
-            #                                             # project_name='my_project'
-            #                                             ),
-            # 'DecisionTreeClassifier':DecisionTreeClassifier(),
-        }
+        'LogisticRegression':LogisticRegression(max_iter=300, n_jobs=-1), # Logistic Regression
+        'RandomForestClassifier':RandomForestClassifier(n_jobs=-1), # Random Forest 
+        # 'KNeighborsClassifier':KNeighborsClassifier(n_jobs=-1), # KNN
+        'XGBClassifier':xgb.XGBClassifier(n_jobs=-1), # XGBoost
+    }
     
     def __init__(self, classifier_name='RandomForestClassifier', estimators=None, params=None):
         self.train_link_id = None
@@ -155,16 +127,16 @@ class LinkPredict():
 
             'XGBClassifier':
                 {'learning_rate': [0.001, .01, .05, 0.1, 0.2, 0.3],
-                 'tree_method': ['hist'], # 'exact', 'approx', 'hist', 'gpu_hist'
-                 'n_estimators': np.arange(10, 110, 10).tolist(),
-                 'max_depth': np.arange(1, 20, 2).tolist()+[None],
-                 'objective': ['binary:logistic'],
-                 'subsample': np.arange(0.1, 1.1, 0.1).tolist(),
-                 'gamma': [0, 0.1, 0.3, 0.5, 1],
-                 'reg_alpha': [0, 1e-5, 1e-2, 0.1, 1, 100],
-                 'reg_lambda': [0, 1e-5, 1e-2, 0.1, 1, 100],
-                 'booster': ['gbtree'],
-                 'colsample_bytree': np.arange(0.1, 1.1, 0.1).tolist(),
+                'tree_method': ['hist'], # 'exact', 'approx', 'hist', 'gpu_hist'
+                'n_estimators': np.arange(10, 110, 10).tolist(),
+                'max_depth': np.arange(1, 20, 2).tolist()+[None],
+                'objective': ['binary:logistic'],
+                'subsample': np.arange(0.1, 1.1, 0.1).tolist(),
+                'gamma': [0, 0.1, 0.3, 0.5, 1],
+                'reg_alpha': [0, 1e-5, 1e-2, 0.1, 1, 100],
+                'reg_lambda': [0, 1e-5, 1e-2, 0.1, 1, 100],
+                'booster': ['gbtree'],
+                'colsample_bytree': np.arange(0.1, 1.1, 0.1).tolist(),
                 # 'min_child_weight' : [1, 5, 7],
                 # 'scale_pos_weight': [1],
                 },
@@ -187,9 +159,20 @@ class LinkPredict():
                 },
             # 'KerasClassifier':{},
             # 'BayesianOptimization':{},
-            }
+        }
         
-        return ml_params[classifier_name]
+        other_params = {
+            'feature_selector': {
+                'k': [10, 20, 30, 40, 50, 70]
+            },
+        }
+        
+        params_dist = {
+            'classifiers':ml_params[classifier_name],
+            'feature_selector':other_params['feature_selector']
+        }
+
+        return params_dist
     
     def set_transformer(self, df, columns_to_ignore=[], save=True, return_preprocessor=False):
 
@@ -228,13 +211,9 @@ class LinkPredict():
         if return_preprocessor:
             return preprocessor
 
-    def fit(self, X_train=None, y_train=None, df=None, dataset_link_id=None, cv=None, cv_inner=None, cv_outer=None, class_weight = 'balanced', select=None, tuner_name=None, scorer='f1', columns_to_ignore=[]):
+    def fit(self, X_train=None, y_train=None, df=None, cv=None, cv_inner=None, cv_outer=None, scorer_metric='f1', class_weight='balanced', select=None, tuner_name=None, columns_to_ignore=[], n_features=20):
 
         ## Initial checks
-
-        # Verify X_train and y_train
-        if X_train is None or y_train is None:
-            X_train, y_train = self.subset_data(df, dataset_link_id)
         
         # Verify correct cv or nested cv usage           
         if (cv_inner is not None) or (cv_outer is not None):
@@ -284,17 +263,20 @@ class LinkPredict():
 
         # Create pipeline
         pipe = Pipeline(steps=[("preprocessor", self.preprocessor), 
+                               ("feature_selector", SelectKBest(mutual_info_classif, k=n_features)),
                                ("classifier", self.model)])
         
         # Choose a scorer
-        # scorer = 'f1'
-        scorer = make_scorer(custom_scorer, greater_is_better=True, needs_proba=False)
+        scorer = 'f1'
+        # scorer = make_scorer(self.custom_scorer, metric=scorer_metric, greater_is_better=True, needs_proba=False) # , exclude_mask = TrueLinks_inx
         
         # Set the parameters of the model and CV tuner
-        if isinstance(self.params_dist, dict):
-            params_dist = {f'classifier__{k}': v for k, v in self.params_dist.items()} # Rename each key in the dictionary to 'classifier__' + key
-        elif isinstance(self.params_dist, list):
-            params_dist = {f'classifier__{k}': v for params_dict in self.params_dist for k, v in params_dict.items() }
+        if isinstance(self.params_dist['classifiers'], dict):
+            params_dist = {f'classifier__{k}': v for k, v in self.params_dist['classifiers'].items()} # Rename each key in the dictionary to 'classifier__' + key
+        elif isinstance(self.params_dist['classifiers'], list):
+            params_dist = {f'classifier__{k}': v for params_dict in self.params_dist['classifiers'] for k, v in params_dict.items()}
+        
+        params_dist.update({f'feature_selector__{k}': v for k, v in self.params_dist['feature_selector'].items()})
 
         tuner_params = {
             # 'param_distributions':params_dist,
@@ -385,6 +367,11 @@ class LinkPredict():
     def set_fold_model(self, fold):
         self.trained_model = self.trained_models[fold]
 
+    def get_true_classes(self, df, dataset_link_id):
+        subset_idx = df['link_ID'].isin(dataset_link_id)
+        y_subset = df[subset_idx].iloc[:,-1:]['class'].copy()
+        return y_subset
+    
     def get_transformed_data(self, X=None, df=None, dataset_link_id=None, keep_features=True, feaure_names=True, fit=False):
 
         if X is None:
@@ -451,31 +438,37 @@ class LinkPredict():
     def feature_importance(self, n=None, X_train=None):
                 
         trained_model = self.trained_model # Get trained model
-
+        
         if trained_model.__class__.__name__.endswith('CV'):
-            trained_model = trained_model.best_estimator_._final_estimator # check
+            trained_model = trained_model.best_estimator_#._final_estimator # check
         elif self.trained_model.__class__.__name__ == 'Pipeline':
-            trained_model = trained_model._final_estimator
+            trained_model = trained_model#._final_estimator
 
         fitted_preprocessor = self.get_fitted_preprocessor() # Get fitted preprocessor
+        
+        classifier = trained_model.named_steps['classifier']
 
         # Get feature names
         feature_names = fitted_preprocessor.get_feature_names_out() 
 
+        # Get selected feature names, if feature selection was used in the pipeline
+        if 'feature_selector' in trained_model.named_steps:
+            feature_selector = trained_model.named_steps['feature_selector']
+            selected_features_mask = feature_selector.get_support()
+            feature_names = feature_names[selected_features_mask]
+
         if n is None:
-            n=feature_names.shape[0]
+            n = len(feature_names)
         
         if self.model_name == 'LogisticRegression':
-            importance  = trained_model.coef_[0]
+            # importance  = trained_model.coef_[0]
+            importance  = classifier.coef_[0]
             feature_importance = pd.Series(importance, index=feature_names)
             feature_importance = feature_importance[feature_importance.abs().nlargest(n).index].sort_values()
-        
-        elif self.model_name == 'DecisionTreeClassifier':
-            pass
-        # elif self.model_name in ['KerasClassifier', 'BayesianOptimization']:
-        #     pass
+
         else:
-            importance  = trained_model.feature_importances_
+            # importance  = trained_model.feature_importances_
+            importance  = classifier.feature_importances_
             feature_importance = pd.Series(importance, index=feature_names).nlargest(n)
 
         return feature_importance
@@ -495,13 +488,17 @@ class LinkPredict():
         
         feature_importance = self.feature_importance(n)
 
+        if feature_importance.empty:
+            print("No feature importance available.")
+            return None
+
         if n is None:
             n=self.get_fitted_preprocessor().get_feature_names_out().shape[0]
 
         # Get trained model
         trained_model = self.trained_model 
         if trained_model.__class__.__name__ == 'Pipeline':
-            trained_model = trained_model._final_estimator
+            trained_model = trained_model.named_steps['classifier']
 
         # Set y_label
         y_label = 'Importance'
@@ -517,7 +514,7 @@ class LinkPredict():
         y_pos = np.arange(len(feature_importance))
 
         # Create a horizontal bar plot
-        bars = ax.barh(y_pos, feature_importance, align='center')
+        bars = ax.barh(y_pos, feature_importance.values, align='center')
 
         # Set the y-axis ticks and labels
         ax.set_yticks(y_pos)
@@ -566,20 +563,39 @@ class LinkPredict():
         model_name = self.model_name
 
         # Calculate probabilities for the given model
-        if model_name in ['LinearSVC', 'PassiveAggressiveClassifier']:
-            d = self.trained_model.decision_function(X)
-            y_proba = np.exp(d) / np.sum(np.exp(d))
-        elif model_name == 'RandomSearch' or model_name == 'BayesianOptimization': # DNN
-            pass
-
-        else:
-            y_proba = self.trained_model.predict_proba(X)[:,1]
+        y_proba = self.trained_model.predict_proba(X)[:,1]
 
         return y_proba
     
     def available_metrics(self):
         return list(self.metrics_functions.keys())
 
+    def evaluate(self, X=None, y_true=None, df=None, dataset_link_id=None, threshold=0.5, metrices=['f1', 'precision', 'recall', 'specificity', 'accuracy', 'roc_auc', 'pr_auc', 'average_precision', 'f1_macro', 'f1_micro', 'f1_weighted', 'log_loss']):
+
+        if X is None or y_true is None:
+            X, y_true = self.subset_data(df, dataset_link_id)
+
+        # Get probabilities
+        y_proba = self.predict_proba(X) 
+
+        # Get predictions based on probabilities, using the given threshold
+        y_pred = (y_proba >= threshold).astype('int') 
+        #y_pred = pipe.predict(X) # not always working
+        
+        results = {}
+
+        for metric in metrices:
+            if metric in self.metrics_functions:
+                fun = self.metrics_functions[metric]
+                results[metric] = fun(y_true, y_pred, y_proba)
+            else:
+                print('Unknown metric: ' + metric)           
+
+        # Convert scalar values to single-item lists
+        results = {k: [v] for k, v in results.items()}
+        
+        return pd.DataFrame.from_dict(results)#.round({'f1_score': 2, 'precision': 2,  'recall': 2, 'accuracy': 2, 'ROC_AUC': 2, 'PR_AUC': 2, 'average_precision': 2, 'f1_macro': 2, 'f1_micro': 2, 'f1_weighted': 2 })
+    
     def plot_confusion_matrix(self, X=None, y_true=None, df=None, dataset_link_id=None, threshold=0.5, normalize=True, ax=None, title='Confusion Matrix', show=True, save=False, save_path=None):
         
         if X is None or y_true is None:
@@ -624,6 +640,34 @@ class LinkPredict():
             plt.show()
             plt.close()
         return None
+    
+    def plot_single_evaluation(self, X=None, y_true=None, df=None, dataset_link_id=None, threshold=0.5, metrices=['f1', 'precision', 'recall', 'specificity', 'accuracy', 'roc_auc', 'pr_auc', 'average_precision', 'f1_macro', 'f1_micro', 'f1_weighted', 'log_loss'], ax=None, title='Evaluation Metrics', show=True, save=False, save_path=None):
+                
+            if X is None or y_true is None:
+                X, y_true = self.subset_data(df, dataset_link_id)
+    
+            results = self.evaluate(X, y_true, threshold=threshold, metrices=metrices)
+
+            # convert to wide format
+            results = results.T.reset_index().rename(columns={'index': 'metric', 0: 'value'})
+    
+            # Create figure
+            if ax is None:
+                fig, ax = plt.subplots(figsize=(8, 8))
+    
+            # Plot
+            # results.plot(x='metric', y='value', kind='bar', ax=ax, title=title)
+
+            # same as above but with sns
+            sns.barplot(x='metric', y='value', data=results, ax=ax).set_title(title)
+    
+            # Plot
+            if show:
+                plt.tight_layout()
+                plt.show()
+                plt.close()
+    
+            return results
 
     def grouped_evaluation(self, X=None, y_true=None, df=None, dataset_link_id=None, group_by = 'name', threshold=0.5, metrices=['f1', 'precision', 'recall', 'specificity', 'accuracy', 'roc_auc', 'pr_auc', 'average_precision', 'f1_macro', 'f1_micro', 'f1_weighted', 'log_loss']):
 
@@ -925,13 +969,25 @@ class LinkPredict():
         if axes is None: # if ax is not a part of a subplot
             fig, axes = plt.subplots(1,2, figsize=(10,4))
 
+        cm = sns.color_palette("RdBu", 20, as_cmap=True)
+        cm_r = sns.color_palette("RdBu_r", 20, as_cmap=True)
+
         ax=axes[0]
         sns.histplot(data=y_new[y_new['class'] == 1], x="y_proba", kde=True, ax=ax).set(title='Missing link probability distribution') 
         ax.axvline(0.5)
+
+        for bin_ in ax.patches:
+            bin_midpoint = bin_.get_x()
+            bin_.set_facecolor(cm(bin_midpoint))
+        
         
         ax=axes[1]
         sns.histplot(data=y_new[y_new['class'] == 0], x="y_proba", kde=True, ax=ax).set(title='Non-existing links probability distribution')
         ax.axvline(0.5)
+
+        for bin_ in ax.patches:
+            bin_midpoint = bin_.get_x()
+            bin_.set_facecolor(cm_r(bin_midpoint))
         
         # Plot
         if show:
@@ -1114,6 +1170,68 @@ class LinkPredict():
             plt.close()
 
         return None
+    
+    def plot_density_probs(self, X=None, y_true=None, df=None, dataset_link_id=None, threshold=0.5, group_by = None, axes=None, title='', show=True, save=False, save_path=None):
+        
+        if X is None or y_true is None:
+            X, y_true = self.subset_data(df, dataset_link_id)
+
+        # Get probabilities
+        y_proba = self.predict_proba(X) 
+        
+        if axes is None: # if ax is not a part of a subplot
+            fig, ax = plt.subplots(figsize=(6,6))
+
+        # Create density plot
+        sns.set(style="whitegrid")
+
+        if group_by is None:
+            # Separate the predicted probabilities based on the actual class labels
+            y_proba_positive = y_proba[y_true == 1]
+            y_proba_negative = y_proba[y_true == 0]
+
+            sns.kdeplot(y_proba_positive, bw_adjust=0.5, fill=True, label="Actual: Positive", ax=ax)
+            sns.kdeplot(y_proba_negative, bw_adjust=0.5, fill=True, label="Actual: Negative", ax=ax)
+
+            # Calculate percentages for false negatives and false positives
+            # false_negatives = np.sum(y_proba_positive < threshold) / len(y_proba_positive) * 100
+            # false_positives = np.sum(y_proba_negative >= threshold) / len(y_proba_negative) * 100
+
+            # Add text labels for false negatives and false positives
+            # ax.text(0.2, 0.1, f'False Negatives: {false_negatives:.2f}%', color='blue')
+            # ax.text(0.6, 0.1, f'False Positives: {false_positives:.2f}%', color='orange')
+        else:
+            unique_groups = X[group_by].unique()
+            for group in unique_groups:
+                mask_group = X[group_by] == group
+                sns.kdeplot(y_proba[mask_group & (y_true == 1)], bw_adjust=0.5, fill=True, label=f"{group} - Actual: Positive", ax=ax)
+                sns.kdeplot(y_proba[mask_group & (y_true == 0)], bw_adjust=0.5, fill=True, label=f"{group} - Actual: Negative", ax=ax)
+
+        ax.axvline(threshold, linestyle='--', label=f'Threshold {threshold}')
+        ax.set_xlabel('Predicted Probability of Being Positive')
+        ax.set_ylabel('Frequency')
+        ax.set_title('Density Plot of Predicted Probabilities by Actual Class')
+        ax.legend()
+        
+        if show:
+            plt.tight_layout()
+            plt.show()
+            plt.close()
+
+    def check_overfitting(self, X_train=None, y_train=None, X_test=None, y_test=None, threshold=0.5, group_by = None, metrices = ['roc_auc', 'pr_auc', 'f1', 'accuracy', 'specificity', 'precision', 'recall']):
+
+        # Get probabilities
+        # y_train_proba = self.predict_proba(X_train)
+        # y_test_proba = self.predict_proba(X_test) 
+        group_by = 'dataset_type'
+        X_train[group_by] = 'train'
+        X_test[group_by] = 'test'
+
+        X = pd.concat([X_train, X_test], axis=0)
+        y_true = pd.concat([y_train, y_test], axis=0)
+
+        self.plot_grouped_evaluation(X, y_true, split_by=group_by, threshold=threshold, group_by = 'name', 
+                                metrices=metrices)
 
     def multi_plot(self, X=None, y_true=None, df=None, dataset_link_id=None, threshold=0.5, group_by='name', top_n_features=15, plots=[], show=True, save=False, save_path=''):
 
@@ -1156,6 +1274,8 @@ class LinkPredict():
             ax = next(ax_iter) # Get next axes object
             if plot == 'confusion_matrix':
                 self.plot_confusion_matrix(X, y_true, threshold=threshold, show=False, ax=ax)
+            elif plot == 'single_evaluation':
+                self.plot_single_evaluation(X, y_true, threshold=threshold, metrices=['roc_auc', 'pr_auc', 'f1', 'accuracy', 'specificity', 'precision', 'recall', 'mcc'], show=False, ax=ax)
             elif plot == 'grouped_evaluation':
                 self.plot_grouped_evaluation(X, y_true, threshold=threshold, group_by = group_by, metrices=['roc_auc', 'pr_auc', 'f1', 'accuracy', 'specificity', 'precision', 'recall', 'mcc'], show=False, ax=ax)
             elif plot == 'grouped_evaluation_split':
@@ -1205,351 +1325,34 @@ class LinkPredict():
             print(classification_report(y_true, y_pred))
 
         return None
-
-
-# -----------------------------
-
-from sklearn.model_selection import BaseCrossValidator
-from sklearn.model_selection import GroupShuffleSplit
-
-class BaseGroupCV(BaseCrossValidator):
-
-    def __init__(self, group_by='name', stratify_by=None, fractions_col = 'fraction', diff_range=1, fractions_train = None, fractions_test = None, stratify_groups_train=None, stratify_groups_test=None, drop_isolates=False, keep_fractions_train=False, keep_fractions_test=False, trueLinks_id=None, drop_existing_links=False, random_state=0):
-        
-        self.group_by = group_by
-        self.stratify_by = stratify_by
-        self.diff_range = diff_range
-        self.drop_isolates = drop_isolates
-        self.drop_existing_links = drop_existing_links
-        
-        self.fractions_train = fractions_train
-        self.fractions_test = fractions_test
-        self.fractions_col = fractions_col
-
-        self.stratify_groups_train = stratify_groups_train
-        self.stratify_groups_test = stratify_groups_test
-
-        self.keep_fractions_train = keep_fractions_train
-        self.keep_fractions_test = keep_fractions_test
-
-        self.trueLinks_id = trueLinks_id
-        self.train_link_id = {}
-        self.test_link_id = {}
-
-        self.old_indices_mapping = None # save old index for later, as scikit-learn's KFold iterators reset the indices for some reason
-        self.random_state = random_state
-
-    def _preprocess(self, X, y=None):
-        
-        X = X.copy()
-        
-        # Split to X and y
-        if y is None:
-            X, y = X.iloc[:,:-1], X.iloc[:,-1]
-        else:
-            y = y.copy()
-        
-        # Deal with existing-link instances
-        if self.drop_existing_links:
-            if self.trueLinks_id is None:
-                self.trueLinks_id = X[y == 1]['link_ID'] # Keep original existing links instances for later
-            # y[y == -1] = 1 # Relabel subsampled links as existing-links
-
-        # Get groups
-        groups = np.array(X[self.group_by].values) # using name -> all reps & fracs & layers of same networks will be in the same groups
-
-        return X, y, groups
     
-    def _yield_indices(self, X, y, train_idx, test_idx):
-        '''
-        A function which further proccess the indices of the train and test sets, and yields the indices of the train and test sets.
-        '''
+    def export_model(self, path='models/fitted_model'):
+
+        model_data = vars(self)
+        model_data = {key: value for key, value in model_data.items() if key in ['trained_model']}
+
+        if not path.endswith('.joblib'):
+            path = path+'.joblib'
+
+        # Save the model as a joblib file
+        joblib.dump(model_data, path)
+
+        return None
+    
+    def import_model(self, path='models/fitted_model'):
         
-        # Spliting the data to test set and train set
-        X_train, y_train = X.loc[train_idx], y.loc[train_idx]
-        X_test, y_test = X.loc[test_idx], y.loc[test_idx]
+        if not path.endswith('.joblib'):
+            path = path+'.joblib'
 
-        # Keep only desired fraction at each dataset
-        if self.keep_fractions_train == False:
-            X_train, y_train = X_train[X_train[self.fractions_col].isin(self.fractions_train)], y_train[X_train[self.fractions_col].isin(self.fractions_train)]
-        if self.keep_fractions_test == False:
-            X_test, y_test = X_test[X_test[self.fractions_col].isin(self.fractions_test)], y_test[X_test[self.fractions_col].isin(self.fractions_test)]
+        # Load the model from a joblib file
+        model_data = joblib.load(path)
 
-        # Drop isolates
-        if self.drop_isolates:
-            X_train, y_train = X_train[(X_train['isolate_LL'] != 1) | (X_train['isolate_HL'] != 1)], y_train[(X_train['isolate_LL'] != 1) | (X_train['isolate_HL'] != 1)]
+        for key, value in model_data.items():
+            setattr(self, key, value)
+
+        return None
         
-        # Undersample
-        if self.diff_range != None:
-            X_train, y_train = undersample(X_train, y_train, self.diff_range, group_by='subsample_ID')
-
-        if self.drop_existing_links:
-            # Drop existing-links in test data | they should not get evaluated (unless test_set = 'true-network')
-            bool_remove = X_test['link_ID'].isin(self.trueLinks_id)
-            X_test, y_test = X_test[~bool_remove], y_test[~bool_remove]
-
-        # Save link_ids
-        self._save_link_ids(X_train, X_test)
-        
-        return X_train.index, X_test.index
     
-    def _save_link_ids(self, X_train, X_test):
-        i = max(list(self.train_link_id.keys()), default=-1)+1
-        self.train_link_id[i], self.test_link_id[i] = X_train['link_ID'], X_test['link_ID']
+    def export_results(self):
 
-    def get_link_ids(self, i=None):
-        if i is None:
-            return self.train_link_id, self.test_link_id
-        else:
-            return self.train_link_id[i], self.test_link_id[i]
-
-    def get_n_splits(self, X=None, y=None, groups=None):
-        return self.n_splits
-
-class CustomGroupCV(BaseGroupCV):
-
-    def __init__(self, n_splits=1, stratify_test_only_groups=False, **kwargs):
-        super().__init__(**kwargs)
-        self.n_splits = n_splits
-        self.stratify_test_only_groups = stratify_test_only_groups
-    
-    def split(self, X, y=None, groups=None, stratify_test_only_groups=False):
-        
-        X, y, groups_distinct = self._preprocess(X, y)
-        
-        if self.stratify_by is None:
-
-            group_kfold = GroupKFold(n_splits=self.n_splits)
-            for train_idx, test_idx in group_kfold.split(X, y, groups_distinct):
-                yield self._yield_indices(X, y, train_idx, test_idx)
-        
-        else:
-            
-            # Initialize the test_idx_list which will be used to store the indices of the test set of the groups that are present in the test set only, in case stratify_test_only_groups is True
-            test_idx_list = np.array([], dtype='int64')
-            
-            # Get the all groups (present in the train and test sets)
-            groups_to_stratify = set(self.stratify_groups_train + self.stratify_groups_test)
-
-            # Should the test set be also stratified by the stratify_by column, but only for the groups that are present in the test set?
-            if self.stratify_test_only_groups:
-                groups_not_to_stratify = set(self.stratify_groups_test).difference(set(self.stratify_groups_train))
-                groups_to_stratify = groups_to_stratify.difference(groups_not_to_stratify)
-
-                # Add the indices of the test set of the groups that are present in the test set only to the test_idx_list, as they are not stratified
-                for g in groups_not_to_stratify:
-                    test_idx_list = np.append(test_idx_list, X[X[self.stratify_by] == g].index)
-                    
-            # Subset the data to contain only the groups that are present in the train set
-            X_subset = X[X[self.stratify_by].isin(groups_to_stratify)]
-
-            # Get the stratify_by and group_by columns as arrays of values
-            groups_strat = np.array(X_subset[self.stratify_by].values)
-            groups_distinct_subset = np.array(X_subset[self.group_by].values)
-
-            # StratifiedGroupKFold is used to ensure that the stratify_by column is stratified, while the group_by column is grouped
-            sgkf = StratifiedGroupKFold(n_splits=self.n_splits)
-
-            for train_idx, test_idx in sgkf.split(X_subset, y=groups_strat, groups=groups_distinct_subset):
-
-                # get the real (non-continuous) indices, not the positional ones
-                train_idx = X_subset.iloc[train_idx].index
-                test_idx = X_subset.iloc[test_idx].index
-
-                yield self._yield_indices(X, y, train_idx, np.concatenate((test_idx, test_idx_list)))
-    
-    def get_n_splits(self, X=None, y=None, groups=None):
-        return self.n_splits
-    
-    def get_link_ids(self, i=None):
-        if i is None:
-            return self.train_link_id, self.test_link_id
-        else:
-            return self.train_link_id[i], self.test_link_id[i]
-
-class CustomGroupSplit(BaseGroupCV):
-
-    def __init__(self, train_size=0.7, predefined_split=None, **kwargs):
-        super().__init__(**kwargs)
-        self.train_size = train_size
-        self.predefined_split = predefined_split
-
-    def split(self, X, y=None):
-        # TODO: this function can be much more efficient by not using the entire dataframe, but only the necessary columns
-
-        X, y, groups = self._preprocess(X, y)
-                
-        if self.predefined_split != None:
-            train_idx = X[X[self.group_by].isin(self.predefined_split['train'])].index            
-            test_idx = X[X[self.group_by].isin(self.predefined_split['test'])].index
-            yield self._yield_indices(X, y, train_idx, test_idx)
-
-        elif self.stratify_by is None:
-            
-            # Generate groups
-            gss = GroupShuffleSplit(n_splits=1, train_size=self.train_size, random_state=self.random_state) # train_size = proportion of the groups
-
-            for train_idx, test_idx in gss.split(X, y, groups):
-                yield self._yield_indices(X, y, train_idx, test_idx)
-                break # only one split is needed
-
-        else:
-            #TODO: consider using StratifiedGroupKFold, like this
-
-            # Set variable for convenience
-            strat_col = self.stratify_by
-
-            # Get unique values
-            strat_uniques = list(X[strat_col].unique())
-
-            # Verify that the stratify_by column contains more than one unique value
-            if len(strat_uniques)<=1:
-                raise ValueError('The stratify_by column should contain more than one unique value')
-            
-            # Generate groups - if multiple communities are present
-            train_idx = []
-            test_idx = []
-
-            # Get the intersection of the train and test sets
-            groups_intersection = set(self.stratify_groups_train).intersection(set(self.stratify_groups_test))
-
-            # Loop through the unique values of the stratify_by column
-            for group in strat_uniques:
-                
-                group_mask = X[strat_col] == group
-
-                if group in groups_intersection:
-                    # If a group is destined for both train & test set, then split it by the chosen train/test ratio
-                    gss = GroupShuffleSplit(n_splits=1, train_size=self.train_size, random_state=self.random_state)
-                    train_test_idx = next(gss.split(X[group_mask], y[group_mask], groups[group_mask]))
-                    train_idx += list(X[group_mask].iloc[train_test_idx[0]]['link_ID'])
-                    test_idx += list(X[group_mask].iloc[train_test_idx[1]]['link_ID'])
-
-                elif group in self.stratify_groups_train:
-                    train_idx += list(X[group_mask]['link_ID'])
-
-                elif group in self.stratify_groups_test:
-                    test_idx += list(X[group_mask]['link_ID'])
-
-            train_idx = X[X['link_ID'].isin(train_idx)].index
-            test_idx = X[X['link_ID'].isin(test_idx)].index
-        
-            yield self._yield_indices(X, y, train_idx, test_idx)
-
-
-# class IQROutlierRemover(BaseEstimator, TransformerMixin):
-#     def __init__(self, factor=1.5):
-#         self.factor = factor
-
-#     def fit(self, X, y=None):
-        
-#         self.Q1_ = np.percentile(X, 25, axis=0)
-#         self.Q3_ = np.percentile(X, 75, axis=0)
-#         self.IQR_ = self.Q3_ - self.Q1_
-#         return self
-
-#     def transform(self, X, y=None):
-#         return X[(X >= (self.Q1_ - self.factor * self.IQR_)).all(axis=1) & 
-#                   (X <= (self.Q3_ + self.factor * self.IQR_)).all(axis=1), :]
-
-# class IsoForestOutlierRemover(BaseEstimator, TransformerMixin):
-#     def __init__(self, contamination=0.01):
-#         self.contamination = contamination
-
-#     def fit(self, X, y=None):
-#         self.ifo = IsolationForest(contamination=self.contamination)
-#         self.ifo.fit(X)
-#         self.inlier_mask_ = self.ifo.predict(X) > 0
-#         self.inlier_mean_ = X[self.inlier_mask_].mean(axis=0)
-#         return self
-
-#     def transform(self, X, y=None):
-#         X_transformed = X.copy()
-#         outlier_mask = self.ifo.predict(X) <= 0
-#         X_transformed[outlier_mask] = self.inlier_mean_
-#         return X_transformed
-
-# def remove_outliers(df):
-
-#     numeric_cols = df.select_dtypes(include=[np.number]).columns
-#     preds = IsolationForest(contamination=0.005, n_jobs=-1).fit_predict(df[numeric_cols])
-#     return df[preds == 1]
-
-
-def undersample(X, y, diff_range=1, group_by=None, weights_by=None, return_removed=False):
-    
-    # note: use 'weights' arg of pd.sample() with shortest path..
-    #weights_by = 'shortest_path_length'
-    
-    minor_class = 1
-    major_class = 0
-    
-    keep_idx = [] # list of indices to keep
-    
-    Xy = pd.concat([X, y], axis=1)
-    
-    subset_columns = ['repetition', 'class', weights_by] if weights_by is not None else ['repetition', 'class']
-    
-    # keep the major_class of only the first repetition
-    # remove_idx = Xy[(Xy['repetition']>1) & (Xy['class']==major_class)].index
-    # Xy = Xy.drop(remove_idx, axis=0)
-
-    if group_by is not None:
-        gb = Xy.groupby(group_by)
-
-        for group in gb.groups:
-
-            subset = gb.get_group(group)[subset_columns]
-            
-            # if subset['repetition'].iloc[0] > 1:
-                
-            #     keep_idx += subset[subset['class'] == minor_class].index.tolist()
-            #     continue
-
-            # Get the sizes of the minor and major classes
-            minor_class_count = (subset['class'] == minor_class).sum()
-            major_class_count = (subset['class'] == major_class).sum()
-
-            # Determine the sample size (out of the major class dataframe)
-            sample_size = min(int(minor_class_count*diff_range), major_class_count) # sample size cannot be larger than class size
-
-            # Get a major class df as a subset of subsample df
-            major_class_df = subset[subset['class'] == major_class]
-
-            # Random under-sampling, keep the indices
-            keep_idx += major_class_df.sample(n = sample_size, weights = weights_by).index.tolist()
-            keep_idx += subset[subset['class'] == minor_class].index.tolist() # keep also the minor class indices
-    
-    else: # might consider to transform to function, as the code is the same as above
-        
-        subset = Xy[subset_columns] # faster than using whole df
-        
-        # Get the sizes of the minor and major classes
-        minor_class_count = (subset['class'] == minor_class).sum()
-        major_class_count = (subset['class'] == major_class).sum()
-        
-        # Determine the sample size (out of the major class dataframe)
-        sumple_size = min(int(minor_class_count*diff_range), major_class_count) # sample size cannot be larger than class size
-        
-        # Get a major class df as a subset of subsample df
-        major_class_df = subset[subset['class'] == major_class]
-
-        # Random under-sampling, keep the indices
-        keep_idx += major_class_df.sample(n = sumple_size, weights = weights_by).index.tolist()
-        keep_idx += subset[subset['class'] == minor_class].index.tolist() # keep also the minor class indices
-    
-    # Combine
-    Xy_under = Xy[Xy.index.isin(keep_idx)]
-    Xy_under = shuffle(Xy_under)
-
-    # Split
-    X_under = Xy_under[X.columns]
-    y_under = Xy_under.iloc[:,-1]
-    
-    if return_removed:
-        return X_under, y_under, Xy[~Xy.index.isin(keep_idx)]
-    
-    else:
-        return X_under, y_under
-
-
+        return None

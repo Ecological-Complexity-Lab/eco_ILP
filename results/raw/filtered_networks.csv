@@ -1,0 +1,176 @@
+network,community,net_size,connectance,connectance_filtered,net_size_filtered
+M_PL_Kaiser-Bunbury_2014_061_09,Plant-Pollinator,16,0.25,False,True
+M_SD_Githiru_2002,Plant-Seed Dispersers,10,0.8,False,True
+M_PL_Gilarranz_2015_Difunito,Plant-Pollinator,115,0.08316008316008316,True,False
+A_PH_janzen1980,Plant-Herbivore,17,0.2777777777777778,False,True
+M_PL_herrera1988,Plant-Pollinator,225,0.05705832628909552,True,False
+M_PL_Magrach2017_Sweden_2012_high,Plant-Pollinator,80,0.076171875,True,False
+M_SD_Ramos-Robles_2016_net4,Plant-Seed Dispersers,17,0.3,False,True
+M_SD_Garcia_2014_George_Denton,Plant-Seed Dispersers,16,0.4,False,True
+M_PL_Brosi2017_Gothic_Road_Steep_2013_Manipulation,Plant-Pollinator,18,0.33766233766233766,False,True
+A_PH_coley2006,Plant-Herbivore,71,0.07017543859649122,True,False
+M_PL_High_mountain_matrix_Norfolk,Plant-Pollinator,58,0.09134615384615384,True,False
+M_SD_Mack1996,Plant-Seed Dispersers,53,0.08857142857142856,True,False
+M_SD_Chapman_1996,Plant-Seed Dispersers,14,0.5333333333333333,False,True
+M_PL_Kaiser-Bunbury_2014_061_14,Plant-Pollinator,15,0.34,False,True
+M_PL_Sabatino_2,Plant-Pollinator,94,0.08568548387096774,True,False
+M_SD_Mancina_2007_dry,Plant-Seed Dispersers,15,0.34,False,True
+M_SD_Silva_Oliveira_2018,Plant-Seed Dispersers,16,0.3333333333333333,False,True
+M_SD_Albrecht_35_2012,Plant-Seed Dispersers,18,0.3625,False,True
+M_SD_Rosalino_2010,Plant-Seed Dispersers,11,0.8,False,True
+M_SD_Hernandez-Montero_2015_B4_Dry,Plant-Seed Dispersers,11,0.43333333333333335,False,True
+M_PL_Elberling1999,Plant-Pollinator,141,0.08769344141488578,True,False
+M_SD_Vizentin-Bugoni_2019_EKA,Plant-Seed Dispersers,16,0.48333333333333334,False,True
+M_PL_Olito,Plant-Pollinator,164,0.06411290322580646,True,False
+A_HP_Lecorff2000,Host-Parasite,114,0.05270655270655271,True,False
+M_PL_Kaiser-Bunbury_2014_061_27,Plant-Pollinator,19,0.2692307692307692,False,True
+M_PL_Brosi2017_Past_Rustlers_2013_Control,Plant-Pollinator,18,0.35,False,True
+M_PL_Carstensen2017_Brazil_Midway,Plant-Pollinator,76,0.09695512820512821,True,False
+M_PL_Kato1996,Plant-Pollinator,253,0.036458333333333336,True,False
+M_PL_Gilarranz_2015_LaChata,Plant-Pollinator,92,0.09895833333333333,True,False
+M_PL_Brosi2017_Back_of_Baldy_Bend_2014_Manipulation,Plant-Pollinator,17,0.2777777777777778,False,True
+A_HP_belay2,Host-Parasite,331,0.034019832189168576,True,False
+M_SD_Tavares_2007,Plant-Seed Dispersers,16,0.2698412698412698,False,True
+M_PL_Magrach2017_Sweden_2012_low,Plant-Pollinator,112,0.07077856420626896,True,False
+M_PL_Gilarranz_2015_LaPaja,Plant-Pollinator,76,0.09821428571428571,True,False
+M_PL_Gilarranz_2015_Volcan,Plant-Pollinator,102,0.0986159169550173,True,False
+M_SD_Albrecht_13_2012,Plant-Seed Dispersers,18,0.4155844155844156,False,True
+M_SD_Blake_1992,Plant-Seed Dispersers,118,0.09489795918367347,True,False
+A_HP_Stireman2003,Host-Parasite,72,0.07303807303807304,True,False
+M_SD_Zamora-Delgado_2008,Plant-Seed Dispersers,104,0.06206896551724138,True,False
+M_SD_Albrecht_36_2012,Plant-Seed Dispersers,18,0.375,False,True
+M_PL_Kaiser-Bunbury_2010_060_06,Plant-Pollinator,69,0.08636363636363636,True,False
+M_SD_Aguilar-Garavito_2014_mature,Plant-Seed Dispersers,15,0.5370370370370371,False,True
+M_SD_Cruz_2013_Summer,Plant-Seed Dispersers,15,0.2857142857142857,False,True
+M_SD_Young_2012,Plant-Seed Dispersers,17,0.24285714285714285,False,True
+M_PL_Kaiser-Bunbury_2014_061_01,Plant-Pollinator,17,0.2833333333333333,False,True
+M_PL_Kato1990,Plant-Pollinator,766,0.019592373438527284,True,False
+M_PL_Ramirez1992,Plant-Pollinator,70,0.09343200740055504,True,False
+M_SD_Machado-de-Souza_2019,Plant-Seed Dispersers,157,0.08225538971807629,True,False
+M_PL_Kaiser-Bunbury_2014_061_17,Plant-Pollinator,12,0.34285714285714286,False,True
+M_PL_Dupont2009-2,Plant-Pollinator,266,0.09477401129943502,True,False
+M_PL_Medan2002-1,Plant-Pollinator,66,0.08783068783068783,True,False
+M_PL_Carstensen2017_Brazil_Soizig,Plant-Pollinator,87,0.08152958152958154,True,False
+M_SD_Lefevre_2008,Plant-Seed Dispersers,91,0.07105538140020899,True,False
+M_PL_Magrach2017_Sweden_2011_low,Plant-Pollinator,75,0.0936,True,False
+M_SD_Zapata-Mesa_2017_MR_September,Plant-Seed Dispersers,13,0.3,False,True
+A_HP_belay13,Host-Parasite,104,0.07974756167527251,True,False
+M_SD_Garcia_2014_Mount_Fyfee_Reserve,Plant-Seed Dispersers,15,0.38,False,True
+M_SD_Malmborg_1988_1982,Plant-Seed Dispersers,14,0.5111111111111111,False,True
+M_PL_sritongchuay_bat,Plant-Pollinator,10,0.52,False,True
+M_PL_Brosi2017_Brush_Creek_Steep_2013_Control,Plant-Pollinator,17,0.5,False,True
+M_SD_Loayza_2006,Plant-Seed Dispersers,12,0.6666666666666666,False,True
+M_SD_Peredo_2013_Pto_de_San_Lorenzo,Plant-Seed Dispersers,12,0.37142857142857144,False,True
+M_PL_Low_mountain_matrix_Norfolk,Plant-Pollinator,84,0.08615567439096851,True,False
+M_SD_Vizentin-Bugoni_2019_PAH,Plant-Seed Dispersers,17,0.45714285714285713,False,True
+M_SD_Vizentin-Bugoni_2019_MTK,Plant-Seed Dispersers,19,0.34285714285714286,False,True
+M_SD_Mello_2014_Mata_de_Grota,Plant-Seed Dispersers,19,0.2619047619047619,False,True
+M_SD_Arias-Arone_2016,Plant-Seed Dispersers,89,0.08840579710144927,True,False
+A_PH_novotny2005,Plant-Herbivore,14,0.3125,False,True
+M_SD_Costa_2018_before_only,Plant-Seed Dispersers,15,0.32142857142857145,False,True
+M_PL_Yamazaki2003,Plant-Pollinator,364,0.022658248081841432,True,False
+A_HP_Hadfield_2013_035,Host-Parasite,13,0.35714285714285715,False,True
+M_PL_Gilarranz_2015_Amarante,Plant-Pollinator,99,0.08112874779541446,True,False
+M_SD_Purificacao_2014_savannah_rainy,Plant-Seed Dispersers,16,0.2857142857142857,False,True
+M_PL_Gilarranz_2015_Barrosa,Plant-Pollinator,92,0.08721804511278196,True,False
+M_SD_Garcia_2014_Charles_Plimmer,Plant-Seed Dispersers,18,0.3472222222222222,False,True
+M_PL_LaraC,Plant-Pollinator,16,0.640625,False,True
+M_SD_Traveset_1992,Plant-Seed Dispersers,15,0.3888888888888889,False,True
+M_PL_Kaiser-Bunbury_2014_061_35,Plant-Pollinator,16,0.26666666666666666,False,True
+M_SD_Albrecht_102_2012,Plant-Seed Dispersers,19,0.3522727272727273,False,True
+M_SD_Dupont_1997,Plant-Seed Dispersers,14,0.4222222222222222,False,True
+M_SD_Chaves_2018_mature_forest,Plant-Seed Dispersers,17,0.4090909090909091,False,True
+M_PL_Carstensen2017_Brazil_Tinkerbell,Plant-Pollinator,77,0.0780701754385965,True,False
+M_SD_Ramaswami_2017,Plant-Seed Dispersers,19,0.45555555555555555,False,True
+M_PL_Kaiser-Bunbury_2014_061_22,Plant-Pollinator,16,0.3,False,True
+M_PL_Kato2000,Plant-Pollinator,712,0.017316752915733376,True,False
+M_PL_Primack1983-3,Plant-Pollinator,167,0.05984088550674507,True,False
+M_PL_Clements1923,Plant-Pollinator,361,0.03736263736263736,True,False
+M_PL_Kaiser-Bunbury_2010_060_05,Plant-Pollinator,85,0.08431603773584906,True,False
+M_PL_Kaiser-Bunbury_2014_061_20,Plant-Pollinator,19,0.23333333333333334,False,True
+M_PL_Kato1996b,Plant-Pollinator,253,0.036458333333333336,True,False
+A_PH_tavakilian1997,Plant-Herbivore,556,0.012176044219638108,True,False
+M_SD_Jayasekara_2003,Plant-Seed Dispersers,19,0.2222222222222222,False,True
+M_PL_Kaiser-Bunbury_2010_060_07,Plant-Pollinator,68,0.09549071618037135,True,False
+A_HP_Hadfield_2013_034,Host-Parasite,17,0.4861111111111111,False,True
+M_SD_Pedro_1992,Plant-Seed Dispersers,18,0.3472222222222222,False,True
+M_SD_Fricke_2018_Saipan,Plant-Seed Dispersers,13,0.6190476190476191,False,True
+M_SD_Malmborg_1988_1981,Plant-Seed Dispersers,17,0.42424242424242425,False,True
+A_PH_site09_period01_Martins,Plant-Herbivore,18,0.4153846153846154,False,True
+M_SD_Junior_2010,Plant-Seed Dispersers,12,0.5714285714285714,False,True
+M_SD_Brito_2010,Plant-Seed Dispersers,16,0.38181818181818183,False,True
+M_SD_Albrecht_111_2011,Plant-Seed Dispersers,14,0.5333333333333333,False,True
+M_PL_Primack1983-2,Plant-Pollinator,180,0.06562554834181435,True,False
+M_PL_Kaiser-Bunbury_2014_061_25,Plant-Pollinator,16,0.38181818181818183,False,True
+M_PL_Orford_2016_Farm-2012-A9,Plant-Pollinator,14,0.3111111111111111,False,True
+M_SD_Albrecht_314_2012,Plant-Seed Dispersers,14,0.37777777777777777,False,True
+M_PL_Sabatino_1,Plant-Pollinator,99,0.08112874779541446,True,False
+M_SD_Fleming_1977,Plant-Seed Dispersers,15,0.5555555555555556,False,True
+A_HP_Rauque,Host-Parasite,12,0.6111111111111112,False,True
+M_PL_Inouye1988,Plant-Pollinator,123,0.08028083028083029,True,False
+M_SD_Chimera_2010,Plant-Seed Dispersers,12,0.7142857142857143,False,True
+A_HP_Dechtiar1972,Host-Parasite,175,0.08602150537634409,True,False
+M_SD_Lessa_2010,Plant-Seed Dispersers,19,0.45714285714285713,False,True
+M_PL_Carstensen2017_Brazil_Paulino,Plant-Pollinator,107,0.08684738955823293,True,False
+M_PL_Ramirez1989,Plant-Pollinator,91,0.07342995169082125,True,False
+A_PH_Pearse2013,Plant-Herbivore,1637,0.007831908711945767,True,True
+M_PL_Smith-Ramirez2005,Plant-Pollinator,151,0.09841269841269841,True,False
+M_SD_Cruz_2013_Autumn,Plant-Seed Dispersers,10,0.4,False,True
+M_PL_Magrach2017_Germany_2012_low,Plant-Pollinator,120,0.06369248035914703,True,False
+A_HP_Carvalheiro2008,Host-Parasite,51,0.09821428571428571,True,False
+M_SD_Munin_2012,Plant-Seed Dispersers,19,0.37777777777777777,False,True
+M_SD_Albrecht_112_2011,Plant-Seed Dispersers,19,0.38571428571428573,False,True
+M_PL_Carstensen2017_Brazil_Gigante,Plant-Pollinator,255,0.04001702852277565,True,False
+M_PL_Hocking1968,Plant-Pollinator,108,0.07946428571428571,True,False
+M_SD_Peredo_2013_Puertos_de_Marabio,Plant-Seed Dispersers,11,0.5,False,True
+M_SD_Labbe_2011,Plant-Seed Dispersers,19,0.2619047619047619,False,True
+M_SD_Williams_1996_Eves,Plant-Seed Dispersers,17,0.55,False,True
+M_SD_SAAV1,Plant-Seed Dispersers,70,0.09477124183006536,True,False
+M_PL_Magrach2017_Germany_2011_low,Plant-Pollinator,143,0.052412974683544306,True,False
+A_PH_janzen2003,Plant-Herbivore,621,0.015141115747858555,True,False
+M_PL_Carstensen2017_Brazil_Elefante,Plant-Pollinator,106,0.06795698924731183,True,False
+M_PL_Arroyo1982-3,Plant-Pollinator,61,0.09,True,False
+M_SD_Garcia_2014_Blue_Duck,Plant-Seed Dispersers,16,0.4,False,True
+A_HP_Hadfield_2013_017,Host-Parasite,14,0.4222222222222222,False,True
+M_PL_Kaiser-Bunbury_2014_061_11,Plant-Pollinator,16,0.2909090909090909,False,True
+A_HP_Hadfield_2013_039,Host-Parasite,17,0.4393939393939394,False,True
+M_PL_Medan2002-2,Plant-Pollinator,90,0.08714285714285715,True,False
+M_SD_Silveira_2006,Plant-Seed Dispersers,13,0.5238095238095238,False,True
+M_PL_Kaiser-Bunbury_2014_061_44,Plant-Pollinator,19,0.24444444444444444,False,True
+M_PL_Kato1993,Plant-Pollinator,456,0.026223091976516635,True,False
+M_SD_Snow_1988_MAM,Plant-Seed Dispersers,16,0.38333333333333336,False,True
+M_PL_Kaiser-Bunbury_2014_061_10,Plant-Pollinator,19,0.2857142857142857,False,True
+M_SD_Faustino_2006,Plant-Seed Dispersers,17,0.2777777777777778,False,True
+M_SD_Engel_2000,Plant-Seed Dispersers,572,0.061218009779640564,True,False
+M_SD_Garcia_2014_Zealandia,Plant-Seed Dispersers,19,0.4523809523809524,False,True
+A_PH_novotny2012,Plant-Herbivore,581,0.0887854996607541,True,False
+A_PH_Macfadyen2009_plant-herb_A8,Plant-Herbivore,81,0.07164869029275808,True,False
+M_SD_Malmborg_1988_1980,Plant-Seed Dispersers,11,0.4666666666666667,False,True
+M_PL_Arroyo1982-1,Plant-Pollinator,177,0.04587628865979381,True,False
+M_PL_Magrach2017_UK_2012_low,Plant-Pollinator,82,0.09047619047619047,True,False
+A_HP_Hadfield_2013_023,Host-Parasite,17,0.5694444444444444,False,True
+M_PL_Magrach2017_Germany_2011_high,Plant-Pollinator,138,0.052054794520547946,True,False
+M_PL_Carstensen2017_Brazil_Cedro,Plant-Pollinator,98,0.07042253521126761,True,False
+M_PL_Magrach2017_Germany_2012_high,Plant-Pollinator,105,0.06966618287373004,True,False
+M_PL_Weiner2011,Plant-Pollinator,599,0.042765485681936125,True,False
+M_SD_Cruz_2013_Winter,Plant-Seed Dispersers,13,0.30952380952380953,False,True
+M_PL_kantsa,Plant-Pollinator,203,0.06528817974601107,True,False
+M_SD_Albrecht_315_2011,Plant-Seed Dispersers,18,0.37662337662337664,False,True
+M_SD_Perez-Torres_2004,Plant-Seed Dispersers,15,0.3333333333333333,False,True
+M_SD_Carvalho_2008,Plant-Seed Dispersers,18,0.3333333333333333,False,True
+M_SD_Albrecht_112_2012,Plant-Seed Dispersers,19,0.4772727272727273,False,True
+M_SD_Rozzi_1996,Plant-Seed Dispersers,12,0.3888888888888889,False,True
+M_PL_percival1974,Plant-Pollinator,95,0.085824493731919,True,False
+M_PL_Kaiser-Bunbury_2014_061_12,Plant-Pollinator,19,0.2857142857142857,False,True
+A_HP_Bangham1955,Host-Parasite,130,0.09871915026554202,True,False
+M_SD_Chaves_2018_forest_edge,Plant-Seed Dispersers,16,0.2833333333333333,False,True
+M_PL_Magrach2017_UK_2011_high,Plant-Pollinator,89,0.07633973710819009,True,False
+M_PL_Inoue1990,Plant-Pollinator,997,0.019073731894856054,True,False
+M_PL_Kakutani1990,Plant-Pollinator,414,0.023370497427101202,True,False
+M_SD_Milton_2001,Plant-Seed Dispersers,13,0.35714285714285715,False,True
+M_PL_Brosi2017_Belleview_Bench_2013_Manipulation,Plant-Pollinator,18,0.3950617283950617,False,True
+M_PL_Gilarranz_2015_CincoCerros,Plant-Pollinator,94,0.08568548387096774,True,False
+M_PL_Arroyo1982-2,Plant-Pollinator,103,0.07592446892210858,True,False
+M_SD_Hernandez-Montero_2015_B4_Norte,Plant-Seed Dispersers,12,0.3888888888888889,False,True
+M_PL_Philipp2006,Plant-Pollinator,16,0.43636363636363634,False,True
+M_PL_Sabatino_3,Plant-Pollinator,115,0.08316008316008316,True,False
