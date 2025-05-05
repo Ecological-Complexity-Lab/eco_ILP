@@ -14,10 +14,11 @@ This repository contains the code and results for the paper "Inductive link pred
 ## :page_facing_up: Paper and citing
 The paper is in review... wish us good luck!
 
-## How to use the data and code
+## 💻 How to use the data and code
 Please visit the [wiki](https://github.com/Ecological-Complexity-Lab/eco_ILP/wiki) for more information about scripts and data descriptions.
 
-## Online applicaton
+## 🌐 Online applicaton
+We developed an online application to generate instant predictions in binary bipartite ecological networks! [https://huggingface.co/spaces/ecomplab/eco_ILP](https://huggingface.co/spaces/ecomplab/eco_ILP)
 
 ## :green_heart: Acknowledgements
 We thank Prof. Peter Mucha for comments and suggestions.
