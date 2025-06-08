@@ -20,8 +20,8 @@ library(dunn.test)
 
 communities <- tibble(community=c('All','Plant-Pollinator','Host-Parasite','Plant-Seed Dispersers','Plant-Herbivore'),
                       community_abbr=c('All','PP','HP','PSD','PH'),
-                      community_color=c('orange','#CCEBC5','#FBB4AE','#B3CDE3','#c2bcff'),
-                      community_color_dark=c('orange','#82CE70','#F65143','#659AC6','#c3b5ff'))
+                      community_color=c('orange','#fee190','#e2699f','#b8bdee','#ca97df'),
+                      community_color_dark=c('orange','#feda75','#d62976','#659AC6','#962fbf'))
   
   
   
@@ -46,40 +46,59 @@ export_fig <- function(fig, to_file, w=10, h=5){
   dev.off()
 }
 
-export_fig_presentation <- function(fig, to_file, w=10, h=5){
-  pdf(paste(presentation_figs_path, to_file, sep = ""), w, h)
-  print(fig)
-  dev.off()
-}
-
 # Folders
 path_main_dir = "/Users/shai/GitHub/ecomplab/link-predict/" # Path of the main folder
 path_metadata = paste0(path_main_dir, "data/processed/") # Path of proccessed networks & features data, serving as complementary metadata
 path_raw_results = paste0(path_main_dir, "results/raw/") # Path of raw results
 path_intermediate_results = paste0(path_main_dir, "results/intermediate/") # Path of intermediate results, output of this script
 path_final_results = paste0(path_main_dir, "results/final/") # Path of final results, output of this script
-path_paper_flow_results = paste0(path_main_dir, "results/Paper flow/") # Path of final results, output of this script
-paper_figs_path <- '/Users/shai/Dropbox (Personal)/Apps/Overleaf/2024 Link prediction in multiple networks/revision/images/' # Path of final results, output of this script
-presentation_figs_path <- '/Users/shai/Library/Mobile Documents/com~apple~Keynote/Documents/Conferences/2024 BES/' # Path of final results, output of this script
+paper_figs_path <- '/Users/shai/Dropbox (Personal)/Apps/Overleaf/2025 NEE/revision_2/images/' # Path of final results, output of this script
 
 # Define the plots' theme
-fontsize <- 14 # The size of the font is relative to the size of the figure. You can change it here.
-
-paper_figs_theme <- 
+fontsize_main_NEE <- 7 # The size of the font is relative to the size of the figure. You can change it here.
+paper_figs_theme_main_NEE <-
   theme_bw()+
   theme(panel.grid = element_blank(),
         panel.border = element_rect(color = "black",fill = NA,linewidth = 1),
         panel.spacing = unit(0.5, "cm", data = NULL),
-        axis.text = element_text(size=fontsize, color='black'),
-        axis.title = element_text(size=fontsize, color='black'),
-        axis.line = element_blank(), 
-        legend.text=element_text(size=fontsize-2, color='black'),
-        legend.title=element_text(size=fontsize, color='black'))
+        axis.text = element_text(size=fontsize_main_NEE, color='black'),
+        axis.title = element_text(size=fontsize_main_NEE, color='black'),
+        axis.line = element_blank(),
+        legend.text=element_text(size=fontsize_main_NEE, color='black'),
+        legend.title=element_text(size=fontsize_main_NEE, color='black'))
 
-paper_figs_theme_no_legend <- 
-  paper_figs_theme +
-  theme(legend.position = 'none')
+fontsize_SI_NEE <- 14 # The size of the font is relative to the size of the figure. You can change it here.
+paper_figs_theme_SI_NEE <-
+  theme_bw()+
+  theme(panel.grid = element_blank(),
+        panel.border = element_rect(color = "black",fill = NA,linewidth = 1),
+        panel.spacing = unit(0.5, "cm", data = NULL),
+        axis.text = element_text(size=fontsize_SI_NEE, color='black'),
+        axis.title = element_text(size=fontsize_SI_NEE, color='black'),
+        axis.line = element_blank(),
+        legend.text=element_text(size=fontsize_SI_NEE, color='black'),
+        legend.title=element_text(size=fontsize_SI_NEE, color='black'))
 
+# Define functions ---------------------------------------------------------
+# Define a function to summarize and compute metrics
+calc_conf_metrics <- function(.data) {
+  .data %>%
+    summarize(
+      TP = sum(category == "TP"),
+      FP = sum(category == "FP"),
+      TN = sum(category == "TN"),
+      FN = sum(category == "FN"),
+      .groups = "drop"
+    ) %>%
+    mutate(
+      accuracy = (TP + TN) / (TP + TN + FP + FN),
+      precision = TP / (TP + FP),
+      recall = TP / (TP + FN),
+      specificity = TN / (TN + FP), 
+      balanced_accuracy = 0.5 * ((TP / (TP + FN)) + (TN / (TN + FP))),
+      f1 = 2 * (precision * recall) / (precision + recall)
+    )
+}
 
 # Exploratory Data Analysis ------------------------------------------------
 
@@ -94,7 +113,7 @@ filtered_networks %>%
   geom_hline(yintercept = 0.1, linetype = "dashed") +
   scale_color_manual(values = communities$community_color_dark) +
   labs(x = "Network size", y = "Connectance") +
-  paper_figs_theme
+  paper_figs_theme_SI_NEE
 
 
 
@@ -111,19 +130,20 @@ SI_network_properties_plot <-
     `Network size` = network_size, 
     `Number of links` = interactions_count, 
     Connectance = connectance, 
-    `Number of links` = links.per.species
+    `Number of links per species` = links.per.species
   ) %>%
   pivot_longer(
-    cols = c(`Network size`, `Number of links`, Connectance, `Number of links`), 
+    cols = c(`Network size`, `Number of links`, Connectance, `Number of links per species`), 
     names_to = "feature", 
     values_to = "value"
   ) %>% 
   ggplot(aes(x = value, fill = feature)) +
     geom_histogram(position = "dodge") +
     facet_wrap(~feature, scales = "free") +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
     scale_fill_discrete() +
-    labs(x = "Value", y = "Count", fill='Property')
+    labs(x = "Value", y = "Count", fill='Property')+
+    paper_figs_theme_SI_NEE
+  
 
 SI_network_properties_plot
 export_fig(SI_network_properties_plot, 'SI_network_properties_plot.pdf', 10, 5)
@@ -134,16 +154,17 @@ filter_list <- c("Plant-Pollinator", "Host-Parasite", "Plant-Seed Dispersers", "
 network_lvl_df_long <- 
   network_lvl_df %>%
   filter(community %in% filter_list) %>%
-  select(subsample_ID, community, network_size, interactions_count, connectance, links.per.species) %>%
+  select(community, network_size, interactions_count, connectance, links.per.species) %>%
   rename('average degree' = links.per.species) %>%
   pivot_longer(cols = c('network_size', 'interactions_count', 'connectance', 'average degree'), names_to = "feature", values_to = "value") #, -community
 
 # Create a histogram for each feature
-features_hist_plot <- ggplot(network_lvl_df_long, aes(x = value, fill = community)) +
+ggplot(network_lvl_df_long, aes(x = value, fill = community)) +
   geom_histogram(position = "dodge") +
   facet_grid(community ~ feature, scales = "free") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  scale_fill_manual(values = communities_colors) +
+  # Take colors from communities
+  scale_fill_manual(values = setNames(communities$community_color_dark, communities$community)) +
   labs(x = "Value", y = "Count")
 
 
@@ -159,112 +180,102 @@ SI_networks_PCA <-
   geom_point(size=2) +
   labs(x = "PC1", y = "PC2", color='Community') +
   scale_color_manual(values = setNames(communities$community_color_dark, communities$community)) +
-  paper_figs_theme +
-  theme(legend.position = c(0.75,0.85))
+  paper_figs_theme_SI_NEE +
+  theme(legend.position = "inside",
+        legend.position.inside = c(0.75,0.85))
 
 SI_networks_PCA
-export_fig(SI_pca_plot, 'SI_networks_PCA.pdf', 6, 6)
+export_fig(SI_networks_PCA, 'SI_networks_PCA.pdf', 6, 6)
 
 # Feature correlations ------------------------------------------------------
 
-# Load the data frames
-network_lvl_df <- read.csv(paste0(path_intermediate_results, "network_lvl_df.csv"))
-node_lower_lvl_df <- read.csv(paste0(path_intermediate_results, "node_lower_lvl_df.csv"))
-node_higher_lvl_df <- read.csv(paste0(path_intermediate_results, "node_higher_lvl_df.csv"))
-link_lvl_df <- read.csv(paste0(path_intermediate_results, "link_lvl_df.csv"))
-
-## Correlation matrices ------------------------------------------------------
-
-# Create a correlation matrix
-network_lvl_correlation_matrix <- network_lvl_df %>%
-  cor() %>%
-  `[<-`(lower.tri(.), NA) # Convert lower triangle of values to NaNs and stack remove it
-
-node_lower_lvl_correlation_matrix <- node_lower_lvl_df %>%
-  cor() %>%
-  `[<-`(lower.tri(.), NA)
-
-node_higher_lvl_correlation_matrix <- node_higher_lvl_df %>%
-  cor() %>%
-  `[<-`(lower.tri(.), NA)
-
-link_lvl_correlation_matrix <- link_lvl_df %>%
-  cor() %>%
-  `[<-`(lower.tri(.), NA)
-
-# Create a dataframe of correlations(columns: feature1, feature2, corr), sorted by the absolute value of corr
-network_lvl_correlation_df <- melt(network_lvl_correlation_matrix, na.rm = TRUE) %>%
-  rename(feature1 = Var1, feature2 = Var2, corr = value) %>%
-  filter(feature1 != feature2) %>%
-  mutate(corr = abs(corr)) %>%
-  arrange(desc(corr))
-
-node_lower_lvl_correlation_df <- melt(node_lower_lvl_correlation_matrix, na.rm = TRUE) %>% 
-  rename(feature1 = Var1, feature2 = Var2, corr = value) %>%
-  filter(feature1 != feature2) %>%
-  mutate(corr = abs(corr)) %>%
-  arrange(desc(corr))
-
-node_higher_lvl_correlation_df <- melt(node_higher_lvl_correlation_matrix, na.rm = TRUE) %>% 
-  rename(feature1 = Var1, feature2 = Var2, corr = value) %>%
-  filter(feature1 != feature2) %>%
-  mutate(corr = abs(corr)) %>%
-  arrange(desc(corr))
-
-link_lvl_correlation_df <- melt(link_lvl_correlation_matrix, na.rm = TRUE) %>%
-  rename(feature1 = Var1, feature2 = Var2, corr = value) %>%
-  filter(feature1 != feature2) %>%
-  mutate(corr = abs(corr)) %>%
-  arrange(desc(corr))
-
-# Create correlation plots
-SI_network_lvl_correlation_plot <- ggplot(network_lvl_correlation_df, aes(feature1, feature2, fill = corr)) +
-  geom_tile() +
-  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0) +
-  theme_minimal() +
-  labs(title = "Correlation Matrix") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-SI_node_lower_lvl_correlation_plot <- ggplot(node_lower_lvl_correlation_df, aes(feature1, feature2, fill = corr)) +
-  geom_tile() +
-  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0) +
-  theme_minimal() +
-  labs(title = "Correlation Matrix") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-SI_node_higher_lvl_correlation_plot <- ggplot(node_higher_lvl_correlation_df, aes(feature1, feature2, fill = corr)) +
-  geom_tile() +
-  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0) +
-  theme_minimal() +
-  labs(title = "Correlation Matrix") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-SI_link_lvl_correlation_plot <- ggplot(link_lvl_correlation_df, aes(feature1, feature2, fill = corr)) +
-  geom_tile() +
-  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0) +
-  theme_minimal() +
-  labs(title = "Correlation Matrix") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-# Display the plots
-SI_network_lvl_correlation_plot
-SI_node_lower_lvl_correlation_plot
-SI_node_higher_lvl_correlation_plot
-SI_link_lvl_correlation_plot
-
-# Export the plots
-export_fig(SI_node_lower_lvl_correlation_plot, 'SI_node_lower_lvl_correlation_plot.pdf', 10, 10)
-export_fig(SI_node_higher_lvl_correlation_plot, 'SI_node_higher_lvl_correlation_plot.pdf', 10, 10)
-export_fig(SI_link_lvl_correlation_plot, 'SI_link_lvl_correlation_plot.pdf', 10, 10)
-export_fig(SI_network_lvl_correlation_plot, 'SI_network_lvl_correlation_plot.pdf', 10, 10)
+feature_correlations <- function(data, plot_corr, title = "Clustered Correlation Matrix") {
+  # 1. Select only numeric columns and remove constant ones
+  data_clean <- data %>% 
+    select_if(is.numeric) %>% 
+    select_if(~ n_distinct(.) > 1)
+  
+  # 2. Compute the correlation matrix, using pairwise.complete.obs to handle NAs, and take absolute values
+  corr_matrix <- cor(data_clean, use = "pairwise.complete.obs") %>% abs()
+  
+  # Check if the correlation matrix has any NA/NaN/Inf values
+  if (any(!is.finite(corr_matrix))) {
+    stop("The correlation matrix contains non-finite values. Please check your data.")
+  }
+  
+  # 3. Perform hierarchical clustering on the correlation matrix.
+  diss <- as.dist(1 - corr_matrix)
+  hc <- hclust(diss, method = "complete")
+  
+  # 4. Extract the order of features from the clustering
+  ordered_features <- rownames(corr_matrix)[hc$order]
+  
+  # 5. Convert the correlation matrix to long format and keep only the lower triangle
+  correlation_df <- as_tibble(corr_matrix, rownames = "feature1") %>% 
+    pivot_longer(
+      cols = -feature1,
+      names_to = "feature2",
+      values_to = "corr"
+    ) %>%
+    filter(feature1 != feature2) %>%
+    mutate(
+      feature1 = factor(feature1, levels = ordered_features),
+      feature2 = factor(feature2, levels = ordered_features)
+    ) %>% 
+    filter(as.numeric(feature1) > as.numeric(feature2))
+  
+  if (plot_corr){
+    # 6. Plot the clustered correlation heatmap using ggplot2
+    p <- ggplot(correlation_df, aes(feature1, feature2, fill = corr)) +
+      geom_tile(color = "white") +
+      scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0) +
+      labs(
+        title = title,
+        x = "", y = "", fill = "Correlation"
+      ) +
+      paper_figs_theme_SI_NEE +
+      theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    return(p)
+  } else {
+    return(correlation_df)
+  }
+}
 
 
-# network_lvl_correlation_df %>% filter(corr > 0.85)
-# node_lower_lvl_correlation_df %>% filter(corr > 0.85)
-# node_higher_lvl_correlation_df %>% filter(corr > 0.85)
-# link_lvl_correlation_df %>% filter(corr > 0.85)
+## Correlations of network-level properties -----------------------------------
+network_lvl_df <- read_csv(paste0(path_intermediate_results, "network_lvl_df.csv")) %>% 
+  select(-community)
+SI_correlations_network_lvl <- feature_correlations(network_lvl_df, plot_corr = T,
+                                                    title = "Correlations of network-level properties")
+SI_correlations_network_lvl
+export_fig(SI_correlations_network_lvl, 'SI_correlations_network_lvl.pdf', 10, 10)
+
+## Correlations of node-level properties --------------------------------------
+node_lower_lvl_df <- read_csv(paste0(path_intermediate_results, "node_lower_lvl_df.csv"))
+SI_correlations_node_lower_lvl <- feature_correlations(node_lower_lvl_df, plot_corr = T,
+                                                       title = "Correlations of lower node-level properties")
+SI_correlations_node_lower_lvl
+export_fig(SI_correlations_node_lower_lvl, 'SI_correlations_node_lower_lvl.pdf', 10, 10)
+
+node_higher_lvl_df <- read_csv(paste0(path_intermediate_results, "node_higher_lvl_df.csv"))
+SI_correlations_node_higher_lvl <- feature_correlations(node_higher_lvl_df, plot_corr = T,
+                                                        title = "Correlations of higher node-level properties")
+SI_correlations_node_higher_lvl
+export_fig(SI_correlations_node_higher_lvl, 'SI_correlations_node_higher_lvl.pdf', 10, 10)
+
+## Correlations of link-level properties --------------------------------------
+link_lvl_df <- read_csv(paste0(path_intermediate_results, "link_lvl_df.csv"))
+SI_correlations_link_lvl <- feature_correlations(link_lvl_df, plot_corr = T, title = "Correlations of link-level properties")
+SI_correlations_link_lvl
+export_fig(SI_correlations_link_lvl, 'SI_correlations_link_lvl.pdf', 10, 10)
 
 ## Correlation histograms ------------------------------------------------------
+network_lvl_correlation_df <- feature_correlations(network_lvl_df, plot_corr = F)
+node_lower_lvl_correlation_df <- feature_correlations(node_lower_lvl_df, plot_corr = F)
+node_higher_lvl_correlation_df <- feature_correlations(node_higher_lvl_df, plot_corr = F)
+link_lvl_correlation_df <- feature_correlations(link_lvl_df, plot_corr = F)
+
+
 SI_feature_correlations <- 
   bind_rows(
     network_lvl_correlation_df %>% mutate(level = 'Network'),
@@ -278,7 +289,8 @@ SI_feature_correlations <-
   facet_wrap(~level, scales = "free_y") +
   geom_vline(xintercept = 0.8, linetype = "dashed", color = "red") +
   labs(x = 'Correlation value', y = 'Count') +
-  paper_figs_theme_no_legend
+  paper_figs_theme_SI_NEE+
+  theme(legend.position = 'none')
 
 SI_feature_correlations
 export_fig(SI_feature_correlations, 'SI_feature_correlations.pdf', 10, 5)
@@ -289,9 +301,9 @@ export_fig(SI_feature_correlations, 'SI_feature_correlations.pdf', 10, 5)
 compare_models_metrics_df <- read_csv(paste0(path_intermediate_results, 'compare_other_models_metrics_df.csv'))
 
 # Define the desired order of metrics
-desired_metrics <- c('Recall', 'Precision', 'Specificity', 'F1', 'BA', 'PR AUC')
+desired_metrics <- c('Recall', 'Precision', 'F1', 'PR AUC')
 
-# Find the mean BA for each model
+# Write source data according to NEE guidelines
 compare_models_metrics_df %>% 
   mutate(metric = factor(metric, levels = metrics$metric, labels =  metrics$metric_label)) %>%
   # Filter to keep only the desired metrics
@@ -299,11 +311,8 @@ compare_models_metrics_df %>%
   # Reorder the metric factor according to the desired order
   mutate(metric = factor(metric, levels = desired_metrics)) %>%
   mutate(model = factor(model, levels = models$model, labels = models$label)) %>%
-  filter(model %in% c('ILP','TML','SBM','MC','C')) %>%
-  group_by(model, metric) %>%
-  summarise(value = mean(value)) %>%
-  filter(metric=='BA')
-
+  filter(model %in% c('ILP','TML','SBM','MC','C')) %>% 
+  write_csv('/Users/shai/Dropbox (Personal)/Apps/Overleaf/2025 NEE/revision_2/NEE/Fig_2_source_data.csv')
 
 ILP_vs_TLP <- 
   compare_models_metrics_df %>% 
@@ -315,19 +324,19 @@ ILP_vs_TLP <-
   mutate(model = factor(model, levels = models$model, labels = models$label)) %>%
   filter(model %in% c('ILP','TML','SBM','MC','C')) %>%
   ggplot(aes(x = metric, y = value, fill = model, color = model)) +
-  geom_boxplot(show.legend = T, color = 'black') +
-  scale_fill_manual(values = setNames(models$color, models$label), labels=c('ILP (ML)','TLP (ML)','SBM','MC','C')) +
+  geom_boxplot(show.legend = T, color = 'black', outlier.alpha=0.6) +
+  scale_fill_manual(values = setNames(models$color, models$label), labels=c('ILP','ML (TLP)','SBM (TLP)','MC (TLP)','C (TLP)')) +
   scale_y_continuous(breaks = seq(0, 1, 0.25)) +
   labs(y = "Metric value", x = "Metric") +
-  paper_figs_theme +
+  paper_figs_theme_main_NEE +
   theme(legend.position = "inside",
-        legend.position.inside = c(0.92,0.82),
+        legend.position.inside = c(0.87,0.82),
         legend.title = element_blank(),
         axis.text.x = element_text(angle = 45, hjust = 1),
         axis.title.x = element_blank()) # Rotating x-axis labels 45 degrees
 
 ILP_vs_TLP
-export_fig(ILP_vs_TLP, 'ILP_vs_TLP.pdf', 10, 5)
+export_fig(ILP_vs_TLP, 'ILP_vs_TLP.pdf', 7.4, 5) # 7.4 is the 188mm width for NEE
 
 SI_ILP_vs_TLP <-
   compare_models_metrics_df %>% 
@@ -339,7 +348,7 @@ SI_ILP_vs_TLP <-
   scale_fill_manual(values = setNames(models$color, models$label)) +
   scale_y_continuous(breaks = seq(0, 1, 0.25)) +
   labs(y = "Metric value", x = "Metric") +
-  paper_figs_theme +
+  paper_figs_theme_SI_NEE +
   theme(legend.position = c(0.92,0.15),
         legend.title = element_blank(),
         axis.text.x = element_text(angle = 45, hjust = 1),
@@ -347,87 +356,7 @@ SI_ILP_vs_TLP <-
 
 
 SI_ILP_vs_TLP
-export_fig(SI_ILP_vs_TLP, 'SI_ILP_vs_TLP', 10, 5)
-
-# ILP_vs_TLP_community <- 
-#   compare_models_metrics_df %>% 
-#   mutate(metric = factor(metric, levels = metrics$metric, labels =  metrics$metric_label)) %>%
-#   # Filter to keep only the desired metrics
-#   filter(metric %in% desired_metrics) %>%
-#   # Reorder the metric factor according to the desired order
-#   mutate(metric = factor(metric, levels = desired_metrics)) %>%
-#   mutate(model = factor(model, levels = models$model, labels = models$label)) %>%
-#   filter(model %in% c('ILP','TML','SBM','MC','C')) %>%
-#   ggplot(aes(x = metric, y = value, fill = model, color = model)) +
-#   geom_boxplot(show.legend = T, color = 'black') +
-#   facet_wrap(~community)+
-#   scale_fill_manual(values = setNames(models$color, models$label)) +
-#   scale_y_continuous(breaks = seq(0, 1, 0.25)) +
-#   labs(y = "Metric value", x = "Metric") +
-#   paper_figs_theme +
-#   theme(legend.title = element_blank(),
-#         axis.text.x = element_text(angle = 45, hjust = 1),
-#         axis.title.x = element_blank()) # Rotating x-axis labels 45 degrees
-# 
-# ILP_vs_TLP_community
-# export_fig(ILP_vs_TLP_community, 'ILP_vs_TLP_community', 10, 5)
-
-
-## Presentation plots ------------------------------------------------------
-desired_metrics <- c('Recall', 'Specificity', 'BA')
-
-ILP_vs_TLP_no_TML <- 
-  compare_models_metrics_df %>% 
-  mutate(metric = factor(metric, levels = metrics$metric, labels =  metrics$metric_label)) %>%
-  # Filter to keep only the desired metrics
-  filter(metric %in% desired_metrics) %>%
-  # Reorder the metric factor according to the desired order
-  mutate(metric = factor(metric, levels = desired_metrics)) %>%
-  mutate(model = factor(model, levels = models$model, labels = models$label)) %>%
-  filter(model %in% c('ILP','SBM')) %>%
-  ggplot(aes(x = metric, y = value, fill = model, color = model)) +
-  geom_boxplot(show.legend = T, color = 'black') +
-  scale_fill_manual(values = setNames(models$color, models$label)) +
-  scale_y_continuous(breaks = seq(0, 1, 0.25)) +
-  labs(y = "Metric value", x = "Metric") +
-  paper_figs_theme +
-  theme(legend.position = c(0.92,0.15),
-        legend.text=element_text(size=fontsize, color='black'),
-        legend.title = element_blank(),
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.title.x = element_blank()) # Rotating x-axis labels 45 degrees
-
-ILP_vs_TLP
-export_fig_presentation(ILP_vs_TLP, 'ILP_vs_TLP.pdf', 10, 5)
-
-
-
-desired_metrics <- c('Recall', 'Specificity', 'BA')
-
-ILP_vs_TLP <- 
-  compare_models_metrics_df %>% 
-  mutate(metric = factor(metric, levels = metrics$metric, labels =  metrics$metric_label)) %>%
-  # Filter to keep only the desired metrics
-  filter(metric %in% desired_metrics) %>%
-  # Reorder the metric factor according to the desired order
-  mutate(metric = factor(metric, levels = desired_metrics)) %>%
-  mutate(model = factor(model, levels = models$model, labels = models$label)) %>%
-  filter(model %in% c('ILP','TML','SBM')) %>%
-  ggplot(aes(x = metric, y = value, fill = model, color = model)) +
-  geom_boxplot(show.legend = T, color = 'black') +
-  scale_fill_manual(values = setNames(models$color, models$label)) +
-  scale_y_continuous(breaks = seq(0, 1, 0.25)) +
-  labs(y = "Metric value", x = "Metric") +
-  paper_figs_theme +
-  theme(legend.position = c(0.92,0.15),
-        legend.text=element_text(size=fontsize, color='black'),
-        legend.title = element_blank(),
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.title.x = element_blank()) # Rotating x-axis labels 45 degrees
-
-ILP_vs_TLP
-export_fig_presentation(ILP_vs_TLP, 'ILP_vs_TLP.pdf', 10, 5)
-
+export_fig(SI_ILP_vs_TLP, 'SI_ILP_vs_TLP.pdf', 10, 5)
 
 
 # Feature importance ------------------------------------------------------
@@ -457,7 +386,7 @@ SI_feature_importance <-
     geom_errorbar(aes(ymin = importance_mean-importance_sd, ymax = importance_mean+importance_sd), width = 0.2) +
     coord_flip() +
     labs(y = "Mean Importance", x = "Feature") + # no need for units in the X axis?
-    paper_figs_theme
+    paper_figs_theme_SI_NEE
 
 SI_feature_importance
 export_fig(SI_feature_importance, 'SI_feature_importance.pdf', 10, 5)
@@ -467,109 +396,222 @@ export_fig(SI_feature_importance, 'SI_feature_importance.pdf', 10, 5)
 # load rds, csv too big
 compare_models_features_long <- readRDS(paste0(path_intermediate_results, "temp_compare_models_features_long.rds"))
 
-# Define the number of bins
-num_bins <- 10  
+# Quick exploration of degree values
+compare_models_features_long %>%
+  filter(model == "Connectance") %>% 
+  filter(feature %in% c("degree_HL", "degree_LL")) %>% 
+  filter(value<100) %>%   
+  # filter(value > 0) %>%
+  group_by(feature) %>%
+  summarise(min = min(value), max = max(value), mean = mean(value), sd = sd(value), n=n())
 
-compare_model_features_degree_binned <- 
+compare_models_features_long %>%  
+  filter(model == "Connectance") %>% 
+  filter(feature %in% c("degree_HL", "degree_LL")) %>% filter(value==0)
+  
+# Define the number of bins
+num_bins <- 10 
+
+binned <- 
   compare_models_features_long %>%
   filter(feature %in% c("degree_HL", "degree_LL")) %>% 
-  # filter(outcome %in% c("FN", "TP")) %>%
+  filter(value <= 100) %>%
+  filter(value>0) %>% 
   group_by(feature) %>%
   group_modify(~ {
-    feature_min <- floor(min(.x$value))  # Round down to nearest integer
-    feature_max <- ceiling(max(.x$value))  # Round up to nearest integer
-    bin_width <- ceiling((feature_max - feature_min) / num_bins)  # Ensure bin width is an integer
-    bin_breaks <- seq(feature_min, feature_max, by = bin_width)  # Create integer breaks
-    # If the last break is smaller than max value, append the max value
-    if (max(bin_breaks) < feature_max) {
-      bin_breaks <- c(bin_breaks, feature_max)
+    bin_breaks <- quantile(.x$value, probs = seq(0, 1, length.out = num_bins + 1), na.rm = TRUE)
+    bin_breaks <- unique(bin_breaks)
+    if (.y$feature == "degree_HL") {
+      bin_breaks <- c(bin_breaks, 50)
+    } else {
+      bin_breaks <- c(bin_breaks, 30)
     }
-    .x %>%
-      mutate(feature_bin = cut(value, breaks = bin_breaks, include.lowest = TRUE))
+    bin_breaks <- sort(bin_breaks)
+    print(paste("Feature:", .y$feature, "- bin_breaks:", toString(bin_breaks)))
+    
+    temp <- .x %>%
+      mutate(feature_bin = cut(value, 
+                               breaks = bin_breaks, 
+                               include.lowest = TRUE, 
+                               ordered_result = TRUE))
+    
+    print(paste("Ordered feature_bin levels for", .y$feature, ":", toString(levels(temp$feature_bin))))
+    
+    # Convert to character before returning
+    temp %>%
+      mutate(feature_bin = as.character(feature_bin))
   }) %>%
   ungroup()
+
+# Next, determine a common ordering for the bins
+# We'll extract the lower bound from the bin labels and sort accordingly.
+extract_lower_bound <- function(bin_label) {
+  # bin_label is something like "[0,1]" or "(1,2]". Extract the first number.
+  # Remove leading '[' or '(' and then take everything up to the comma.
+  as.numeric(str_extract(bin_label, "(?<=\\[|\\().+?(?=,)"))
+}
+
+# Get all unique bin levels as characters from the combined data
+all_levels <- unique(as.character(binned$feature_bin))
+# Order them by their numeric lower bound
+ordered_levels <- all_levels[order(sapply(all_levels, extract_lower_bound))]
+
+# Now reassign feature_bin as an ordered factor with the common levels:
+compare_model_features_degree_binned <- binned %>%
+  mutate(feature_bin = factor(feature_bin, levels = ordered_levels, ordered = TRUE))
+
+# (Optional) Print the common levels
+print(paste("Common ordered levels:", toString(levels(compare_model_features_degree_binned$feature_bin))))
+
+
+
+# Compare the number of observations in each bin per model and metric
+SI_bins_count <-
+compare_model_features_degree_binned %>%
+  # All models have the same number of observations so filter just for one of them.
+  filter(model == "Connectance") %>% 
+  group_by(feature, feature_bin) %>%
+  summarise(n = n()) %>%
+  ungroup() %>% 
+  ggplot(aes(x = feature_bin, y = n, fill = feature)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_grid(~ feature, 
+             scales = "free",
+             labeller = labeller(
+               feature = c(degree_HL = "Degree (high trophic level)", degree_LL = "Degree (low trophic level)")
+             )) +
+  labs(x = "Degree bin", y = "Number of observations", fill = "Feature") +
+  scale_fill_manual(values = c('steelblue', 'darkgreen')) +
+  paper_figs_theme_SI_NEE +
+  theme(legend.position = "none",
+        strip.text = element_text(size = 12, face = "bold"),
+        axis.text.x = element_text(angle = 45, hjust = 1, size = 10))
+SI_bins_count
+export_fig(SI_bins_count, 'SI_bins_count.pdf', 10, 5)
 
 # Calculating the proportion of correct predictions per bin
 models_preformance_trend <- 
   compare_model_features_degree_binned %>%
   mutate(model = factor(model, levels = models$model, labels = models$label)) %>%
+  rename(category = outcome) %>% # for calc_conf_metrics
   group_by(model, feature, feature_bin) %>%
-  summarise(
-    total_pos = sum(outcome == "TP" | outcome == "FN"),
-    total_neg = sum(outcome == "FP" | outcome == "TN"),
-    correct_pos = sum(outcome == "TP"),
-    correct_neg = sum(outcome == "TN"),
-    proportion_correct_pos = correct_pos / total_pos,
-    proportion_correct_neg = correct_neg / total_neg
-  ) %>%
+  calc_conf_metrics() %>%
   ungroup() %>% 
-  select(model, feature, feature_bin, proportion_correct_pos, proportion_correct_neg) %>%
-  pivot_longer(cols = c("proportion_correct_pos", 
-                        "proportion_correct_neg"),
-               names_to = "trend",
-               values_to = "proportion_correct") %>% 
-  mutate(trend = factor(trend, levels = c("proportion_correct_pos", "proportion_correct_neg")))
+  select(model, feature, feature_bin, recall, precision) %>%
+  pivot_longer(
+    cols = c("recall", "precision"),
+    names_to = "metric",
+    values_to = "proportion_correct"
+  ) %>% 
+  mutate(metric = factor(metric, levels = c("recall", "precision")))
 
+# Write source data according to NEE guidelines
+write_csv(models_preformance_trend, '/Users/shai/Dropbox (Personal)/Apps/Overleaf/2024 Link prediction in multiple networks/revision_2/NEE/Fig_3_source_data.csv')
+
+# Create plot
 performance_trend <-
   models_preformance_trend %>%
   ggplot(aes(x = feature_bin, y = proportion_correct, color = model, group = model)) +
   geom_line(linewidth = 1) +
   geom_point(size = 2) +
-  facet_grid(trend ~ feature, 
+  facet_grid(metric ~ feature, 
              scales = "free",
              labeller = labeller(
-               trend = c(proportion_correct_pos = "Recall", proportion_correct_neg = "Specificity"),
-               feature = c(degree_HL = "Degree (high)", degree_LL = "Degree (low)")
+               metric = c(f1 = "F1", recall='Recall', precision='Precision'),
+               feature = c(degree_HL = "Degree (high trophic level)", degree_LL = "Degree (low trophic level)")
              )) +
   labs(
-    x = "Degree value",
-    y = "Proportion correct",
+    x = "Degree value bins",
+    y = "Metric value",
     color = "Model"
   ) +
-  scale_color_manual(values = setNames(models$color, models$label)) +
+  scale_color_manual(values = setNames(models$color, models$label), labels=c('ILP','ML (TLP)','SBM (TLP)','MC (TLP)','C (TLP)')) +
   scale_x_discrete(labels = function(x) gsub(",", "-", gsub("\\(|\\]|\\[", "", x))) +
-  paper_figs_theme +
+  paper_figs_theme_main_NEE +
   theme(
     legend.position = "bottom",
-    strip.text = element_text(size = 12, face = "bold"),
+    strip.text = element_text(size = 7, face = "bold"),
     axis.text.x = element_text(angle = 45, hjust = 1, size = 10)
   )
+performance_trend
+export_fig(performance_trend, 'performance_trend.pdf', 18.8/2.54, 6)
 
-export_fig(performance_trend, 'performance_trend.pdf', 10, 5)
 
-# For presentation
-performance_trend_plot_presentation <-
-  models_preformance_trend %>%
-  filter(model %in% c('ILP','TML','SBM')) %>%
+# For the SI:
+# Calculating the proportion of correct predictions per bin
+SI_models_preformance_trend <- 
+  compare_model_features_degree_binned %>%
+  mutate(model = factor(model, levels = models$model, labels = models$label)) %>%
+  rename(category = outcome) %>% # for calc_conf_metrics
+  group_by(model, feature, feature_bin) %>%
+  calc_conf_metrics() %>%
+  ungroup() %>% 
+  select(model, feature, feature_bin, f1, balanced_accuracy) %>%
+  pivot_longer(
+    cols = c("f1", "balanced_accuracy"),
+    names_to = "metric",
+    values_to = "proportion_correct"
+  ) %>% 
+  mutate(metric = factor(metric, levels = c("f1", "balanced_accuracy")))
+
+SI_performance_trend <-
+  SI_models_preformance_trend %>%
   ggplot(aes(x = feature_bin, y = proportion_correct, color = model, group = model)) +
   geom_line(linewidth = 1) +
   geom_point(size = 2) +
-  facet_grid(trend ~ feature, 
+  facet_grid(metric ~ feature, 
              scales = "free",
              labeller = labeller(
-               trend = c(proportion_correct_pos = "Recall", proportion_correct_neg = "Specificity"),
-               feature = c(degree_HL = "Degree (high)", degree_LL = "Degree (low)")
+               metric = c(f1 = "F1", balanced_accuracy = "Balanced accuracy", accuracy = "Accuracy", specificity = "Specificity"),
+               feature = c(degree_HL = "Degree (high trophic level)", degree_LL = "Degree (low trophic level)")
              )) +
   labs(
-    x = "Feature value",
-    y = "Proportion correct",
+    x = "Degree value bins",
+    y = "Metric value",
     color = "Model"
   ) +
-  scale_color_manual(values = setNames(models$color, models$label)) +
+  scale_color_manual(values = setNames(models$color, models$label), labels=c('ILP','ML (TLP)','SBM (TLP)','MC (TLP)','C (TLP)')) +
   scale_x_discrete(labels = function(x) gsub(",", "-", gsub("\\(|\\]|\\[", "", x))) +
-  paper_figs_theme +
+  paper_figs_theme_SI_NEE +
   theme(
     legend.position = "bottom",
-    strip.text = element_text(size = 12, face = "bold"),
+    strip.text = element_text(size = 7, face = "bold"),
     axis.text.x = element_text(angle = 45, hjust = 1, size = 10)
   )
-performance_trend_plot_presentation
-export_fig_presentation(performance_trend_plot_presentation, 'performance_trend_plot.pdf', 10, 5)
-
-
+SI_performance_trend
+export_fig(SI_performance_trend, 'SI_performance_trend.pdf', 10, 6)
 
 
 # Per-community evaluations ----------------------------------------------------
+
+
+## Evaluation metrics per community --------------------
+metrics_df_long <- 
+  read_csv(paste0(path_intermediate_results, "metrics_df_long.csv")) %>% 
+  left_join(metrics, by = "metric") %>%
+  # Filter to keep only the desired metrics
+  filter(metric_label %in% desired_metrics) %>%
+  # Reorder the metric factor according to the desired order
+  mutate(metric_label = factor(metric_label, levels = desired_metrics)) %>% 
+  left_join(communities, by = "community")
+
+metrics_df_long %>% 
+  group_by(fold, community) %>%
+  summarise(n=n())
+
+SI_per_community_evaluations <- 
+  metrics_df_long %>% 
+  ggplot(aes(x = metric_label, y = value, fill = community)) +
+  geom_boxplot(notch=T) +
+  scale_fill_manual(values = setNames(communities$community_color, communities$community)) +
+  labs(y = "Metric value", x = "Metric", fill='Community') +
+  paper_figs_theme_SI_NEE + 
+  theme(legend.position = 'top',
+        axis.title.x = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust = 1))
+
+SI_per_community_evaluations
+export_fig(SI_per_community_evaluations, 'SI_per_community_evaluations.pdf', 10, 5)
 
 
 ## PR curves -------------------------------------------------------------------
@@ -586,35 +628,31 @@ auc_summary <- auc_df %>%
   mutate(PR_label= paste0(community_abbr, " (AUC: ", round(PR_auc, 2), ")")) %>% 
   mutate(community_abbr = fct_reorder(community_abbr, PR_auc, .desc = TRUE))
 
+# Write figure source data according to NEE guidelines
+pr_df %>% 
+  mutate(community_abbr = factor(community_abbr, levels=c("All","HP","PSD", "PH", "PP" ))) %>% 
+  write_csv('/Users/shai/Dropbox (Personal)/Apps/Overleaf/2025 NEE/revision_2/NEE/Fig_4a_source_data.csv')
+
 # Panel A of Fig. 4
 pr_plot <- 
   pr_df %>% 
-  mutate(community_abbr = factor(community_abbr, levels(auc_summary$community_abbr))) %>% 
+  mutate(community_abbr = factor(community_abbr, levels=c("All","HP","PSD", "PH", "PP" ))) %>% 
   ggplot(aes(x = recall, y = precision, color = community_abbr)) +
   geom_line(linewidth=1) +
   # geom_ribbon(aes(ymin = mean_precision - sd_precision, ymax = mean_precision + sd_precision, fill = community), alpha = 0.1) +
   labs(x = "Recall", y = "Precision", color="Community") +
   scale_color_manual(values = setNames(communities$community_color_dark, communities$community_abbr),
                      labels = setNames(auc_summary$PR_label, auc_summary$community_abbr)) +
-  paper_figs_theme + 
-  theme(legend.position = c(0.6,0.7))
+  paper_figs_theme_main_NEE + 
+  theme(legend.position = "inside", 
+        legend.position.inside = c(0.6,0.7))
 pr_plot
 
 ## Kruskal Wallis test - comparing metrics of different communities ---------
-
-# Load the dataframe
-desired_metrics <- c('Recall', 'Precision', 'Specificity', 'F1', 'BA', 'PR AUC')
-metrics_df_long <- 
-  read_csv(paste0(path_intermediate_results, "metrics_df_long.csv")) %>% 
-  left_join(metrics, by = "metric") %>%
-  # Filter to keep only the desired metrics
-  filter(metric_label %in% desired_metrics) %>%
-  # Reorder the metric factor according to the desired order
-  mutate(metric_label = factor(metric_label, levels = desired_metrics)) %>% 
-  left_join(communities, by = "community")
-
 library(broom)
 library(rstatix)
+
+desired_metrics <- c('Recall', 'Precision', 'Specificity', 'F1', 'BA', 'PR AUC')
 
 kw_comparison <- 
 metrics_df_long %>%
@@ -689,9 +727,17 @@ significant_dunn %<>%
   mutate(pair = paste(group1, group2, sep = " vs ")) %>% 
   mutate(label = paste0(p.adj.signif, "\nΔ=", round(median_diff, 2)))
 
+
+# Write figure source data according to NEE guidelines
+significant_dunn %>% 
+  filter(metric_label %in% c('Recall', 'Precision', 'F1', 'PR AUC')) %>% 
+  write_csv('/Users/shai/Dropbox (Personal)/Apps/Overleaf/2025 NEE/revision_2/NEE/Fig_4b_source_data.csv')
+
 # Panel B of Fig. 4
 pairwise_comparisons_plot <-
-  ggplot(significant_dunn, aes(x = metric_label, y = pair)) +
+  significant_dunn %>% 
+  filter(metric_label %in% c('Recall', 'Precision', 'F1', 'PR AUC')) %>% 
+  ggplot(aes(x = metric_label, y = pair)) +
     geom_tile(aes(fill = median_diff), color = "white") +  # Tiles colored by median_diff
     geom_text(aes(label = p.adj.signif), color = "black", size = 4) +  # Significance labels
   scale_fill_gradient2(
@@ -703,13 +749,7 @@ pairwise_comparisons_plot <-
                max(significant_dunn$median_diff, na.rm = TRUE)),  # Ensures the scale covers your data range
     name = "Difference\nin medians"  # Legend title with line break for better readability
   ) +
-    # scale_fill_viridis_c(
-    #   option = "D",
-    #   direction = 1,
-    #   alpha = 0.8,
-    #   name = "Median\ndifference"
-    # ) +
-    paper_figs_theme +
+    paper_figs_theme_main_NEE +
     theme(axis.title = element_blank(),
       axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
       panel.grid = element_blank()
@@ -723,27 +763,41 @@ pairwise_comparisons_plot
 
 per_community_evaluations <- 
 cowplot::plot_grid(pr_plot, pairwise_comparisons_plot, 
-                   labels = c("(A)", "(B)"), 
+                   labels = c("a", "b"), label_size = 7,
                    ncol = 2,
                    align = "h",        # Align horizontally
                    axis = "tb",        # Align top and bottom axes
                    rel_widths = c(1,1.3))  # Ensure both plots have equal widths)
-export_fig(per_community_evaluations, 'per_community_evaluations.pdf', 12, 5)
+export_fig(per_community_evaluations, 'per_community_evaluations.pdf', 18.8/2.54, 3.5)
 
 
-SI_per_community_evaluations <- 
-  metrics_df_long %>% 
-  ggplot(aes(x = metric_label, y = value, fill = community)) +
-  geom_boxplot(notch=T) +
-  scale_fill_manual(values = setNames(communities$community_color, communities$community)) +
-  labs(y = "Metric value", x = "Metric", fill='Community') +
-  paper_figs_theme + 
-  theme(legend.position = 'top',
-        axis.title.x = element_blank(),
-        axis.text.x = element_text(angle = 45, hjust = 1))
+# For SI:
+SI_pairwise_comparisons_plot <-
+  ggplot(significant_dunn, aes(x = metric_label, y = pair)) +
+  geom_tile(aes(fill = median_diff), color = "white") +  # Tiles colored by median_diff
+  geom_text(aes(label = p.adj.signif), color = "black", size = 4) +  # Significance labels
+  scale_fill_gradient2(
+    low = "#1984c5",          # Blue for negative differences
+    mid = "white",            # White for zero difference
+    high = "#c23728",         # Red for positive differences
+    midpoint = 0,             # Midpoint at zero
+    limits = c(min(significant_dunn$median_diff, na.rm = TRUE), 
+               max(significant_dunn$median_diff, na.rm = TRUE)),  # Ensures the scale covers your data range
+    name = "Difference\nin medians"  # Legend title with line break for better readability
+  ) +
+  paper_figs_theme_SI_NEE +
+  theme(axis.title = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+        panel.grid = element_blank()
+  ) +
+  labs(
+    x = "Metric",
+    y = "Community pair"
+  )
+SI_pairwise_comparisons_plot
 
-SI_per_community_evaluations
-export_fig(SI_per_community_evaluations, 'SI_per_community_evaluations.pdf', 10, 5)
+# Write the file for the SI
+export_fig(SI_pairwise_comparisons_plot, 'SI_pairwise_comparisons_plot.pdf', 6, 5)
 
 # Write results to a table for the manuscript in latex format
 significant_dunn %>% 
@@ -787,7 +841,7 @@ create_heatmap_plot <- function(data, filter_condition = NULL) {
     ggplot(data, aes(x = type_train, y = type_test, fill = m)) +
     geom_tile(color = 'white', lwd = 1.5, linetype = 1) +
     geom_tile(data = data %>% filter(diagonal == "Diagonal"),
-              color = '#C66AC4', lwd = 3, linetype = 1, size = 3) +
+              color = '#C66AC4', lwd = 3, linetype = 1) +
     geom_richtext(aes(label = round(m, 2)),
                   fill = 'white',
                   label.padding = unit(0.1, "lines"),
@@ -796,8 +850,7 @@ create_heatmap_plot <- function(data, filter_condition = NULL) {
                   label.colour = "black") +
     scale_fill_viridis_c() +
     labs(y = "Test community", x = "Train community", fill = "Mean F1") +
-    coord_fixed() +
-    paper_figs_theme
+    coord_fixed() 
   return(plot)
 }
 
@@ -840,58 +893,19 @@ highlight_rect <- data.frame(
   ymax = as.numeric(as.factor(c("PSD")))
 )
 
+
+# Write figure source data according to NEE guidelines
+write_csv(plot_tibble, '/Users/shai/Dropbox (Personal)/Apps/Overleaf/2025 NEE/revision_2/NEE/Fig_5_source_data.csv')
+
 cross_community_prediction <- 
   plot_tibble %>% 
   create_heatmap_plot() +
   geom_rect(aes(xmin = 2.5, xmax = 6.5, ymin = 0.5, ymax = 4.5),
-            color = 'red', linetype = "dashed", fill = NA, size = 1.5)
+            color = 'blue', linetype = "dashed", fill = NA, linewidth = 1.5)+
+  paper_figs_theme_main_NEE
 
 cross_community_prediction
 export_fig(cross_community_prediction, 'cross_community_prediction.pdf', 8, 8)
-
-
-## A series of plots for presentations -----------------------------------------
-
-plot_tibble <- 
-  inter_community_f1_long %>%
-  filter(!type_train %in% c("All", "No PP")) %>% 
-  filter(!type_test %in% c("All", "No PP")) %>% 
-  group_by(type_train, type_test, metric) %>%
-  summarise(m = mean(value, na.rm = TRUE)) %>%
-  mutate(diagonal = ifelse(type_train == type_test, "Diagonal", "Non-Diagonal"))
-
-
-# Stage 1: Diagonal
-inter_comm_diag <- 
-  plot_tibble %>%
-  create_heatmap_plot(filter_condition = 'diagonal == "Diagonal"') +
-  theme(axis.title = element_blank(),
-        axis.text = element_blank())
-export_fig_presentation(inter_comm_diag, 'inter_comm_diag.pdf', 5, 5)
-
-# Stage 2: host-parasite
-inter_comm_hp <- 
-plot_tibble %>%
-  create_heatmap_plot(filter_condition = 'type_test == "HP" | diagonal == "Diagonal"') +
-  theme(axis.title = element_blank(),
-        axis.text = element_blank())
-export_fig_presentation(inter_comm_hp, 'inter_comm_hp.pdf', 5, 5)
-
-# Stage 3: plant-pollinator
-inter_comm_pp <-
-plot_tibble %>%
-  create_heatmap_plot(filter_condition = 'type_test %in% c("HP", "PP") | diagonal == "Diagonal"') +
-  theme(axis.title = element_blank(),
-        axis.text = element_blank())
-export_fig_presentation(inter_comm_pp, 'inter_comm_pp.pdf', 5, 5)
-
-# Stage 4: all
-inter_comm_all <-
-plot_tibble %>%
-  create_heatmap_plot() +
-  theme(axis.title = element_blank(),
-        axis.text = element_blank())
-export_fig_presentation(inter_comm_all, 'inter_comm_all.pdf', 5, 5)
 
 
 # Model bounds ----------------------------------------------------------------
@@ -899,22 +913,26 @@ bounds_summary_df <- read_csv(paste0(path_intermediate_results, "bounds_summary_
 bounds_summary_df_transductive <- read_csv(paste0(path_intermediate_results, "bounds_summary_df_transductive.csv"))
 
 
-merics_for_lot <- c("recall",'f1','specificity')
+merics_for_plot <- c("recall", "precision", "f1")
 
 bounds_ILP_TLP <- 
   as_tibble(
     bind_rows(
-      bounds_summary_df_transductive %>% filter(metric %in% merics_for_lot) %>% mutate(model='TLP'),
-      bounds_summary_df %>% filter(metric %in% merics_for_lot) %>% mutate(model='ILP')
+      bounds_summary_df_transductive %>% filter(metric %in% merics_for_plot) %>% mutate(model='TLP'),
+      bounds_summary_df %>% filter(metric %in% merics_for_plot) %>% mutate(model='ILP')
     )) %>% 
   # mutate((metric=factor(metric, levels=c("recall",'f1',"specificity",'mcc')))) %>% 
-  mutate(across(metric, ~factor(., levels=merics_for_lot))) %>% 
+  mutate(across(metric, ~factor(., levels=merics_for_plot))) %>% 
   left_join(metrics, by = "metric")
 
 bounds_ILP_TLP %>% 
   filter(fraction == 0.15) %>% 
   filter(metric == 'f1') %>% 
   select(fraction, metric, avg_lower_bound, avg_upper_bound, model)
+
+# Write figure source data according to NEE guidelines
+write_csv(bounds_ILP_TLP, '/Users/shai/Dropbox (Personal)/Apps/Overleaf/2025 NEE/revision_2/NEE/Extended_Fig_1_source_data.csv')
+
 
 model_bounds_ILP_TLP <- 
   bounds_ILP_TLP %>% 
@@ -928,22 +946,23 @@ model_bounds_ILP_TLP <-
   facet_wrap(~ metric_label) +  # Create a separate panel for each metric with custom labels
   scale_x_continuous(breaks = seq(0.05, 0.5, by = 0.1), limits = c(0.05, 0.5)) +  # Set x axis limits and breaks
   labs(x = 'Fraction of true missing links', y='Metric value', fill='Model', color='Model')+
-  scale_color_manual(values = c('orange','#861ea5')) +
-  scale_fill_manual(values = c('orange','#861ea5')) +
+  scale_color_manual(values = c('orange','#861ea5'), labels=c('ILP (ML)','TLP (ML)','SBM','MC','C')) +
+  scale_fill_manual(values = c('orange','#861ea5'), labels=c('ILP (ML)','TLP (ML)','SBM','MC','C')) +
   geom_segment(data = . %>% filter(metric_label == "F1"),
                aes(x = 0.24, xend = 0.15, y = 0.742, yend = 0.742), 
-               colour = "red", size = 1, 
+               colour = "red", linewidth = 1, 
                arrow = arrow(length = unit(0.3, "cm")))+
   geom_segment(data = . %>% filter(metric_label == "F1"),
                aes(x = 0.24, xend = 0.15, y = 0.582, yend = 0.582), 
-               colour = "red", size = 1, 
+               colour = "red", linewidth = 1, 
                arrow = arrow(length = unit(0.3, "cm")))+
-  paper_figs_theme + 
-  theme(legend.position = c(0.9,0.2))
+  paper_figs_theme_main_NEE + 
+  theme(legend.position = c(0.9,0.82),
+        strip.text = element_text(size = 14))
 
 model_bounds_ILP_TLP
 
-export_fig(model_bounds_ILP_TLP, 'model_bounds_ILP_TLP.pdf', 10, 5)
+export_fig(model_bounds_ILP_TLP, 'extended_data_figure_1.pdf', 10, 5)
 
 # Compare modeling approaches (e.g., RF vs XGboost) ----------------------------
 
@@ -957,7 +976,7 @@ SI_model_comparison <-
   ggplot(metrics_multi_df_long, aes(x = metric_label, y = value, fill = model)) +
   geom_col(position = "dodge2", width = 0.7) +
   labs(y = "Value", fill = "Model") +
-  paper_figs_theme +
+  paper_figs_theme_SI_NEE +
   theme(legend.position = "bottom",
         axis.title.x = element_blank(),
         plot.margin = unit(c(0.2,1,0.2,0.2), "cm"))
@@ -988,7 +1007,7 @@ compare_sampling %>%
   ggplot(aes(x= metric_label, y = value, fill = sampling)) +
   geom_boxplot() +
   labs(y = "Value", x = "Metric", fill = "Sampling") +
-  paper_figs_theme +
+  paper_figs_theme_SI_NEE +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
@@ -1054,8 +1073,9 @@ SI_link_removal_sensitivity <-
     fill='Metric'
   ) +
   scale_fill_manual(values = c("#E06A5A", "#99008C", "#EACA00", "#1984c5", "#4DAF4A")) +
-  paper_figs_theme_no_legend+
+  paper_figs_theme_SI_NEE+
   theme(
+    legend.position = 'none',
     axis.text.x = element_text(angle = 45, hjust = 1),
     plot.title = element_text(hjust = 0.5)
   )
@@ -1081,7 +1101,7 @@ SI_pr_tradeoff <-
   geom_line(aes(y = f1, color = "F1 Score"), linetype = "solid") +
   scale_color_manual(values = c("Precision" = "#E06A5A", "Recall" = "#99008C", "F1 Score" = "#EACA00")) +
   labs(x = "Threshold", y = "Precision/Recall score", color = "Metric") +
-  paper_figs_theme +
+  paper_figs_theme_SI_NEE +
   facet_wrap(~community, labeller = as_labeller(new_names)) +
   theme(axis.text.x=element_text(angle=-45, hjust=0))
 
@@ -1113,9 +1133,10 @@ SI_probabilities <-
   geom_vline(aes(xintercept = 0.5), color = "red", linetype = "dashed") +
   scale_color_manual(name = "", values = c("Threshold" = "red"), labels = c("Threshold" = "threshold=0.5")) +	
   labs(x = "Probability", y = "Frequency", color = "legend") + #title = "Distribution of the predicted probabilities", 
-  paper_figs_theme_no_legend +
+  paper_figs_theme_SI_NEE +
   facet_wrap(~ class, nrow = 1, scales = "free_y", labeller = as_labeller(labels_mapping)) +
-  theme(plot.margin = unit(c(0.2,0.4,0.2,0.2), "cm"))
+  theme(legend.position='none',
+        plot.margin = unit(c(0.2,0.4,0.2,0.2), "cm"))
 
 # Display the plot
 print(SI_probabilities)
@@ -1144,7 +1165,7 @@ SI_probabilities_community <-
   labs(x = "Probability", y = "Density") +
   scale_fill_manual(values = c("Non-existing Links" = "steelblue", "Subsampled Links" = "orange"), labels = labels_mapping) +
   facet_wrap(~ community, labeller = as_labeller(labels_mapping)) +
-  paper_figs_theme +
+  paper_figs_theme_SI_NEE +
   theme(legend.title = element_blank(),
         axis.text.x=element_text(angle=-45, hjust=0))
 
@@ -1182,7 +1203,7 @@ main_plot <- excluded_networks %>%
   geom_vline(xintercept = 25, linetype = "dashed") +
   scale_color_manual(values = setNames(communities$community_color_dark, communities$community)) +
   labs(x = "Network Size", y = "Connectance", color = "Community Type") +
-  paper_figs_theme +
+  paper_figs_theme_SI_NEE +
   theme(
     legend.position = "none"  # Adjust legend position as needed
   )
@@ -1193,7 +1214,7 @@ inset_plot <- community_counts %>%
   geom_bar(stat = "identity", show.legend = FALSE) +
   scale_fill_manual(values = setNames(communities$community_color_dark, communities$community)) +
   labs(x = "Community Type", y = "Count") +
-  paper_figs_theme +
+  paper_figs_theme_SI_NEE +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
     axis.title.x = element_blank()
@@ -1291,7 +1312,7 @@ SI_excluded_vs_included <-
     y = "Metric value",
     fill='Criteria'
   ) +
-  paper_figs_theme+
+  paper_figs_theme_SI_NEE +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
     plot.title = element_text(hjust = 0.5)
@@ -1312,9 +1333,8 @@ cowplot::plot_grid(SI_excluded_networks_properties+
                    # axis = "tb",
                    scale=c(0.88,1),
                    rel_widths = c(0.55,0.45),
-                   labels = c("(A)", "(B)"))
+                   labels = c("a", "b"))
                    
-dev.off()
 SI_excluded_networks
 export_fig(SI_excluded_networks, 'SI_excluded_networks.pdf', 12, 8)
 
@@ -1324,49 +1344,50 @@ export_fig(SI_excluded_networks, 'SI_excluded_networks.pdf', 12, 8)
 
 ## Prepare the data for the case study -----------------------------------------
 # Load necessary libraries
-library(readxl)
-
-# Load the data
-file_path <- "case_study/41559_2017_BFs415590170101_MOESM36_ESM.xlsx"
-data <- read_excel(file_path, sheet = "NATECOLEVOL-16040015-s03.csv")
-
-# Separate data by year
-data_split <- data %>%
-  group_split(YearCollected)
-
-# Create species interaction matrices for each year
-interaction_matrices <- map(data_split, function(df) {
-  df %>%
-    select(-YearCollected, -Host) %>%
-    pivot_longer(cols = everything(), names_to = "Species", values_to = "Value") %>%
-    pivot_wider(names_from = "Species", values_from = "Value", values_fill = 0) %>%
-    column_to_rownames("Host")
-})
-
-x %>% select(-YearCollected) %>%
-  # mutate(across(-Host, ~ ifelse(. > 0, 1, 0))) # Binarize values
-  write_csv(paste0(y,'.csv'))
-
-interaction_matrices <- map(data_split, function(df) {
-  y=df$YearCollected[1]
-  
-  # Aggregate rows by 'Host', summing across columns
-  aggregated_matrix <- df %>%
-    select(-YearCollected) %>%
-    group_by(Host) %>%
-    summarise(across(everything(), \(x) sum(x, na.rm = TRUE))) # Sum across columns for duplicate species
-  
-  # Binarize the aggregated matrix
-  binary_matrix <- aggregated_matrix %>%
-    mutate(across(-Host, ~ ifelse(. > 0, 1, 0))) # Convert sums to binary (1/0)
-  
-  # Save the binary matrix to a CSV file
-  binary_matrix %>%
-    write_csv(paste0('case_study/',y, ".csv"))
-  
-  # aggregated_matrix %>%
-  #   write_csv(paste0(y, "_w.csv"))
-})
+# library(readxl)
+# 
+# # Load the data
+# file_path <- "case_study/41559_2017_BFs415590170101_MOESM36_ESM.xlsx"
+# data <- read_excel(file_path, sheet = "NATECOLEVOL-16040015-s03.csv")
+# 
+# # Separate data by year
+# data_split <- data %>%
+#   group_split(YearCollected)
+# 
+# # Create species interaction matrices for each year
+# interaction_matrices <- map(data_split, function(df) {
+#   df %>%
+#     select(-YearCollected, -Host) %>%
+#     pivot_longer(cols = everything(), names_to = "Species", values_to = "Value") %>%
+#     pivot_wider(names_from = "Species", values_from = "Value", values_fill = 0) %>%
+#     column_to_rownames("Host")
+# })
+# 
+# 
+# x %>% select(-YearCollected) %>%
+#   # mutate(across(-Host, ~ ifelse(. > 0, 1, 0))) # Binarize values
+#   write_csv(paste0(y,'.csv'))
+# 
+# interaction_matrices <- map(data_split, function(df) {
+#   y=df$YearCollected[1]
+#   
+#   # Aggregate rows by 'Host', summing across columns
+#   aggregated_matrix <- df %>%
+#     select(-YearCollected) %>%
+#     group_by(Host) %>%
+#     summarise(across(everything(), \(x) sum(x, na.rm = TRUE))) # Sum across columns for duplicate species
+#   
+#   # Binarize the aggregated matrix
+#   binary_matrix <- aggregated_matrix %>%
+#     mutate(across(-Host, ~ ifelse(. > 0, 1, 0))) # Convert sums to binary (1/0)
+#   
+#   # Save the binary matrix to a CSV file
+#   binary_matrix %>%
+#     write_csv(paste0('case_study/',y, ".csv"))
+#   
+#   # aggregated_matrix %>%
+#   #   write_csv(paste0(y, "_w.csv"))
+# })
 
 ## Overall prediction evaluation------------------------------------------------
 
@@ -1387,45 +1408,6 @@ case_study_df <-
     )
   ) 
 
-# Calculate performance metrics per year
-SI_case_study_metrics <- 
-  case_study_df %>% 
-  group_by(year) %>%
-  summarize(
-    TP = sum(category == "TP", na.rm = TRUE),
-    FP = sum(category == "FP", na.rm = TRUE),
-    TN = sum(category == "TN", na.rm = TRUE),
-    FN = sum(category == "FN", na.rm = TRUE),
-    .groups = "drop"  # Ungroup after summarizing
-  ) %>%
-  mutate(
-    Precision = if_else((TP + FP) > 0, TP / (TP + FP), NA_real_),
-    Recall = if_else((TP + FN) > 0, TP / (TP + FN), NA_real_),
-    Specificity = if_else((TN + FP) > 0, TN / (TN + FP), NA_real_),
-    BA = (Recall + Specificity) / 2,
-    F1 = if_else((Precision + Recall) > 0, 2 * (Precision * Recall) / (Precision + Recall), NA_real_)
-  ) %>% 
-  # Pivot longer to get the metrics in a value column
-  pivot_longer(
-    cols = c(Precision, Recall, Specificity, BA, F1),
-    names_to = "metric",
-    values_to = "value"
-  ) %>% 
-  # Make Year a factor
-  mutate(year = factor(year, levels = unique(case_study_df$year))) %>% 
-  # Plot all the evaluation metrics per year using a bar plot
-  ggplot(aes(x = metric, y = value, fill = year)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  labs(x = "Year", y = "Metric value", fill = "Metric") +
-  scale_fill_manual(values = c("#E06A5A", "#99008C", "#EACA00", "#1984c5", "#4DAF4A", "#4DAA9B")) +
-  paper_figs_theme +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),
-    plot.title = element_text(hjust = 0.5)
-  )
-
-SI_case_study_metrics
-# export_fig(SI_case_study_metrics, 'SI_case_study_metrics.pdf', 10, 5)
 
 ## Relationship between node degree and prediction accuracy --------------------
 
@@ -1450,9 +1432,9 @@ case_study_df %<>%
   left_join(parasite_deg, by = c("year", "higher_level"))
 
 
-### 2. Host taxonomy -----------------------------------------------------------
+### 2. Host and parasite taxonomy ----------------------------------------------
 
-# 1. Define the species lists
+# Define the species lists
 rodent_species <- c(
   "Apodemus_agrarius", "Apodemus_peninsulae", "Arvicola_terrestris",
   "Cricetus_cricetus", "Eutamias_sibiricus", "Microtus_agrestis",
@@ -1467,6 +1449,15 @@ eulipotyphla_species <- c(
   "Sorex_minutus", "Sorex_tundrensis", "Neomys_fodiens"
 )
 
+flea_species <- c(
+  "Amphipsylla_sibirica", "Ceratophyllus_indages", "Ctenophthalmus_assimilis",
+  "Megabothris_turbidus", "Megabothris_rectangulatus", "Amalaraeus_penicilliger",
+  "Doratopsylla_birulai", "Frontopsylla_elata", "Histrichopsylla_talpae",
+  "Leptopsylla_segnis", "Neopsylla_acanthina", "Neopsylla_mana",
+  "Palaeopsylla_soricis", "Rhadinopsylla_integella"
+)
+
+
 # Tag each host as Rodentia or Eulipotyphla
 case_study_df  %<>%
   mutate(
@@ -1476,16 +1467,6 @@ case_study_df  %<>%
       TRUE ~ NA_character_
     )
   )
-
-### 3. Parasite taxonomy -------------------------------------------------------
-
-flea_species <- c(
-  "Amphipsylla_sibirica", "Ceratophyllus_indages", "Ctenophthalmus_assimilis",
-  "Megabothris_turbidus", "Megabothris_rectangulatus", "Amalaraeus_penicilliger",
-  "Doratopsylla_birulai", "Frontopsylla_elata", "Histrichopsylla_talpae",
-  "Leptopsylla_segnis", "Neopsylla_acanthina", "Neopsylla_mana",
-  "Palaeopsylla_soricis", "Rhadinopsylla_integella"
-)
 
 # Classify parasites as 'Flea' vs. 'Mite'
 case_study_df  %<>%
@@ -1502,27 +1483,22 @@ case_study_test <-
   case_study_df %>%
   filter(class %in% c(0, -1))
 
-# Define a function to summarize and compute metrics
-calc_conf_metrics <- function(.data) {
-  .data %>%
-    summarize(
-      TP = sum(category == "TP"),
-      FP = sum(category == "FP"),
-      TN = sum(category == "TN"),
-      FN = sum(category == "FN"),
-      .groups = "drop"
-    ) %>%
-    mutate(
-      accuracy = (TP + TN) / (TP + TN + FP + FN),
-      precision = TP / (TP + FP),
-      recall = TP / (TP + FN),
-      balanced_accuracy = 0.5 * ((TP / (TP + FN)) + (TN / (TN + FP))),
-      f1 = 2 * (precision * recall) / (precision + recall)
-    )
-}
-
-
 ### 4a. Prediction per year ------------------------------------------
+
+
+
+# Write figure source data according to NEE guidelines
+case_study_test %>%
+  group_by(year) %>%
+  calc_conf_metrics() %>% 
+  pivot_longer(
+    cols = c(accuracy, precision, recall, balanced_accuracy, f1), 
+    names_to = "metric", 
+    values_to = "value"
+  ) %>%
+  write_csv(paste0(path_intermediate_results, 'case_study_metrics.csv'))ic != "accuracy") %>% 
+  write_csv( '/Users/shai/Dropbox (Personal)/Apps/Overleaf/2025 NEE/revision_2/NEE/Fig_6a_source_data.csv')
+
 
 case_study_yearly_evaluation <- 
   case_study_test %>%
@@ -1552,7 +1528,7 @@ case_study_yearly_evaluation <-
     ),
     values = c("#E06A5A", "#99008C", "#EACA00", "#1984c5")
   ) +
-  paper_figs_theme+
+  paper_figs_theme_main_NEE+
   theme(legend.position = c(0.3,0.5))
 
 
@@ -1584,12 +1560,31 @@ bind_rows(
     y = "F1",
     color = "Group"
   ) +
-  paper_figs_theme
+  paper_figs_theme_SI_NEE
 
 SI_case_study_parasites_vs_hosts_per_year
-# export_fig(SI_case_study_parasites_vs_hosts_per_year, 'SI_case_study_parasites_vs_hosts_per_year.pdf', 10, 5)
+export_fig(SI_case_study_parasites_vs_hosts_per_year, 'SI_case_study_parasites_vs_hosts_per_year.pdf', 10, 5)
 
 ### 4b. Prediction across all years ------------------------------------------
+
+# Write figure source data according to NEE guidelines
+bind_rows(
+  host_degree_evaluation <- 
+    case_study_test %>%
+    group_by(host_degree) %>%
+    calc_conf_metrics() %>% 
+    rename(k=host_degree) %>%
+    mutate(group='Hosts'),
+  
+  parasite_degree_evaluation <- 
+    case_study_test %>%
+    group_by(parasite_degree) %>%
+    calc_conf_metrics() %>% 
+    rename(k=parasite_degree) %>%
+    mutate(group='Parasites')
+) %>% 
+write_csv( '/Users/shai/Dropbox (Personal)/Apps/Overleaf/2025 NEE/revision_2/NEE/Fig_6b_source_data.csv')
+
 
 case_study_parasites_vs_hosts <- 
   bind_rows(
@@ -1615,7 +1610,7 @@ case_study_parasites_vs_hosts <-
     y = "F1",
     color = "Group"
   ) +
-  paper_figs_theme+
+  paper_figs_theme_main_NEE+
   theme(legend.position = c(0.8,0.15))
 
 case_study_parasites_vs_hosts
@@ -1625,7 +1620,7 @@ case_study <-
   cowplot::plot_grid(case_study_yearly_evaluation, 
                      case_study_parasites_vs_hosts, 
                      nrow = 1,
-                     labels = c("(A)", "(B)"))
+                     labels = c("a", "b"))
 case_study
 export_fig(SI_case_study, 'case_study.pdf', 10, 5)
 
@@ -1649,7 +1644,7 @@ host_taxonomay_evaluation <-
   ) +
   xlim(c(0,40))+
   ylim(c(0,1))+
-  paper_figs_theme+
+  paper_figs_theme_SI_NEE +
   theme(legend.position = 'inside',
         legend.position.inside = c(0.25,0.85))
 
@@ -1670,7 +1665,7 @@ parasite_taxonomay_evaluation <-
   ) +
   xlim(c(0,40))+
   ylim(c(0,1))+
-  paper_figs_theme+
+  paper_figs_theme_SI_NEE+
   theme(legend.position = 'inside',
         legend.position.inside = c(0.25,0.85))
 
@@ -1679,48 +1674,3 @@ SI_case_study_taxonomy <-
   cowplot::plot_grid(host_taxonomay_evaluation, parasite_taxonomay_evaluation, nrow = 1)
 SI_case_study_taxonomy
 export_fig(SI_case_study_taxonomy, 'SI_case_study_taxonomy.pdf', 10, 5)
-
-
-
-
-# Not used but very cool -------------------------------------------------------
-
-library(yardstick)
-
-metrics_df <- case_study_df %>%
-  # Restrict to test set
-  filter(class %in% c(0, -1)) %>%
-  # Recode true class to 0/1
-  mutate(true_label = if_else(class == -1, 1, 0)) %>%
-  # Recode predicted class to factor
-  mutate(
-    true_label = factor(true_label, levels = c(0, 1)),
-    y_pred     = factor(y_pred,     levels = c(0, 1))
-  )
-
-# A. Direct confusion matrix
-metrics_df %>%
-  conf_mat(true_label, y_pred)
-
-# B. Accuracy
-metrics_df %>%
-  accuracy(true_label, y_pred)
-
-# C. Balanced Accuracy
-metrics_df %>%
-  bal_accuracy(true_label, y_pred)
-
-# D. Precision, Recall, F1
-metrics_df %>%
-  precision(true_label, y_pred)
-
-metrics_df %>%
-  recall(true_label, y_pred)
-
-metrics_df %>%
-  f_meas(true_label, y_pred, beta = 1)  # F1 is the default
-
-# E. AUC (if you have y_proba columns)
-metrics_df %>%
-  roc_auc(true_label, y_proba)
-
